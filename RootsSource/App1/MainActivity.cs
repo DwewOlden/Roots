@@ -11,6 +11,7 @@ namespace App1
     [Activity(Label = "Roots", MainLauncher = true, Icon = "@mipmap/icon")]
     public class MainActivity : Activity
     {
+
         private DatabaseCreation databaseCreation;
 
         protected override void OnCreate(Bundle savedInstanceState)
