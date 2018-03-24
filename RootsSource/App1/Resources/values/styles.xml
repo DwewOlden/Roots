@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+
+  <style name="dialog_animation">
+    <item name="android:windowEnterAnimation">@anim/slide_up</item>
+    <item name="android:windowExitAnimation">@anim/slide_right</item>
+  </style>
+  
+  <style name="MyTheme" parent="@android:style/Theme.Material.Light.DarkActionBar">
+    <item name="android:windowNoTitle">true</item>
+    <item name="android:windowActionBar">false</item>
+    <item name="android:colorPrimary">#5F0376</item>
+    <item name="android:colorAccent">#BC6BD0</item>
+  </style>
+</resources> 

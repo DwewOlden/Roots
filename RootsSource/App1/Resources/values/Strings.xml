@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_name">Dimples</string>
+  
+  <!-- Tab titles -->
+  <string name="trip_tab">Trip</string>
+  <string name="history_tab">History</string>
+  <string name="statistics_tab">Statistics</string>
+  <string name="settings_tab">Settings</string>
+  
+  <!-- Settings Tab -->
+  <string name="review_driver_details_button">Review Driver</string>
+  <string name="add_driver_details_button">Add Driver</string>
+  <string name="add_driver_image_button">Driver Image</string>
+  
+  <!-- Add New Drivers Form-->
+  <string name="add_driver_form_name_label">Drivers\' Name:</string>
+  <string name="add_driver_button">Add this driver</string>
+</resources>
