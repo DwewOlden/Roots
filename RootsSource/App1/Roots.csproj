@@ -9,8 +9,8 @@
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>App1</RootNamespace>
-    <AssemblyName>App1</AssemblyName>
+    <RootNamespace>roots</RootNamespace>
+    <AssemblyName>roots</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <AndroidApplication>True</AndroidApplication>
     <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Forms\Drivers\AddNewDriver.cs" />
+    <Compile Include="Functions\MainMenuActivity.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -64,7 +65,7 @@
     <Compile Include="SupportingSystems\Data\BaseDataAccessingClass.cs" />
     <Compile Include="SupportingSystems\Data\DatabaseCreation.cs" />
     <Compile Include="SupportingSystems\Data\DriverRepository.cs" />
-    <Compile Include="TabViews\SettingTab.cs" />
+    <Compile Include="Functions\SettingTab.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="GettingStarted.Xamarin" />
@@ -93,6 +94,7 @@
     <AndroidResource Include="Resources\values\Strings.xml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Functions\Menus\" />
     <Folder Include="Resources\drawable\" />
   </ItemGroup>
   <ItemGroup>

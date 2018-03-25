@@ -11,7 +11,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 
-namespace App1.SupportingSystems
+namespace roots.SupportingSystems
 {
     /// <summary>
     /// A class that will copy the avater from one directory (the assetts) of the 
