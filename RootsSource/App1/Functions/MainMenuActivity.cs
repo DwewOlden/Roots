@@ -20,12 +20,18 @@ namespace roots.Functions
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
+
+            // Set our view from the "main" layout resource
+            SetContentView(Resource.Layout.Main);
+            var toolbar = base.FindViewById<Toolbar>(Resource.Id.toolbar);
+            SetActionBar(toolbar);
+
             CreateSupportingDatasets();
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
-            MenuInflater.Inflate(Resource.Menu.top_menu, menu);
+            MenuInflater.Inflate(Resource.Menu.MainMenuItems, menu);
             return base.OnCreateOptionsMenu(menu);
         }
 
@@ -42,7 +48,7 @@ namespace roots.Functions
             switch (titleFormatted)
             {
                 case "Drivers":
-                    StartActivity(typeof(TabViews.SettingTab));
+                    StartActivity(typeof(TabViews.DriversMenu));
                     break;
 
                 default:

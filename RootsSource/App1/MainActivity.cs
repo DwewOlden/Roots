@@ -15,13 +15,7 @@ namespace roots
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-
-            // Set our view from the "main" layout resource
-            SetContentView(Resource.Layout.Main);
-            var toolbar = base.FindViewById<Toolbar>(Resource.Id.toolbar);
-            SetActionBar(toolbar);
             
-
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
