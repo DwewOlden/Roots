@@ -11,7 +11,7 @@ using Android.Util;
 using Android.Views;
 using Android.Widget;
 
-namespace App1.TabViews
+namespace roots.TabViews
 {
     [Activity(Label = "Driver", MainLauncher = false, Icon = "@mipmap/icon")]
     public class SettingTab : Activity

@@ -12,7 +12,7 @@ using Android.Views;
 using Android.Widget;
 using Mono.Data.Sqlite;
 
-namespace App1.SupportingSystems.Data
+namespace roots.SupportingSystems.Data
 {
     /// <summary>
     /// Contains the main database conneciton functions.

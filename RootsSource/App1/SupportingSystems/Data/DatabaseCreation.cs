@@ -13,7 +13,7 @@ using Android.Widget;
 
 using Mono.Data.Sqlite;
 
-namespace App1.SupportingSystems.Data
+namespace roots.SupportingSystems.Data
 {
     /// <summary>
     /// This class will add the database if it is not present, otherwise it will quietly ignore things

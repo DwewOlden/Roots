@@ -1,12 +1,12 @@
 ﻿using Android.App;
 using Android.Widget;
 using Android.OS;
-using App1.SupportingSystems.Data;
+using roots.SupportingSystems.Data;
 using System;
 using Android.Views;
 using Android.Content;
 
-namespace App1
+namespace roots
 {
     [Activity(Label = "Roots", MainLauncher = true, Icon = "@mipmap/icon")]
     public class MainActivity : Activity
