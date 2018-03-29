@@ -14,7 +14,7 @@ using Android.Widget;
 namespace roots.TabViews
 {
     [Activity(Label = "Driver", MainLauncher = false, Icon = "@mipmap/icon")]
-    public class SettingTab : Activity
+    public class DriversMenu : Activity
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -46,7 +46,7 @@ namespace roots.TabViews
 
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
-            MenuInflater.Inflate(Resource.Menu.top_menu, menu);
+            MenuInflater.Inflate(Resource.Menu.MainMenuItems, menu);
             return base.OnCreateOptionsMenu(menu);
         }
 
@@ -55,13 +55,8 @@ namespace roots.TabViews
             string titleFormatted = item.TitleFormatted.ToString();
             switch (titleFormatted)
             {
-                case "Edit":
-                    StartActivity(typeof(TabViews.SettingTab));
-                    break;
-
-                default:
-                    Toast.MakeText(this, "Action selected: " + item.TitleFormatted,
-               ToastLength.Short).Show();
+                case "Drivers":
+                    StartActivity(typeof(TabViews.DriversMenu));
                     break;
             }
 
