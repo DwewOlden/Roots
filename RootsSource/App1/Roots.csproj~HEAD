@@ -57,7 +57,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Forms\Drivers\AddNewDriver.cs" />
-    <Compile Include="Functions\MainMenuActivity.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -65,7 +64,7 @@
     <Compile Include="SupportingSystems\Data\BaseDataAccessingClass.cs" />
     <Compile Include="SupportingSystems\Data\DatabaseCreation.cs" />
     <Compile Include="SupportingSystems\Data\DriverRepository.cs" />
-    <Compile Include="Functions\DriversMenu.cs" />
+    <Compile Include="TabViews\SettingTab.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="GettingStarted.Xamarin" />
@@ -94,7 +93,6 @@
     <AndroidResource Include="Resources\values\Strings.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Functions\Menus\" />
     <Folder Include="Resources\drawable\" />
   </ItemGroup>
   <ItemGroup>
@@ -113,13 +111,13 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\MainMenuBackground.xml" />
+    <AndroidResource Include="Resources\layout\toolbar.xml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\styles.xml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\menu\MainMenuItems.xml">
+    <AndroidResource Include="Resources\menu\top_menu.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
