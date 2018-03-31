@@ -9,7 +9,7 @@ using roots.Functions;
 
 namespace roots
 {
-    [Activity(Label = "Roots", MainLauncher = true, Icon = "@mipmap/icon")]
+    [Activity(Label = "Roots", MainLauncher = true, Icon = "@drawable/xs")]
     public class MainActivity : MainMenuActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)

@@ -8,13 +8,6 @@
        android:layout_weight="1"
        android:title="Details" />
   <item
-       android:id="@+id/menu_driver_image"
-       android:icon="@mipmap/ic_add_a_photo_white_24dp"
-       android:showAsAction="ifRoom"
-       android:layout_width="0dp"
-       android:layout_weight="1"
-       android:title="Update Driver Avater" />
-  <item
        android:id="@+id/menu_add_driver"
        android:icon="@mipmap/ic_plus_one_white_24dp"
        android:showAsAction="ifRoom"

@@ -20,11 +20,11 @@ namespace roots.TabViews
         {
             base.OnCreate(savedInstanceState);
 
-            SetContentView(Resource.Layout.settingsTab);
+            SetContentView(Resource.Layout.MainDriverScreen);
             var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
             SetActionBar(toolbar);
 
-            var editToolbar = FindViewById<Toolbar>(Resource.Id.edit_toolbar);
+            var editToolbar = FindViewById<Toolbar>(Resource.Id.driverMenu);
             editToolbar.InflateMenu(Resource.Menu.driver_menu);
             editToolbar.MenuItemClick += (sender, e) => {
 
