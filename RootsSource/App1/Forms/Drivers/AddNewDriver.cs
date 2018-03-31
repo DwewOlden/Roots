@@ -11,12 +11,18 @@ using Android.Views;
 using Android.Widget;
 using roots.SupportingSystems;
 using roots.SupportingSystems.Data;
+using roots.SupportingSystems.DriverSystem;
 
 namespace roots.Forms
 {
     [Activity(Label = "Add Driver")]
     public class AddNewDriver : DialogFragment
     {
+        /// <summary>
+        /// An event that is finred when a new contact is being created.
+        /// </summary>
+        public event EventHandler<CreateDriverEventArgs> OnCreateDriver;
+
         /// <summary>
         /// A button, when clicked adds the driver to the database
         /// </summary>
@@ -29,10 +35,8 @@ namespace roots.Forms
 
         public override Android.Views.View OnCreateView(Android.Views.LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            // Android 3.x+ still wants to show title: disable
             Dialog.Window.RequestFeature(WindowFeatures.NoTitle);
 
-            // Create our view
             var view = inflater.Inflate(Resource.Layout.Add_new_driver, container, false);
             InitalizeLocalControls(view);
             InitalizeEvents();
@@ -91,6 +95,9 @@ namespace roots.Forms
             AvatarManager avatarManager = new AvatarManager();
             if (!avatarManager.DestinationImageIsPresent())
                 avatarManager.CopyImage();
+
+            if (OnCreateDriver != null)
+                OnCreateDriver.Invoke(this, new CreateDriverEventArgs(mDriverName.Text));
 
             Dismiss();
         }
