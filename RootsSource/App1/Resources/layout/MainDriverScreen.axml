@@ -6,10 +6,13 @@
     <include
         android:id="@+id/toolbar"
         layout="@layout/MainMenuBackground" />
-    <ImageView
-        android:layout_width="fill_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
+    <ListView
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/DriversListView" />
     <Toolbar
         android:id="@+id/driverMenu"
         android:minHeight="?android:attr/actionBarSize"

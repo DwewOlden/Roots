@@ -66,6 +66,8 @@
     <Compile Include="SupportingSystems\Data\DatabaseCreation.cs" />
     <Compile Include="SupportingSystems\Data\DriverRepository.cs" />
     <Compile Include="Functions\DriversMenu.cs" />
+    <Compile Include="SupportingSystems\DriverSystem\Driver.cs" />
+    <Compile Include="SupportingSystems\DriverSystem\DriverListAdapter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="GettingStarted.Xamarin" />
@@ -78,6 +80,9 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\Add_new_driver.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\DriverListViewRow.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

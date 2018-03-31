@@ -79,8 +79,11 @@ namespace roots
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f090004
-			public const int MyButton = 2131296260;
+			// aapt resource value: 0x7f090008
+			public const int DriversListView = 2131296264;
+			
+			// aapt resource value: 0x7f090007
+			public const int MyButton = 2131296263;
 			
 			// aapt resource value: 0x7f090000
 			public const int add_driver_name_label = 2131296256;
@@ -92,31 +95,40 @@ namespace roots
 			public const int add_new_drivers_name = 2131296257;
 			
 			// aapt resource value: 0x7f090005
-			public const int driverMenu = 2131296261;
-			
-			// aapt resource value: 0x7f090007
-			public const int menu_add_driver = 2131296263;
-			
-			// aapt resource value: 0x7f090006
-			public const int menu_driver_details = 2131296262;
-			
-			// aapt resource value: 0x7f090008
-			public const int menu_edit = 2131296264;
-			
-			// aapt resource value: 0x7f09000a
-			public const int menu_preferences2 = 2131296266;
-			
-			// aapt resource value: 0x7f09000b
-			public const int menu_preferences3 = 2131296267;
-			
-			// aapt resource value: 0x7f09000c
-			public const int menu_preferences4 = 2131296268;
+			public const int btnStar = 2131296261;
 			
 			// aapt resource value: 0x7f090009
-			public const int menu_save = 2131296265;
+			public const int driverMenu = 2131296265;
 			
 			// aapt resource value: 0x7f090003
-			public const int toolbar = 2131296259;
+			public const int imgDriverScreenDriverAvater = 2131296259;
+			
+			// aapt resource value: 0x7f09000b
+			public const int menu_add_driver = 2131296267;
+			
+			// aapt resource value: 0x7f09000a
+			public const int menu_driver_details = 2131296266;
+			
+			// aapt resource value: 0x7f09000c
+			public const int menu_edit = 2131296268;
+			
+			// aapt resource value: 0x7f09000e
+			public const int menu_preferences2 = 2131296270;
+			
+			// aapt resource value: 0x7f09000f
+			public const int menu_preferences3 = 2131296271;
+			
+			// aapt resource value: 0x7f090010
+			public const int menu_preferences4 = 2131296272;
+			
+			// aapt resource value: 0x7f09000d
+			public const int menu_save = 2131296269;
+			
+			// aapt resource value: 0x7f090006
+			public const int toolbar = 2131296262;
+			
+			// aapt resource value: 0x7f090004
+			public const int txtDriverScreenDriverName = 2131296260;
 			
 			static Id()
 			{
@@ -135,13 +147,16 @@ namespace roots
 			public const int Add_new_driver = 2130968576;
 			
 			// aapt resource value: 0x7f040001
-			public const int Main = 2130968577;
+			public const int DriverListViewRow = 2130968577;
 			
 			// aapt resource value: 0x7f040002
-			public const int MainDriverScreen = 2130968578;
+			public const int Main = 2130968578;
 			
 			// aapt resource value: 0x7f040003
-			public const int MainMenuBackground = 2130968579;
+			public const int MainDriverScreen = 2130968579;
+			
+			// aapt resource value: 0x7f040004
+			public const int MainMenuBackground = 2130968580;
 			
 			static Layout()
 			{

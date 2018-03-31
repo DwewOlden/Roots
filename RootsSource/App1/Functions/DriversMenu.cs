@@ -38,10 +38,7 @@ namespace roots.TabViews
                         dialog.Show(transaction, "dialog");
                         break;
                 }
-
-
             };
-
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
