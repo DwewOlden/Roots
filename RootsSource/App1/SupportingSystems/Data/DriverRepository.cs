@@ -48,9 +48,44 @@ namespace roots.SupportingSystems.Data
             }
         }
 
+        public int GetLastDriverID()
+        {
+            try
+            {
+                string SQLString = GetLastDriverString();
+
+                connection = new SqliteConnection("Data Source=" + GetPathToDatabase());
+                connection.Open();
+
+                using (var c = connection.CreateCommand())
+                {
+                    c.CommandText = SQLString;
+                    var k = c.ExecuteReader();
+                    var cccc = k[0];
+
+                    connection.Close();
+                    connection.Dispose();
+                    connection = null;
+
+                    return Convert.ToInt32(cccc);
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                return -1;
+            }
+        }
+
         private string GetInsertDriverString(string name)
         {
             string s = "INSERT INTO [DRIVERS] (Name,ImageName,Registered,Active) VALUES ('" + name + "','"+ AvatarManager.DefaultSaveImageName +"','2017-1-1 00:00:00.000',1);";
+            return s;
+        }
+
+        private string GetLastDriverString()
+        {
+            string s = "SELECT MAX(Id) FROM DRIVERS;";
             return s;
         }
     }

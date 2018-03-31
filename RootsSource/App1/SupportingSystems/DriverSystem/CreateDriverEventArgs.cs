@@ -16,8 +16,11 @@ namespace roots.SupportingSystems.DriverSystem
     {
         public string DriverName { get; set; }
 
-        public CreateDriverEventArgs(string pDriverName)
+        public int DriverId { get; set; }
+
+        public CreateDriverEventArgs(string pDriverName,int pDriverId)
         {
+            DriverId = pDriverId;
             DriverName = pDriverName;
         }
     }

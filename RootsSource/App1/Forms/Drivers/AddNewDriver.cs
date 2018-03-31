@@ -90,14 +90,19 @@ namespace roots.Forms
             string lDriverName = mDriverName.Text;
             DriverRepository driverRepository = new DriverRepository();
             driverRepository.InsertNewDriver(lDriverName);
+            int DriverId = driverRepository.GetLastDriverID();
 
-            // Copy the default avater to the sysrem
-            AvatarManager avatarManager = new AvatarManager();
-            if (!avatarManager.DestinationImageIsPresent())
-                avatarManager.CopyImage();
+            if (DriverId != -1)
+            {
 
-            if (OnCreateDriver != null)
-                OnCreateDriver.Invoke(this, new CreateDriverEventArgs(mDriverName.Text));
+                // Copy the default avater to the sysrem
+                AvatarManager avatarManager = new AvatarManager();
+                if (!avatarManager.DestinationImageIsPresent())
+                    avatarManager.CopyImage();
+
+                if (OnCreateDriver != null)
+                    OnCreateDriver.Invoke(this, new CreateDriverEventArgs(mDriverName.Text,DriverId));
+            }
 
             Dismiss();
         }

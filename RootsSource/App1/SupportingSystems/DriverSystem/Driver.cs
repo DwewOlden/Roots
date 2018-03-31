@@ -18,6 +18,11 @@ namespace roots.SupportingSystems.DriverSystem
     public class Driver
     {
         /// <summary>
+        /// The id (from the database) of the driver
+        /// </summary>
+        public int DriverId { get; set; }
+
+        /// <summary>
         /// The name of the driver
         /// </summary>
         public string Name { get; set; }
@@ -40,8 +45,14 @@ namespace roots.SupportingSystems.DriverSystem
         public Driver(string pName,bool pActive,string pImagePath)
         {
             this.Name = pName;
+            this.Active = pActive;       
+        }
+
+        public Driver(string pName, bool pActive, string pImagePath,int pDriverId)
+        {
+            this.Name = pName;
             this.Active = pActive;
-            
+            this.DriverId = pDriverId;
         }
 
 

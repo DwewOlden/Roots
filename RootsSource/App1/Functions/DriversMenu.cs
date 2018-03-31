@@ -10,12 +10,17 @@ using Android.Runtime;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
+using roots.SupportingSystems.DriverSystem;
 
 namespace roots.TabViews
 {
     [Activity(Label = "Driver", MainLauncher = false, Icon = "@mipmap/icon")]
     public class DriversMenu : Activity
     {
+        private ListView mListView;
+        private BaseAdapter<Driver> mAdapter;
+        private List<Driver> mDrivers;
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -24,9 +29,17 @@ namespace roots.TabViews
             var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
             SetActionBar(toolbar);
 
+            mListView = FindViewById<ListView>(Resource.Id.DriversListView);
+            mListView.ItemClick += MListView_ItemClick;
+            mDrivers = new List<Driver>();
+
+            mAdapter = new DriverListAdapter(this, Resource.Layout.DriverListViewRow, mDrivers);
+            mListView.Adapter = mAdapter;
+            
             var editToolbar = FindViewById<Toolbar>(Resource.Id.driverMenu);
             editToolbar.InflateMenu(Resource.Menu.driver_menu);
-            editToolbar.MenuItemClick += (sender, e) => {
+            editToolbar.MenuItemClick += (sender, e) =>
+            {
 
                 string ContextMenuSelected = e.Item.TitleFormatted.ToString();
 
@@ -35,10 +48,25 @@ namespace roots.TabViews
                     case "Add New Driver":
                         FragmentTransaction transaction = FragmentManager.BeginTransaction();
                         var dialog = new Forms.AddNewDriver();
+                        dialog.OnCreateDriver += Dialog_OnCreateDriver;
                         dialog.Show(transaction, "dialog");
                         break;
                 }
             };
+
+
+
+        }
+
+        private void MListView_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
+        {
+            Console.WriteLine(mDrivers[e.Position].DriverId + " " + mDrivers[e.Position].Name);
+        }
+
+        private void Dialog_OnCreateDriver(object sender, CreateDriverEventArgs e)
+        {
+            mDrivers.Add(new Driver() { Name = e.DriverName, DriverId = e.DriverId });
+            mAdapter.NotifyDataSetChanged();
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
