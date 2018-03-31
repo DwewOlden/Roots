@@ -18,12 +18,14 @@ namespace roots.SupportingSystems.DriverSystem
         private Context mContext;
         private int mLayout;
         private List<Driver> mContacts;
+        private Action<ImageView> mPicSelected;
 
-        public DriverListAdapter(Context context, int layout, List<Driver> contacts)
+        public DriverListAdapter(Context context, int layout, List<Driver> contacts,Action<ImageView> pPicSelected)
         {
             mContext = context;
             mLayout = layout;
             mContacts = contacts;
+            mPicSelected = pPicSelected;
         }
 
         public override Driver this[int position]
@@ -55,7 +57,17 @@ namespace roots.SupportingSystems.DriverSystem
             if (mContacts[position].ImageData != null)
                 pic.SetImageBitmap(BitmapFactory.DecodeByteArray(mContacts[position].ImageData, 0, mContacts[position].ImageData.Length));
 
+            pic.Click -= Pic_Click;
+            pic.Click += Pic_Click;
+
+
+
             return row;
+        }
+
+        private void Pic_Click(object sender, EventArgs e)
+        {
+            mPicSelected.Invoke((ImageView)sender);
         }
     }
 }

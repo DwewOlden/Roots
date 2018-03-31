@@ -5,6 +5,8 @@ using System.Text;
 
 using Android.App;
 using Android.Content;
+using Android.Graphics;
+using Android.Media;
 using Android.OS;
 using Android.Runtime;
 using Android.Util;
@@ -20,6 +22,7 @@ namespace roots.TabViews
         private ListView mListView;
         private BaseAdapter<Driver> mAdapter;
         private List<Driver> mDrivers;
+        private ImageView mSelectedImage;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -29,11 +32,13 @@ namespace roots.TabViews
             var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
             SetActionBar(toolbar);
 
+            Action<ImageView> action = PicSelected;
+
             mListView = FindViewById<ListView>(Resource.Id.DriversListView);
             mListView.ItemClick += MListView_ItemClick;
             mDrivers = new List<Driver>();
 
-            mAdapter = new DriverListAdapter(this, Resource.Layout.DriverListViewRow, mDrivers);
+            mAdapter = new DriverListAdapter(this, Resource.Layout.DriverListViewRow, mDrivers,action);
             mListView.Adapter = mAdapter;
             
             var editToolbar = FindViewById<Toolbar>(Resource.Id.driverMenu);
@@ -53,9 +58,27 @@ namespace roots.TabViews
                         break;
                 }
             };
+        }
 
+        private void PicSelected(ImageView imageView)
+        {
+            mSelectedImage = imageView;
+            Intent intent = new Intent();
+            intent.SetType("image/*");
+            intent.SetAction(Intent.ActionGetContent);
+            this.StartActivityForResult(Intent.CreateChooser(intent, "Select a photo"), 0);
 
+        }
 
+        protected override void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent data)
+        {
+            base.OnActivityResult(requestCode, resultCode, data);
+
+            if (resultCode == Result.Ok)
+            {
+                System.IO.Stream stream = ContentResolver.OpenInputStream(data.Data);
+                mSelectedImage.SetImageBitmap(BitmapFactory.DecodeStream(stream));
+            }
         }
 
         private void MListView_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
