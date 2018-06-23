@@ -56,12 +56,10 @@ namespace roots.SupportingSystems.Trips
             row.FindViewById<TextView>(Resource.Id.txtTripScreenTripName).Text = mContacts[position].Name;
             row.FindViewById<TextView>(Resource.Id.txtTripScreenTripWhen).Text = mContacts[position].When + isActive;
 
+            
             return row;
         }
 
-        private void Pic_Click(object sender, EventArgs e)
-        {
-            System.Diagnostics.Debug.WriteLine("Hello");
-        }
+        
     }
 }

@@ -87,7 +87,11 @@ namespace roots.TabViews
 
         private void MListView_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
         {
-            Console.WriteLine(mTrips[e.Position].TripId + " " + mTrips[e.Position].Name);
+            int id = e.Position;
+            
+            StartActivity(typeof(TripDetails));
+            
+
         }
 
         private void Dialog_OnCreateDriver(object sender, CreateTripEventArgs e)
