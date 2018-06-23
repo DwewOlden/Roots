@@ -101,6 +101,9 @@
     <AndroidResource Include="Resources\layout\AddTripScreen.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\layout\TripDetails.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.axml">
@@ -110,6 +113,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Functions\Menus\" />
+    <Folder Include="Resources\layout\TestLayoutFolder\" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\mipmap-hdpi\icon.png" />
