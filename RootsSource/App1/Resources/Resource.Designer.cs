@@ -79,11 +79,26 @@ namespace roots
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f090008
-			public const int DriversListView = 2131296264;
+			// aapt resource value: 0x7f09000a
+			public const int AddTripButton = 2131296266;
 			
-			// aapt resource value: 0x7f090007
-			public const int MyButton = 2131296263;
+			// aapt resource value: 0x7f090006
+			public const int DescriptionLabel = 2131296262;
+			
+			// aapt resource value: 0x7f09000f
+			public const int DriversListView = 2131296271;
+			
+			// aapt resource value: 0x7f09000e
+			public const int MyButton = 2131296270;
+			
+			// aapt resource value: 0x7f090004
+			public const int NameLabel = 2131296260;
+			
+			// aapt resource value: 0x7f090011
+			public const int TripListView = 2131296273;
+			
+			// aapt resource value: 0x7f090008
+			public const int WhenLabel = 2131296264;
 			
 			// aapt resource value: 0x7f090000
 			public const int add_driver_name_label = 2131296256;
@@ -94,41 +109,65 @@ namespace roots
 			// aapt resource value: 0x7f090001
 			public const int add_new_drivers_name = 2131296257;
 			
-			// aapt resource value: 0x7f090005
-			public const int btnStar = 2131296261;
-			
-			// aapt resource value: 0x7f090009
-			public const int driverMenu = 2131296265;
-			
-			// aapt resource value: 0x7f090003
-			public const int imgDriverScreenDriverAvater = 2131296259;
-			
-			// aapt resource value: 0x7f09000b
-			public const int menu_add_driver = 2131296267;
-			
-			// aapt resource value: 0x7f09000a
-			public const int menu_driver_details = 2131296266;
-			
-			// aapt resource value: 0x7f09000c
-			public const int menu_edit = 2131296268;
-			
-			// aapt resource value: 0x7f09000e
-			public const int menu_preferences2 = 2131296270;
-			
-			// aapt resource value: 0x7f09000f
-			public const int menu_preferences3 = 2131296271;
+			// aapt resource value: 0x7f09000d
+			public const int btnStar = 2131296269;
 			
 			// aapt resource value: 0x7f090010
-			public const int menu_preferences4 = 2131296272;
+			public const int driverMenu = 2131296272;
 			
-			// aapt resource value: 0x7f09000d
-			public const int menu_save = 2131296269;
+			// aapt resource value: 0x7f090007
+			public const int editTripDescription = 2131296263;
 			
-			// aapt resource value: 0x7f090006
-			public const int toolbar = 2131296262;
+			// aapt resource value: 0x7f090005
+			public const int editTripName = 2131296261;
 			
-			// aapt resource value: 0x7f090004
-			public const int txtDriverScreenDriverName = 2131296260;
+			// aapt resource value: 0x7f090009
+			public const int editTripWhen = 2131296265;
+			
+			// aapt resource value: 0x7f09000b
+			public const int imgDriverScreenDriverAvater = 2131296267;
+			
+			// aapt resource value: 0x7f090016
+			public const int menu_add_driver = 2131296278;
+			
+			// aapt resource value: 0x7f09001d
+			public const int menu_add_trip = 2131296285;
+			
+			// aapt resource value: 0x7f090015
+			public const int menu_driver_details = 2131296277;
+			
+			// aapt resource value: 0x7f090017
+			public const int menu_edit = 2131296279;
+			
+			// aapt resource value: 0x7f090019
+			public const int menu_preferences2 = 2131296281;
+			
+			// aapt resource value: 0x7f09001a
+			public const int menu_preferences3 = 2131296282;
+			
+			// aapt resource value: 0x7f09001b
+			public const int menu_preferences4 = 2131296283;
+			
+			// aapt resource value: 0x7f090018
+			public const int menu_save = 2131296280;
+			
+			// aapt resource value: 0x7f09001c
+			public const int menu_trip_details = 2131296284;
+			
+			// aapt resource value: 0x7f090003
+			public const int toolbar = 2131296259;
+			
+			// aapt resource value: 0x7f090012
+			public const int tripMenu = 2131296274;
+			
+			// aapt resource value: 0x7f09000c
+			public const int txtDriverScreenDriverName = 2131296268;
+			
+			// aapt resource value: 0x7f090013
+			public const int txtTripScreenTripName = 2131296275;
+			
+			// aapt resource value: 0x7f090014
+			public const int txtTripScreenTripWhen = 2131296276;
 			
 			static Id()
 			{
@@ -147,16 +186,25 @@ namespace roots
 			public const int Add_new_driver = 2130968576;
 			
 			// aapt resource value: 0x7f040001
-			public const int DriverListViewRow = 2130968577;
+			public const int AddTripScreen = 2130968577;
 			
 			// aapt resource value: 0x7f040002
-			public const int Main = 2130968578;
+			public const int DriverListViewRow = 2130968578;
 			
 			// aapt resource value: 0x7f040003
-			public const int MainDriverScreen = 2130968579;
+			public const int Main = 2130968579;
 			
 			// aapt resource value: 0x7f040004
-			public const int MainMenuBackground = 2130968580;
+			public const int MainDriverScreen = 2130968580;
+			
+			// aapt resource value: 0x7f040005
+			public const int MainMenuBackground = 2130968581;
+			
+			// aapt resource value: 0x7f040006
+			public const int MainTripScreen = 2130968582;
+			
+			// aapt resource value: 0x7f040007
+			public const int TripListViewRow = 2130968583;
 			
 			static Layout()
 			{
@@ -176,6 +224,9 @@ namespace roots
 			
 			// aapt resource value: 0x7f080001
 			public const int MainMenuItems = 2131230721;
+			
+			// aapt resource value: 0x7f080002
+			public const int trip_menu = 2131230722;
 			
 			static Menu()
 			{

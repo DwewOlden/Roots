@@ -97,7 +97,7 @@ namespace roots.SupportingSystems.Data
         private string[] GetCommands()
         {
             var commands = new[] {
-                "CREATE TABLE [TRIPS] (Id INTEGER PRIMARY KEY, Description nText);",
+                "CREATE TABLE [TRIPS] (Id INTEGER PRIMARY KEY,Name nText, Description nText, WhenFor nText,Active INTEGER);",
                 "CREATE TABLE [DRIVERS] (Id INTEGER PRIMARY KEY, Name nText,ImageName nText,Registered nText,Active INTEGER);"
             };
 

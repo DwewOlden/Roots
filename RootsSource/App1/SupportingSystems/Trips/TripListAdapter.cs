@@ -5,30 +5,29 @@ using System.Text;
 
 using Android.App;
 using Android.Content;
-using Android.Graphics;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 
-namespace roots.SupportingSystems.DriverSystem
+namespace roots.SupportingSystems.Trips
 {
-    public class DriverListAdapter:BaseAdapter<Driver>
+    public class TripListAdapter : BaseAdapter<Trip>
     {
         private Context mContext;
         private int mLayout;
-        private List<Driver> mContacts;
-        private Action<ImageView> mPicSelected;
+        private List<Trip> mContacts;
+        private Action<TextView> TripSelected;
 
-        public DriverListAdapter(Context context, int layout, List<Driver> contacts,Action<ImageView> pPicSelected)
+        public TripListAdapter(Context context, int layout, List<Trip> contacts, Action<TextView> pTripSelected)
         {
             mContext = context;
             mLayout = layout;
             mContacts = contacts;
-            mPicSelected = pPicSelected;
+            this.TripSelected = pTripSelected;
         }
 
-        public override Driver this[int position]
+        public override Trip this[int position]
         {
             get { return mContacts[position]; }
         }
@@ -50,22 +49,19 @@ namespace roots.SupportingSystems.DriverSystem
             if (row == null)
                 row = LayoutInflater.From(mContext).Inflate(mLayout, parent, false);
 
-            row.FindViewById<TextView>(Resource.Id.txtDriverScreenDriverName).Text = mContacts[position].Name;
-            
-            ImageView pic = row.FindViewById<ImageView>(Resource.Id.imgDriverScreenDriverAvater);
+            string isActive = string.Empty;
+            if (mContacts[position].Active)
+                isActive = ", Active";
 
-            if (mContacts[position].ImageData != null)
-                pic.SetImageBitmap(BitmapFactory.DecodeByteArray(mContacts[position].ImageData, 0, mContacts[position].ImageData.Length));
-
-            pic.Click -= Pic_Click;
-            pic.Click += Pic_Click;
+            row.FindViewById<TextView>(Resource.Id.txtTripScreenTripName).Text = mContacts[position].Name;
+            row.FindViewById<TextView>(Resource.Id.txtTripScreenTripWhen).Text = mContacts[position].When + isActive;
 
             return row;
         }
 
         private void Pic_Click(object sender, EventArgs e)
         {
-            mPicSelected.Invoke((ImageView)sender);
+            System.Diagnostics.Debug.WriteLine("Hello");
         }
     }
 }

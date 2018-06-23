@@ -37,6 +37,8 @@ namespace roots.TabViews
             mListView = FindViewById<ListView>(Resource.Id.DriversListView);
             mListView.ItemClick += MListView_ItemClick;
             mDrivers = new List<Driver>();
+            
+
 
             mAdapter = new DriverListAdapter(this, Resource.Layout.DriverListViewRow, mDrivers,action);
             mListView.Adapter = mAdapter;
@@ -77,8 +79,49 @@ namespace roots.TabViews
             if (resultCode == Result.Ok)
             {
                 System.IO.Stream stream = ContentResolver.OpenInputStream(data.Data);
-                mSelectedImage.SetImageBitmap(BitmapFactory.DecodeStream(stream));
+                mSelectedImage.SetImageBitmap(DecodeBitmap(data.Data,100,100));
             }
+        }
+
+        private Bitmap DecodeBitmap(Android.Net.Uri dataRequested, int requestedWidth,int RequestedHeight)
+        {
+            System.IO.Stream s = ContentResolver.OpenInputStream(dataRequested);
+            BitmapFactory.Options options = new BitmapFactory.Options();
+            options.InJustDecodeBounds = true;
+            BitmapFactory.DecodeStream(s);
+
+            options.InSampleSize = CalculateScalingFactors(options, RequestedHeight, requestedWidth);
+
+            s = ContentResolver.OpenInputStream(dataRequested);
+            options.InJustDecodeBounds = false;
+
+            Bitmap bitmap = BitmapFactory.DecodeStream(s, null, options);
+
+            return bitmap;
+
+
+        }
+
+        private int CalculateScalingFactors(BitmapFactory.Options options,int RequestedSizeHeight,int RequestedSizeWidth)
+        {
+            int height = options.OutHeight;
+            int width = options.OutWidth;
+            int inSampleSize = 1;
+
+            if (height > RequestedSizeHeight || width > RequestedSizeWidth)
+            {
+                int HalfHeight = height / 2;
+                int HalfWidth = height / 2;
+
+                while ((HalfHeight / inSampleSize) > RequestedSizeHeight && (HalfWidth / inSampleSize) > RequestedSizeWidth)
+                {
+                    inSampleSize *= 2;
+                }
+            }
+
+            return inSampleSize;
+
+
         }
 
         private void MListView_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
@@ -105,6 +148,10 @@ namespace roots.TabViews
             {
                 case "Drivers":
                     StartActivity(typeof(TabViews.DriversMenu));
+                    break;
+
+                case "Trips":
+                    StartActivity(typeof(TabViews.TripList));
                     break;
             }
 

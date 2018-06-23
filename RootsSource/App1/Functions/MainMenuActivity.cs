@@ -51,6 +51,10 @@ namespace roots.Functions
                     StartActivity(typeof(TabViews.DriversMenu));
                     break;
 
+                case "Trips":
+                    StartActivity(typeof(TabViews.TripList));
+                    break;
+                    
                 default:
                     Toast.MakeText(this, "Action selected: " + item.TitleFormatted,
                ToastLength.Short).Show();
