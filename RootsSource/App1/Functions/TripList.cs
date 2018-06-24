@@ -94,7 +94,6 @@ namespace roots.TabViews
             var intent = new Intent(this, typeof(TripDetails));
             intent.PutExtra("tripId", tripId);
             StartActivity(intent);
-            
         }
 
         private void Dialog_OnCreateTrip(object sender, CreateTripEventArgs e)

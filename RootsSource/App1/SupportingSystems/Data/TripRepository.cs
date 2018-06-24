@@ -16,6 +16,39 @@ namespace roots.SupportingSystems.Data
     public class TripRepository:BaseDataAccessingClass
     {
 
+        public bool SetActiveTrip(int id)
+        {
+            try
+            {
+                connection = new SqliteConnection("Data Source=" + GetPathToDatabase());
+                connection.Open();
+
+                using (var c = connection.CreateCommand())
+                {
+                    string SQL = "UPDATE TRIPS SET ACTIVE = 0";
+                    c.CommandText = SQL;
+                    c.ExecuteNonQuery();
+
+                    SQL = "UPDATE TRIPS SET ACTIVE = 1 WHERE ID=" + id;
+                    c.CommandText = SQL;
+                    c.ExecuteNonQuery();
+                }
+
+                connection.Close();
+                connection.Dispose();
+                connection = null;
+
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+
+
         public List<Trip> GetAllTrips()
         {
             try
@@ -34,7 +67,7 @@ namespace roots.SupportingSystems.Data
 
                     while (reader.Read())
                         tripList.Add(new Trip(reader.GetString(1), reader.GetString(2), 
-                            reader.GetString(3),reader.GetInt32(0),0));
+                            reader.GetString(3),reader.GetInt32(0),reader.GetInt32(4)));
                 }
 
                 connection.Close();
