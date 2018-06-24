@@ -20,6 +20,9 @@ namespace roots.SupportingSystems.Data
         {
             try
             {
+                connection = new SqliteConnection("Data Source=" + GetPathToDatabase());
+                connection.Open();
+
                 List<Driver> drivers = new List<Driver>();
 
                 string SQLString = GetAllDriversString();
@@ -41,7 +44,7 @@ namespace roots.SupportingSystems.Data
 
                 return drivers;
 
-            } catch (Exception)
+            } catch (Exception ex)
             {
                 return new List<Driver>();
             }

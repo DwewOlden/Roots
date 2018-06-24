@@ -44,7 +44,7 @@ namespace roots.TabViews
 
             mAdapter = new DriverListAdapter(this, Resource.Layout.DriverListViewRow, mDrivers, action);
             mListView.Adapter = mAdapter;
-            //PopulateDriverList();
+            PopulateDriverList();
 
 
             var editToolbar = FindViewById<Toolbar>(Resource.Id.driverMenu);
@@ -81,9 +81,9 @@ namespace roots.TabViews
             if (driverRepository == null)
                 driverRepository = new DriverRepository();
 
-            //mDrivers = driverRepository.GetAllDrivers();
+            mDrivers = driverRepository.GetAllDrivers();
 
-            mAdapter = new DriverListAdapter(this, Resource.Layout.TripListViewRow, mDrivers, action);
+            mAdapter = new DriverListAdapter(this, Resource.Layout.DriverListViewRow, mDrivers, action);
             mListView.Adapter = mAdapter;
         }
 
@@ -158,9 +158,7 @@ namespace roots.TabViews
 
             if (driverRepository == null)
                 driverRepository = new DriverRepository();
-
-            driverRepository.InsertNewDriver(e.DriverName);
-
+            
             mAdapter.NotifyDataSetChanged();
         }
 
