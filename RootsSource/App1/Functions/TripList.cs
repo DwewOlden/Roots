@@ -87,14 +87,17 @@ namespace roots.TabViews
 
         private void MListView_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
         {
-            int id = e.Position;
-            
-            StartActivity(typeof(TripDetails));
-            
+            int pos = e.Position;
+            var trip = mTrips[pos];
+            var tripId = trip.TripId;
 
+            var intent = new Intent(this, typeof(TripDetails));
+            intent.PutExtra("tripId", tripId);
+            StartActivity(intent);
+            
         }
 
-        private void Dialog_OnCreateDriver(object sender, CreateTripEventArgs e)
+        private void Dialog_OnCreateTrip(object sender, CreateTripEventArgs e)
         {
             mTrips.Add(new Trip() { Name = e.TripName, Description = e.TripDescription, When = e.TripWhen, TripId = e.TripId });
             mAdapter.NotifyDataSetChanged();

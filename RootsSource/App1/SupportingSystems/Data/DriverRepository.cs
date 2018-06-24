@@ -16,6 +16,36 @@ namespace roots.SupportingSystems.Data
 {
     public class DriverRepository:BaseDataAccessingClass
     {
+        public bool SetActiveTrip(int id)
+        {
+            try
+            {
+                connection = new SqliteConnection("Data Source=" + GetPathToDatabase());
+                connection.Open();
+                
+                using (var c = connection.CreateCommand())
+                {
+                    string SQL = "UPDATE TRIPS SET ACTIVE = 0";
+                    c.CommandText = SQL;
+                    c.ExecuteNonQuery();
+
+                    SQL = "UPDATE TRIPS SET ACTIVE = 1 WHERE ID=" + id;
+                    c.CommandText = SQL;
+                    c.ExecuteNonQuery();
+                }
+
+                connection.Close();
+                connection.Dispose();
+                connection = null;
+                
+                return true;
+                
+            } catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
         public List<Driver> GetAllDrivers()
         {
             try

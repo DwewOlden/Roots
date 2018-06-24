@@ -50,11 +50,12 @@ namespace roots.SupportingSystems
             this.Description = pDescription;
         }
 
-        public Trip(string pName, string pDescription, string pWhen, int pDriverId,int pActive)
+        public Trip(string pName, string pDescription, string pWhen, int pTripId,int pActive)
         {
             this.Name = pName;
             this.Description = pDescription; 
             this.When = pWhen;
+            this.TripId = pTripId;
 
             if (pActive == 0)
                 Active = false;

@@ -18,6 +18,7 @@ namespace roots.Functions
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
+            var selectedTripId = Intent.Extras.GetInt("tripId");
 
             SetContentView(Resource.Layout.TripDetails);
             
