@@ -12,6 +12,7 @@ using Android.Runtime;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
+using roots.SupportingSystems.Data;
 using roots.SupportingSystems.DriverSystem;
 
 namespace roots.TabViews
@@ -23,6 +24,9 @@ namespace roots.TabViews
         private BaseAdapter<Driver> mAdapter;
         private List<Driver> mDrivers;
         private ImageView mSelectedImage;
+        private DriverRepository driverRepository;
+
+        private Action<ImageView> action;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -32,17 +36,17 @@ namespace roots.TabViews
             var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
             SetActionBar(toolbar);
 
-            Action<ImageView> action = PicSelected;
+            action = PicSelected;
 
             mListView = FindViewById<ListView>(Resource.Id.DriversListView);
             mListView.ItemClick += MListView_ItemClick;
             mDrivers = new List<Driver>();
-            
 
-
-            mAdapter = new DriverListAdapter(this, Resource.Layout.DriverListViewRow, mDrivers,action);
+            mAdapter = new DriverListAdapter(this, Resource.Layout.DriverListViewRow, mDrivers, action);
             mListView.Adapter = mAdapter;
-            
+            //PopulateDriverList();
+
+
             var editToolbar = FindViewById<Toolbar>(Resource.Id.driverMenu);
             editToolbar.InflateMenu(Resource.Menu.driver_menu);
             editToolbar.MenuItemClick += (sender, e) =>
@@ -71,6 +75,25 @@ namespace roots.TabViews
             this.StartActivityForResult(Intent.CreateChooser(intent, "Select a photo"), 0);
 
         }
+
+        private void PopulateDriverList()
+        {
+            if (driverRepository == null)
+                driverRepository = new DriverRepository();
+
+            //mDrivers = driverRepository.GetAllDrivers();
+
+            mAdapter = new DriverListAdapter(this, Resource.Layout.TripListViewRow, mDrivers, action);
+            mListView.Adapter = mAdapter;
+        }
+
+        //public override void OnWindowFocusChanged(bool hasFocus)
+        //{
+        //    base.OnWindowFocusChanged(hasFocus);
+
+        //    if (hasFocus)
+        //        PopulateDriverList();
+        //}
 
         protected override void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent data)
         {
@@ -132,6 +155,12 @@ namespace roots.TabViews
         private void Dialog_OnCreateDriver(object sender, CreateDriverEventArgs e)
         {
             mDrivers.Add(new Driver() { Name = e.DriverName, DriverId = e.DriverId });
+
+            if (driverRepository == null)
+                driverRepository = new DriverRepository();
+
+            driverRepository.InsertNewDriver(e.DriverName);
+
             mAdapter.NotifyDataSetChanged();
         }
 

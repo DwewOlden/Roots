@@ -10,11 +10,43 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Mono.Data.Sqlite;
+using roots.SupportingSystems.DriverSystem;
 
 namespace roots.SupportingSystems.Data
 {
     public class DriverRepository:BaseDataAccessingClass
     {
+        public List<Driver> GetAllDrivers()
+        {
+            try
+            {
+                List<Driver> drivers = new List<Driver>();
+
+                string SQLString = GetAllDriversString();
+
+                using (var c = connection.CreateCommand())
+                {
+                    c.CommandText = SQLString;
+                    var reader = c.ExecuteReader();
+
+                    while (reader.Read())
+                        if (reader.GetBoolean(4))
+                            drivers.Add(new Driver(reader.GetString(1),reader.GetBoolean(4),reader.GetString(2),
+                                reader.GetInt32(0)));
+                }
+
+                connection.Close();
+                connection.Dispose();
+                connection = null;
+
+                return drivers;
+
+            } catch (Exception)
+            {
+                return new List<Driver>();
+            }
+        }
+
         public bool InsertNewDriver(string Name)
         {
             try
@@ -86,6 +118,12 @@ namespace roots.SupportingSystems.Data
         private string GetLastDriverString()
         {
             string s = "SELECT MAX(Id) FROM DRIVERS;";
+            return s;
+        }
+
+        private string GetAllDriversString()
+        {
+            string s = "SELECT * FROM DRIVERS;";
             return s;
         }
     }
