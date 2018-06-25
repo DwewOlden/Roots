@@ -10,12 +10,20 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using roots.SupportingSystems.Data;
+using roots.SupportingSystems.DriverSystem;
 
 namespace roots.Functions
 {
     public class MainMenuActivity:Activity
     {
         private DatabaseCreation databaseCreation;
+        private Spinner mListView;
+        private BaseAdapter<Driver> mAdapter;
+        private List<Driver> mDrivers;
+        private DriverRepository driverRepository;
+        private Action<Driver> mDriverSelected;
+
+
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -27,6 +35,42 @@ namespace roots.Functions
             SetActionBar(toolbar);
 
             CreateSupportingDatasets();
+
+           
+            mListView = FindViewById<Spinner>(Resource.Id.spinner);
+            mDrivers = new List<Driver>();
+            mDriverSelected = DriverSelected;
+
+            mAdapter = new DriverSpinnerAdapter(this, Resource.Layout.DriverListViewRow, mDrivers,mDriverSelected);
+            mListView.Adapter = mAdapter;
+            PopulateDriverList();
+
+
+        }
+
+        private void DriverSelected(Driver obj)
+        {
+            System.Diagnostics.Debug.WriteLine(string.Format("{0} has been selected", obj.Name));
+        }
+
+        private void MListView_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
+        {
+            var pos = e.Position;
+            var driver = mDrivers[pos];
+
+            System.Diagnostics.Debug.WriteLine(string.Format("you selected {0}", driver.Name));
+        }
+
+        private void PopulateDriverList()
+        {
+            if (driverRepository == null)
+                driverRepository = new DriverRepository();
+
+            mDrivers = driverRepository.GetAllDrivers();
+
+            mAdapter = new DriverSpinnerAdapter(this, Resource.Layout.DriverListViewRow, mDrivers,mDriverSelected);
+            mListView.Adapter = mAdapter;
+           
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)

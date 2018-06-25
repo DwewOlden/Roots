@@ -78,6 +78,7 @@
     <Compile Include="SupportingSystems\DriverSystem\CreateDriverEventArgs.cs" />
     <Compile Include="SupportingSystems\DriverSystem\Driver.cs" />
     <Compile Include="SupportingSystems\DriverSystem\DriverListAdapter.cs" />
+    <Compile Include="SupportingSystems\DriverSystem\DriverSpinnerAdapter.cs" />
     <Compile Include="SupportingSystems\Trips\CreateTripEventArgs.cs" />
     <Compile Include="SupportingSystems\Trips\Trip.cs" />
     <Compile Include="SupportingSystems\Trips\TripListAdapter.cs" />
@@ -108,6 +109,9 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\TripDetails.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\Driver_Spinner_Row.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
