@@ -231,22 +231,25 @@ namespace roots
 			public const int DriverListViewRow = 2130968579;
 			
 			// aapt resource value: 0x7f040004
-			public const int Main = 2130968580;
+			public const int JourneyLayout = 2130968580;
 			
 			// aapt resource value: 0x7f040005
-			public const int MainDriverScreen = 2130968581;
+			public const int Main = 2130968581;
 			
 			// aapt resource value: 0x7f040006
-			public const int MainMenuBackground = 2130968582;
+			public const int MainDriverScreen = 2130968582;
 			
 			// aapt resource value: 0x7f040007
-			public const int MainTripScreen = 2130968583;
+			public const int MainMenuBackground = 2130968583;
 			
 			// aapt resource value: 0x7f040008
-			public const int TripDetails = 2130968584;
+			public const int MainTripScreen = 2130968584;
 			
 			// aapt resource value: 0x7f040009
-			public const int TripListViewRow = 2130968585;
+			public const int TripDetails = 2130968585;
+			
+			// aapt resource value: 0x7f04000a
+			public const int TripListViewRow = 2130968586;
 			
 			static Layout()
 			{

@@ -13,7 +13,7 @@ using Mono.Data.Sqlite;
 
 namespace roots.SupportingSystems.Data
 {
-    public class TripRepository:BaseDataAccessingClass
+    public class TripRepository : BaseDataAccessingClass
     {
 
         public bool SetActiveTrip(int id)
@@ -48,7 +48,39 @@ namespace roots.SupportingSystems.Data
         }
 
 
+        public int GetActiveTrip()
+        {
+            try
+            {
+                string SQLString = GetActiveTripString();
 
+                connection = new SqliteConnection("Data Source=" + GetPathToDatabase());
+                connection.Open();
+
+                int Id = int.MinValue;
+
+                using (var c = connection.CreateCommand())
+                {
+                    c.CommandText = SQLString;
+                    var reader = c.ExecuteReader();
+                    if (reader.Read())
+                        Id = reader.GetInt32(0);
+
+                }
+
+                connection.Close();
+                connection.Dispose();
+                connection = null;
+
+                return Id;
+
+            }
+            catch (Exception ex)
+            {
+                return Int32.MinValue;
+            }
+        }
+        
         public List<Trip> GetAllTrips()
         {
             try
@@ -66,8 +98,8 @@ namespace roots.SupportingSystems.Data
                     var reader = c.ExecuteReader();
 
                     while (reader.Read())
-                        tripList.Add(new Trip(reader.GetString(1), reader.GetString(2), 
-                            reader.GetString(3),reader.GetInt32(0),reader.GetInt32(4)));
+                        tripList.Add(new Trip(reader.GetString(1), reader.GetString(2),
+                            reader.GetString(3), reader.GetInt32(0), reader.GetInt32(4)));
                 }
 
                 connection.Close();
@@ -75,7 +107,7 @@ namespace roots.SupportingSystems.Data
                 connection = null;
 
                 return tripList;
-                
+
             }
             catch (Exception ex)
             {
@@ -83,11 +115,11 @@ namespace roots.SupportingSystems.Data
             }
         }
 
-        public bool InsertNewTrip(string Name,string Description,string When)
+        public bool InsertNewTrip(string Name, string Description, string When)
         {
             try
             {
-                string SQLString = GetInsertTripString(Name,Description,When);
+                string SQLString = GetInsertTripString(Name, Description, When);
 
                 connection = new SqliteConnection("Data Source=" + GetPathToDatabase());
                 connection.Open();
@@ -146,7 +178,7 @@ namespace roots.SupportingSystems.Data
             }
         }
 
-        private string GetInsertTripString(string name,string description,string when)
+        private string GetInsertTripString(string name, string description, string when)
         {
             string s = "INSERT INTO [TRIPS] (Name,Description,WhenFor,Active) VALUES ('" + name + "','" + description + "','" + when + "',0);";
             return s;
@@ -161,6 +193,12 @@ namespace roots.SupportingSystems.Data
         public string GetAllTripsString()
         {
             string s = "SELECT * FROM TRIPS;";
+            return s;
+        }
+
+        public string GetActiveTripString()
+        {
+            string s = "SELECT Id FROM TRIPS WHERE ACTIVE = 1 ORDER BY Id LIMIT 1";
             return s;
         }
     }

@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="Forms\Drivers\AddNewDriver.cs" />
     <Compile Include="Functions\AddNewTrip.cs" />
+    <Compile Include="Functions\JourneyActivity.cs" />
     <Compile Include="Functions\MainMenuActivity.cs" />
     <Compile Include="Functions\TripDetails.cs" />
     <Compile Include="Functions\TripList.cs" />
@@ -112,6 +113,9 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\Driver_Spinner_Row.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\JourneyLayout.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

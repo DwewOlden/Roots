@@ -91,6 +91,10 @@ namespace roots.Functions
             string titleFormatted = item.TitleFormatted.ToString();
             switch (titleFormatted)
             {
+                case "Edit":
+                    StartActivity(typeof(JourneyActivity));
+                    break;
+
                 case "Drivers":
                     StartActivity(typeof(TabViews.DriversMenu));
                     break;

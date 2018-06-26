@@ -4,48 +4,47 @@
     android:layout_height="match_parent"
     android:minWidth="25px"
     android:minHeight="25px">
-  <TextView
-      android:text="Miles:"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:textStyle="bold"
-      android:textSize="30sp"
-      android:layout_marginTop="20dp"
-      android:layout_marginLeft="30dp"
-      android:layout_marginRight="4dp"
-      android:id="@+id/tripDetailsMilesTraveledHeader" />
-  <TextView
-      android:text="3,452"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:textSize="30sp"
-      android:layout_marginTop="20dp"
-      android:layout_marginRight="30dp"
-      android:layout_toRightOf="@+id/tripDetailsMilesTraveledHeader"
-      android:id="@+id/tripDetailsMilesTraveledDetails" />
-  <TextView
-      android:text="Time:"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:textStyle="bold"
-      android:textSize="30sp"
-      android:layout_marginTop="20dp"
-      android:layout_marginLeft="30dp"
-      android:layout_marginRight="4dp"
-      android:layout_below="@+id/tripDetailsMilesTraveledHeader"
-      android:id="@+id/tripDetailsTimesTraveledHeader" />
-  <TextView
-      android:text="12:33"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:textSize="30sp"
-      android:layout_marginTop="20dp"
-      android:layout_marginRight="30dp"
-      android:layout_toRightOf="@+id/tripDetailsTimesTraveledHeader"
-      android:layout_below="@+id/tripDetailsMilesTraveledDetails"
-      android:id="@+id/tripDetailsTimesTraveledDetails" />
-
-  <TextView
+    <TextView
+        android:text="Miles:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="30sp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="4dp"
+        android:id="@+id/tripDetailsMilesTraveledHeader" />
+    <TextView
+        android:text="3,452"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="30dp"
+        android:layout_toRightOf="@+id/tripDetailsMilesTraveledHeader"
+        android:id="@+id/tripDetailsMilesTraveledDetails" />
+    <TextView
+        android:text="Time:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="30sp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="4dp"
+        android:layout_below="@+id/tripDetailsMilesTraveledHeader"
+        android:id="@+id/tripDetailsTimesTraveledHeader" />
+    <TextView
+        android:text="12:33"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="30dp"
+        android:layout_toRightOf="@+id/tripDetailsTimesTraveledHeader"
+        android:layout_below="@+id/tripDetailsMilesTraveledDetails"
+        android:id="@+id/tripDetailsTimesTraveledDetails" />
+    <TextView
         android:text="Trips:"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -56,46 +55,41 @@
         android:layout_marginRight="4dp"
         android:layout_below="@+id/tripDetailsTimesTraveledHeader"
         android:id="@+id/tripDetailsTripsTraveledHeader" />
-  <TextView
-      android:text="123"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:textSize="30sp"
-      android:layout_marginTop="20dp"
-      android:layout_marginRight="30dp"
-      android:layout_toRightOf="@+id/tripDetailsTripsTraveledHeader"
-      android:layout_below="@+id/tripDetailsTimesTraveledDetails"
-      android:id="@+id/tripDetailsTripsTraveledDetails" />
-
-  <Button
-    android:text="Make Trip Active"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="15dp"
-    android:layout_marginLeft="15dp"
-    android:layout_marginRight="15dp"
-    android:layout_below="@+id/tripDetailsTripsTraveledDetails"
-    android:id="@+id/buttonMakeTripActive"/>
-
-  <Button
-    android:text="View Journeys"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="20dp"
-    android:layout_marginLeft="15dp"
-    android:layout_marginRight="15dp"
-    android:layout_below="@+id/buttonMakeTripActive"
-    android:id="@+id/buttonViewJourneys"/>
-
-  <Button
-    android:text="Fun Facts"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="20dp"
-    android:layout_marginLeft="15dp"
-    android:layout_marginRight="15dp"
-    android:layout_below="@+id/buttonViewJourneys"
-    android:id="@+id/buttonFunFacts"/>
-
-
+    <TextView
+        android:text="123"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="30dp"
+        android:layout_toRightOf="@+id/tripDetailsTripsTraveledHeader"
+        android:layout_below="@+id/tripDetailsTimesTraveledDetails"
+        android:id="@+id/tripDetailsTripsTraveledDetails" />
+    <Button
+        android:text="Make Trip Active"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_below="@+id/tripDetailsTripsTraveledDetails"
+        android:id="@+id/buttonMakeTripActive" />
+    <Button
+        android:text="View Journeys"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_below="@+id/buttonMakeTripActive"
+        android:id="@+id/buttonViewJourneys" />
+    <Button
+        android:text="Fun Facts"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_below="@+id/buttonViewJourneys"
+        android:id="@+id/buttonFunFacts" />
 </RelativeLayout>

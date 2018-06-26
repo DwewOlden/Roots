@@ -11,13 +11,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Hello World, Click Me!" />
-
   <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/MyButton"
-        android:layout_marginTop="40dp" />
-
-  
+         android:id="@+id/spinner"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_below="@+id/MyButton"
+         android:layout_marginTop="40dp" /> 
 </RelativeLayout>
