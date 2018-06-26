@@ -41,7 +41,7 @@ namespace roots.Functions
             mDrivers = new List<Driver>();
             mDriverSelected = DriverSelected;
 
-            mAdapter = new DriverSpinnerAdapter(this, Resource.Layout.DriverListViewRow, mDrivers,mDriverSelected);
+            mAdapter = new DriverSpinnerAdapter(this, Resource.Layout.DriverJourneyListViewRow, mDrivers,mDriverSelected);
             mListView.Adapter = mAdapter;
             PopulateDriverList();
 
@@ -50,7 +50,7 @@ namespace roots.Functions
 
         private void DriverSelected(Driver obj)
         {
-            System.Diagnostics.Debug.WriteLine(string.Format("{0} has been selected", obj.Name));
+            System.Diagnostics.Debug.WriteLine(string.Format("{0} has been selected in the main", obj.Name));
         }
 
         private void MListView_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
@@ -58,7 +58,7 @@ namespace roots.Functions
             var pos = e.Position;
             var driver = mDrivers[pos];
 
-            System.Diagnostics.Debug.WriteLine(string.Format("you selected {0}", driver.Name));
+           
         }
 
         private void PopulateDriverList()
@@ -68,7 +68,7 @@ namespace roots.Functions
 
             mDrivers = driverRepository.GetAllDrivers();
 
-            mAdapter = new DriverSpinnerAdapter(this, Resource.Layout.DriverListViewRow, mDrivers,mDriverSelected);
+            mAdapter = new DriverSpinnerAdapter(this, Resource.Layout.DriverJourneyListViewRow, mDrivers,mDriverSelected);
             mListView.Adapter = mAdapter;
            
         }

@@ -51,19 +51,19 @@ namespace roots.SupportingSystems.DriverSystem
             if (row == null)
                 row = LayoutInflater.From(mContext).Inflate(mLayout, parent, false);
 
-            row.FindViewById<TextView>(Resource.Id.txtDriverScreenDriverName).Text = mContacts[position].Name;
+            row.FindViewById<TextView>(Resource.Id.txtJourneyScreenDriverName).Text = mContacts[position].Name;
 
-            ImageView pic = row.FindViewById<ImageView>(Resource.Id.imgDriverScreenDriverAvater);
+            row.Click -= (sender, args) =>
+            {
+
+            };
+
             row.Click += (sender, args) =>
              {
+                 System.Diagnostics.Debug.WriteLine(DateTime.Now.Ticks);
                  RowClicked(position);
              };
-
-            if (mContacts[position].ImageData != null)
-                pic.SetImageBitmap(BitmapFactory.DecodeByteArray(mContacts[position].ImageData, 0, mContacts[position].ImageData.Length));
-
-           
-
+            
             return row;
         }
 
