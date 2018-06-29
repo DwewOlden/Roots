@@ -53,23 +53,8 @@ namespace roots.SupportingSystems.DriverSystem
 
             row.FindViewById<TextView>(Resource.Id.txtJourneyScreenDriverName).Text = mContacts[position].Name;
 
-            row.Click -= (sender, args) =>
-            {
-
-            };
-
-            row.Click += (sender, args) =>
-             {
-                 System.Diagnostics.Debug.WriteLine(DateTime.Now.Ticks);
-                 RowClicked(position);
-             };
-            
             return row;
         }
-
-        private void RowClicked(int position)
-        {
-            mPicSelected.Invoke(mContacts[position]);
-        }
+        
     }
 }
