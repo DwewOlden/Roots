@@ -13,12 +13,16 @@ using Android.Widget;
 using roots.Services;
 using roots.SupportingSystems.Data;
 using roots.SupportingSystems.DriverSystem;
+using Roots.Support.Time;
 
 namespace roots.Functions
 {
     [Activity(Label = "Journey", MainLauncher = false, Icon = "@drawable/xs")]
     public class JourneyActivity : Activity
     {
+        private int SleepPeriodInMilliSeconds = 5 * 1000;
+        System.Timers.Timer timer;
+
         // Journey related information
         private int SelectedDriverId = int.MinValue;
         private DateTime JourneyStarted;
@@ -47,6 +51,8 @@ namespace roots.Functions
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
+            timer = new System.Timers.Timer(SleepPeriodInMilliSeconds);
+            timer.Elapsed += Timer_Elapsed;
 
             SetContentView(Resource.Layout.JourneyLayout);
             var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
@@ -74,6 +80,19 @@ namespace roots.Functions
                 // notifies us of the changing status of a provider (ie GPS no longer available)
                 RootApp.Current.LocationService.StatusChanged += HandleStatusChanged;
             };
+
+        }
+
+        private void Timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            string Formatter = TimeFormatter.FormatTimes(DateTime.Now, JourneyStarted);
+
+            var TimeTextView = FindViewById<TextView>(Resource.Id.lblTimeData);
+
+            RunOnUiThread(() => {
+                TimeTextView.Text = Formatter;
+            });
+
 
         }
 
@@ -109,6 +128,7 @@ namespace roots.Functions
                 JourneyStarted = DateTime.Now;
                 journeyButton.Text = "End Journey";
                 spinner.Enabled = false;
+                timer.Enabled = true;
                 RootApp.StartLocationService();
 
             }
@@ -118,6 +138,7 @@ namespace roots.Functions
                 JourneyEnded = DateTime.Now;
                 journeyButton.Text = "Start Journey";
                 spinner.Enabled = true;
+                timer.Enabled = false;
             }
         }
 

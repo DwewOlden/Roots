@@ -341,6 +341,12 @@
   <ItemGroup>
     <AndroidResource Include="Resources\menu\trip_menu.xml" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Roots.Support\Roots.Support.csproj">
+      <Project>{43A11DD1-C2F4-4ADC-98C4-20D81F45735C}</Project>
+      <Name>Roots.Support</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
 		Other similar extension points exist, see Microsoft.Common.targets.

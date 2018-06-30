@@ -3,37 +3,92 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/MainMenuBackground" />
-    <Spinner
-        android:id="@+id/driverSelectSpinner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/toolbar"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginTop="4dp" />
-    <Button
-        android:text="START JOURNEY"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="3dp"
-        android:layout_below="@id/toolbar"
-        android:id="@+id/btnMainJourneyButton" />
+  <include
+      android:id="@+id/toolbar"
+      layout="@layout/MainMenuBackground" />
+  <Spinner
+      android:id="@+id/driverSelectSpinner"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_below="@id/toolbar"
+      android:layout_marginLeft="14dp"
+      android:layout_marginRight="14dp"
+      android:layout_marginTop="4dp" />
+  <Button
+      android:text="START JOURNEY"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="3dp"
+      android:layout_marginLeft="10dp"
+      android:layout_marginRight="10dp"
+      android:layout_below="@id/driverSelectSpinner"
+      android:id="@+id/btnMainJourneyButton" />
+  <LinearLayout
+    
+        android:id="@+id/timeHeaderRow"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+       
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
+        android:layout_below="@id/btnMainJourneyButton"
+    android:layout_margin="2dp">
+
     <TextView
+      android:layout_width="0dp"
         android:gravity="center"
         android:text="DISTANCE"
-        android:layout_marginLeft="5sp"
-        android:layout_width="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textSize="10sp"
+         android:layout_weight="0.5"
         android:layout_height="wrap_content"
+          android:textColor="?android:attr/colorPrimary"
         android:id="@+id/lblDistanceLabel" />
     <TextView
-        android:gravity="center"
-        android:text="DISTANCE"
-        android:layout_toRightOf="@id/lblDistanceLabel"
-        android:layout_marginLeft="5sp"
-        android:layout_width="match_parent"
+      android:layout_width="0dp"
+         android:gravity="center"
+        android:text="TIME"
+      android:layout_marginTop="20dp"
+        android:layout_weight="0.5"
         android:layout_height="wrap_content"
+        android:textSize="10sp"
+         android:textColor="?android:attr/colorPrimary"
         android:id="@+id/lblTimeLabel" />
+  </LinearLayout>
+  <LinearLayout
+    
+      android:id="@+id/timeDetailsRow"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
+        android:layout_below="@id/timeHeaderRow"
+    android:layout_margin="2dp">
+
+    <TextView
+      android:layout_width="0dp"
+
+        android:gravity="center"
+        android:text="0"
+        android:textSize="24sp"
+      android:textStyle="bold"
+        android:layout_weight="0.5"
+        android:layout_height="wrap_content"
+        android:textColor="?android:attr/colorAccent"
+        android:id="@+id/lblDistanceData" />
+    <TextView
+      android:layout_width="0dp"
+        android:gravity="center"
+        android:text="00:00"
+        android:layout_weight="0.5"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="?android:attr/colorAccent"
+        android:id="@+id/lblTimeData" />
+  </LinearLayout>
 </RelativeLayout>
