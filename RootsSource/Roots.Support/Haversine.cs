@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Roots.Support.Geographic
+namespace Roots.Support
 {
     public class Haversine : IHaversine
     {

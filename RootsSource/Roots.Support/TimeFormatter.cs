@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Roots.Support.Time
+namespace Roots.Support
 {
     public class TimeFormatter
     {
