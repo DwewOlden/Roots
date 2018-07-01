@@ -13,5 +13,12 @@ namespace Roots.Support
             TimeSpan timeSpan = current.Subtract(starting);
             return timeSpan.ToString(@"hh\:mm");
         }
+
+        public static string FormatTimes(TimeSpan baseSpan,DateTime current, DateTime starting)
+        {
+            TimeSpan timeSpan = current.Subtract(starting);
+            timeSpan = baseSpan.Add(timeSpan);
+            return timeSpan.ToString(@"hh\:mm");
+        }
     }
 }

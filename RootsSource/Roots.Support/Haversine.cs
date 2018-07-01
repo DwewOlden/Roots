@@ -1,4 +1,5 @@
-﻿using Roots.Common.Interface;
+﻿using Android.Locations;
+using Roots.Common.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,6 +43,11 @@ namespace Roots.Support
             dDistance = kEarthRadiusKms * c;
 
             return dDistance;
+        }
+
+        public double CalculateHaversineDistiance(Location a, Location b)
+        {
+            return CalculateHaversineDistance(a.Latitude, a.Longitude, b.Latitude, b.Longitude);
         }
     }
 }

@@ -27,7 +27,12 @@ namespace roots.Functions
         private int SelectedDriverId = int.MinValue;
         private DateTime JourneyStarted;
         private DateTime JourneyEnded;
+        private TimeSpan timeToday = new TimeSpan();
         private bool JourneyIsInProgress = false;
+        private Location previousLocation = null;
+        private Haversine HaversineCalculator;
+        private double distance = 0.0;
+        private double todayDistance = 0.0;
 
         private Spinner mListView;
         private BaseAdapter<Driver> mAdapter;
@@ -53,6 +58,8 @@ namespace roots.Functions
             base.OnCreate(savedInstanceState);
             timer = new System.Timers.Timer(SleepPeriodInMilliSeconds);
             timer.Elapsed += Timer_Elapsed;
+
+            HaversineCalculator = new Haversine();
 
             SetContentView(Resource.Layout.JourneyLayout);
             var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
@@ -85,12 +92,24 @@ namespace roots.Functions
 
         private void Timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
-            string Formatter = TimeFormatter.FormatTimes(DateTime.Now, JourneyStarted);
+            DateTime now = DateTime.Now;
+            string timeOnTrip = TimeFormatter.FormatTimes(now, JourneyStarted);
+            string timeTravelledToday = TimeFormatter.FormatTimes(timeToday, now, JourneyStarted);
 
-            var TimeTextView = FindViewById<TextView>(Resource.Id.lblTimeData);
+            var TripTime = FindViewById<TextView>(Resource.Id.lblTimeData);
+            var TotalTodayTime = FindViewById<TextView>(Resource.Id.lblDayTimeData);
+            var DistanceTextView = FindViewById<TextView>(Resource.Id.lblDistanceData);
+            var TodayDistanceTextVoew = FindViewById<TextView>(Resource.Id.lblDayDistanceData);
 
             RunOnUiThread(() => {
-                TimeTextView.Text = Formatter;
+                TripTime.Text = timeOnTrip;
+                TotalTodayTime.Text = timeTravelledToday;
+
+                if (distance > 0)
+                {
+                    DistanceTextView.Text = Convert.ToString(Math.Round((distance / 1.61), 1));
+                    TodayDistanceTextVoew.Text = Convert.ToString(Math.Round((todayDistance / 1.61), 1));
+                }
             });
 
 
@@ -113,8 +132,14 @@ namespace roots.Functions
 
         private void HandleLocationChanged(object sender, LocationChangedEventArgs e)
         {
-            Location location = e.Location;
-            System.Diagnostics.Debug.WriteLine(location.Latitude + " " + location.Longitude);
+            if (previousLocation != null)
+            {
+                distance = Math.Round(distance + HaversineCalculator.CalculateHaversineDistiance(e.Location, previousLocation), 5);
+                todayDistance = Math.Round(todayDistance + HaversineCalculator.CalculateHaversineDistiance(e.Location, previousLocation), 5);
+            }
+           
+            previousLocation = e.Location;
+            
         }
 
         private void JourneyButton_Click(object sender, EventArgs e)
