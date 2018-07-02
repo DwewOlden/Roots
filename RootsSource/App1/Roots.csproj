@@ -75,6 +75,7 @@
     <Compile Include="SupportingSystems\Data\DatabaseCreation.cs" />
     <Compile Include="SupportingSystems\Data\DriverRepository.cs" />
     <Compile Include="Functions\DriversMenu.cs" />
+    <Compile Include="SupportingSystems\Data\JourneyRepository.cs" />
     <Compile Include="SupportingSystems\Data\TripRepository.cs" />
     <Compile Include="SupportingSystems\DriverSystem\CreateDriverEventArgs.cs" />
     <Compile Include="SupportingSystems\DriverSystem\Driver.cs" />

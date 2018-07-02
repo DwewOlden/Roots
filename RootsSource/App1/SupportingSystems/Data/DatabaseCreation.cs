@@ -98,6 +98,7 @@ namespace roots.SupportingSystems.Data
         {
             var commands = new[] {
                 "CREATE TABLE [TRIPS] (Id INTEGER PRIMARY KEY,Name nText, Description nText, WhenFor nText,Active INTEGER);",
+                "CREATE TABLE [JOURNEY] (Id INTEGER PRIMARY KEY,Driver INTEGER,Trip INTEGER,JourneyStarted datetime,JourneyEnded datetime,JourneyDistance real,EndPoint nText);",
                 "CREATE TABLE [DRIVERS] (Id INTEGER PRIMARY KEY, Name nText,ImageName nText,Registered nText,Active INTEGER);"
             };
 

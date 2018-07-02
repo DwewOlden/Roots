@@ -46,6 +46,7 @@
     <Compile Include="Compass.cs" />
     <Compile Include="Haversine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SQLLiteDateTimes.cs" />
     <Compile Include="TimeFormatter.cs" />
   </ItemGroup>
   <ItemGroup />

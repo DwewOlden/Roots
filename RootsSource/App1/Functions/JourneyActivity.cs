@@ -25,6 +25,7 @@ namespace roots.Functions
 
         // Journey related information
         private int SelectedDriverId = int.MinValue;
+        private int NewJourneyId = int.MinValue;
         private DateTime JourneyStarted;
         private DateTime JourneyEnded;
         private TimeSpan timeToday = new TimeSpan();
@@ -40,6 +41,8 @@ namespace roots.Functions
         private DriverRepository driverRepository;
         private Action<Driver> mDriverSelected;
 
+
+        private JourneyRepository JourneyRepository;
 
         /// <summary>
         /// An instance of the trip repository
@@ -144,6 +147,12 @@ namespace roots.Functions
 
         private void JourneyButton_Click(object sender, EventArgs e)
         {
+            if (JourneyRepository == null)
+                JourneyRepository = new JourneyRepository();
+
+            NewJourneyId =  JourneyRepository.StartNewJourney(SelectedDriverId, TripId);
+            
+
             JourneyIsInProgress = !JourneyIsInProgress;
             var journeyButton = FindViewById<Button>(Resource.Id.btnMainJourneyButton);
             var spinner = FindViewById<Spinner>(Resource.Id.driverSelectSpinner);
@@ -169,6 +178,7 @@ namespace roots.Functions
 
         private void MListView_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
         {
+            SelectedDriverId = mDrivers[e.Position].DriverId;
             System.Diagnostics.Debug.WriteLine(string.Format("{0} has been selected......", mDrivers[e.Position].Name));
 
         }
