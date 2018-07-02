@@ -15,6 +15,34 @@ namespace roots.SupportingSystems.Data
 {
     public class JourneyRepository : BaseDataAccessingClass
     {
+        public bool UpdateJourneyDetails(int Id, double distance)
+        {
+            try
+            {
+                string SQLString = GetDistanceAndLastTimeString(Id,distance);
+
+                connection = new SqliteConnection("Data Source=" + GetPathToDatabase());
+                connection.Open();
+
+                using (var c = connection.CreateCommand())
+                {
+                    c.CommandText = SQLString;
+                    var k = c.ExecuteNonQuery();
+                }
+                
+                connection.Close();
+                connection.Dispose();
+                connection = null;
+
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
         public int StartNewJourney(int Driver,int Trip)
         {
             DateTime dateTime = DateTime.Now;
@@ -65,6 +93,18 @@ namespace roots.SupportingSystems.Data
 
             return s;
         }
+
+        private string GetDistanceAndLastTimeString (int Id,double distance)
+        {
+            DateTime Now = DateTime.Now;
+            var v = Roots.Support.SQLLiteDateTimes.DateTimeSQLite(Now);
+            
+            string s = string.Format("UPDATE [JOURNEY] SET JourneyEnded = '{0}', JourneyDistance={1} WHERE Id= {2}", v, distance,Id);
+            return s;
+        }
+
+
+
 
         private string GetLastTripString()
         {

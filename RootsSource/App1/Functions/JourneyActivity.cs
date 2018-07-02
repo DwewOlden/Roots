@@ -149,25 +149,23 @@ namespace roots.Functions
         {
             if (JourneyRepository == null)
                 JourneyRepository = new JourneyRepository();
-
-            NewJourneyId =  JourneyRepository.StartNewJourney(SelectedDriverId, TripId);
             
-
             JourneyIsInProgress = !JourneyIsInProgress;
             var journeyButton = FindViewById<Button>(Resource.Id.btnMainJourneyButton);
             var spinner = FindViewById<Spinner>(Resource.Id.driverSelectSpinner);
 
             if (JourneyIsInProgress)
             {
+                NewJourneyId = JourneyRepository.StartNewJourney(SelectedDriverId, TripId);
                 JourneyStarted = DateTime.Now;
                 journeyButton.Text = "End Journey";
                 spinner.Enabled = false;
                 timer.Enabled = true;
                 RootApp.StartLocationService();
-
             }
             else
             {
+                NewJourneyId = int.MinValue;
                 RootApp.StopLocationService();
                 JourneyEnded = DateTime.Now;
                 journeyButton.Text = "Start Journey";
@@ -179,16 +177,13 @@ namespace roots.Functions
         private void MListView_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
         {
             SelectedDriverId = mDrivers[e.Position].DriverId;
-            System.Diagnostics.Debug.WriteLine(string.Format("{0} has been selected......", mDrivers[e.Position].Name));
-
         }
 
         private void PopulateDriverList()
         {
             mAdapter.Dispose();
             mAdapter = null;
-
-
+            
             if (driverRepository == null)
                 driverRepository = new DriverRepository();
 
