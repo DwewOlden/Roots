@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 
@@ -15,11 +16,17 @@ namespace roots.SupportingSystems.Data
 {
     public class JourneyRepository : BaseDataAccessingClass
     {
-        public bool UpdateJourneyDetails(int Id, double distance)
+        string format = "yyyy-MM-dd HH:mm:ss";
+
+        public bool GetTripTotals(int Id,out TimeSpan time,out double distance,out int journeys)
         {
+            time = new TimeSpan();
+            distance = 0.0;
+            journeys = 0;
+
             try
             {
-                string SQLString = GetDistanceAndLastTimeString(Id,distance);
+                string SQLString = "SELECT * FROM JOURNEY";// GetRecordsFromTrip(0);
 
                 connection = new SqliteConnection("Data Source=" + GetPathToDatabase());
                 connection.Open();
@@ -27,9 +34,28 @@ namespace roots.SupportingSystems.Data
                 using (var c = connection.CreateCommand())
                 {
                     c.CommandText = SQLString;
-                    var k = c.ExecuteNonQuery();
+                    var reader = c.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        System.Diagnostics.Debug.WriteLine(reader.GetInt32(2)); 
+
+                        string journeyStartsString = reader.GetString(3);
+                        DateTime journeyStarts = DateTime.ParseExact(journeyStartsString, "yyyy-M-d H:m:s.FFF", CultureInfo.InvariantCulture, DateTimeStyles.None);
+
+                        string journeyEndsString = reader.GetString(4);
+                        DateTime journeyEnds = DateTime.ParseExact(journeyEndsString, "yyyy-M-d H:m:s.FFF", CultureInfo.InvariantCulture, DateTimeStyles.None);
+
+                        TimeSpan duration = journeyEnds.Subtract(journeyStarts);
+                        time = time.Add(duration);
+
+                        distance = distance + reader.GetDouble(5);
+                        journeys++;
+                    }
+
+                    reader.Close();
                 }
-                
+
                 connection.Close();
                 connection.Dispose();
                 connection = null;
@@ -43,14 +69,125 @@ namespace roots.SupportingSystems.Data
             }
         }
 
-        public int StartNewJourney(int Driver,int Trip)
+        public bool UpdateWithEndPoint(int Id,string PlaceName)
+        {
+            try
+            {
+                string sql = GetEndPointSQLString(Id, PlaceName);
+
+                connection = new SqliteConnection("Data Source=" + GetPathToDatabase());
+                connection.Open();
+                
+                using (var c = connection.CreateCommand())
+                {
+                    c.CommandText = sql;
+                    var k = c.ExecuteNonQuery();
+                }
+
+                connection.Close();
+                connection.Dispose();
+                connection = null;
+
+                return true;
+                
+            } catch (Exception ex)
+            {
+                return false;
+            }
+        }
+        
+        public bool CountMetricToday(int Id, out double distance, out TimeSpan time)
+        {
+            time = new TimeSpan();
+            distance = 0.0;
+
+            try
+            {
+                string SQLString = GetRecordsFromTodayString(Id);
+
+                connection = new SqliteConnection("Data Source=" + GetPathToDatabase());
+                connection.Open();
+                
+                using (var c = connection.CreateCommand())
+                {
+                    c.CommandText = SQLString;
+                    var reader = c.ExecuteReader();
+                    
+                    while (reader.Read())
+                    {
+                        string journeyStartsString = reader.GetString(3);
+                        DateTime journeyStarts = DateTime.ParseExact(journeyStartsString, "yyyy-M-d H:m:s.FFF", CultureInfo.InvariantCulture, DateTimeStyles.None);
+
+                        string journeyEndsString = reader.GetString(4);
+                        DateTime journeyEnds = DateTime.ParseExact(journeyEndsString, "yyyy-M-d H:m:s.FFF", CultureInfo.InvariantCulture, DateTimeStyles.None);
+
+                        TimeSpan duration = journeyEnds.Subtract(journeyStarts);
+                        time = time.Add(duration);
+
+                        distance = distance + reader.GetDouble(5);
+                    }
+
+                    reader.Close();
+                }
+
+                connection.Close();
+                connection.Dispose();
+                connection = null;
+
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+
+        }
+
+        public bool UpdateJourneyDetails(int Id, double distance)
+        {
+            try
+            {
+                string SQLString = GetDistanceAndLastTimeString(Id, distance);
+
+                connection = new SqliteConnection("Data Source=" + GetPathToDatabase());
+                connection.Open();
+
+                using (var c = connection.CreateCommand())
+                {
+                    c.CommandText = "SELECT COUNT(*) FROM JOURNEY WHERE JourneyStarted =Date('now');";
+                    var k = c.ExecuteReader();
+                    k.Read();
+                    System.Diagnostics.Debug.WriteLine(k.GetInt32(0));
+                }
+
+                using (var c = connection.CreateCommand())
+                {
+                    c.CommandText = SQLString;
+                    var k = c.ExecuteNonQuery();
+                }
+
+                connection.Close();
+                connection.Dispose();
+                connection = null;
+
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        public int StartNewJourney(int Driver, int Trip)
         {
             DateTime dateTime = DateTime.Now;
             int Id = -1;
 
             try
             {
-                string SQLString = GetInsertJourneyString(Driver,Trip);
+                string SQLString = GetInsertJourneyString(Driver, Trip);
 
                 connection = new SqliteConnection("Data Source=" + GetPathToDatabase());
                 connection.Open();
@@ -66,7 +203,7 @@ namespace roots.SupportingSystems.Data
                     c.CommandText = GetLastTripString();
                     var k = c.ExecuteReader();
                     k.Read();
-                    Id = k.GetInt32(0);
+                    Id = k.GetInt32(2);
 
                 }
 
@@ -83,29 +220,45 @@ namespace roots.SupportingSystems.Data
             }
         }
 
-        private string GetInsertJourneyString(int Driver,int Trip)
+        private string GetInsertJourneyString(int Driver, int Trip)
         {
             DateTime Now = DateTime.Now;
             var v = Roots.Support.SQLLiteDateTimes.DateTimeSQLite(Now);
 
             string s = string.Format("INSERT INTO [JOURNEY] (Driver,Trip,JourneyStarted,JourneyEnded,JourneyDistance,EndPoint) VALUES ({0},{1},'{2}','{3}',{4},{5})"
-                ,Driver,Trip, v,v,0,"'Not Set'");
+                , Driver, Trip, v, v, 0, "'Not Set'");
 
             return s;
         }
 
-        private string GetDistanceAndLastTimeString (int Id,double distance)
+        private string GetDistanceAndLastTimeString(int Id, double distance)
         {
             DateTime Now = DateTime.Now;
             var v = Roots.Support.SQLLiteDateTimes.DateTimeSQLite(Now);
-            
-            string s = string.Format("UPDATE [JOURNEY] SET JourneyEnded = '{0}', JourneyDistance={1} WHERE Id= {2}", v, distance,Id);
+
+            string s = string.Format("UPDATE [JOURNEY] SET JourneyEnded = '{0}', JourneyDistance={1} WHERE Id= {2}", v, distance, Id);
             return s;
         }
 
+        private string GetEndPointSQLString(int id, string placeName)
+        {
+            string s = string.Format("UPDATE [JOURNEY] SET EndPoint = '{0}' WHERE Id={1}",placeName,id);
+            return s;
+        }
 
+        private string GetRecordsFromTrip(int Id)
+        {
+            string s = "SELECT * FROM JOURNEY WHERE Trip = " + Id;
+            return s;
+        }
 
-
+        private string GetRecordsFromTodayString(int Id)
+        {
+            //string s = "SELECT * FROM JOURNEY WHERE Trip =" + Id;
+            string s = "SELECT * FROM JOURNEY WHERE Trip =" + Id + " AND JourneyStarted BETWEEN DATE('now') AND DATE('now', '+1 day')";
+            return s;
+        }
+        
         private string GetLastTripString()
         {
             string s = "SELECT MAX(Id) FROM JOURNEY;";

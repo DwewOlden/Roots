@@ -23,10 +23,17 @@ namespace roots.Functions
 
         private TripRepository tripRepository_;
 
+        private JourneyRepository JourneyRepository_;
+
+        private TextView distanceView;
+        private TextView timeView;
+        private TextView tripView;
+
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             tripRepository_ = new TripRepository();
+            JourneyRepository_ = new JourneyRepository();
 
             base.OnCreate(savedInstanceState);
             SelectedTripId = Intent.Extras.GetInt("tripId");
@@ -35,6 +42,24 @@ namespace roots.Functions
 
             var makeActiveButton = base.FindViewById<Button>(Resource.Id.buttonMakeTripActive);
             makeActiveButton.Click += MakeActiveButton_Click;
+
+            PopulateOnScreenInformation();
+        }
+
+        private void PopulateOnScreenInformation()
+        {
+            distanceView = FindViewById<TextView>(Resource.Id.tripDetailsMilesTraveledDetails);
+            timeView = FindViewById<TextView>(Resource.Id.tripDetailsTimesTraveledDetails);
+            tripView = FindViewById<TextView>(Resource.Id.tripDetailsTripsTraveledDetails);
+            
+            // Get the data
+            JourneyRepository_.GetTripTotals(SelectedTripId, out TimeSpan span, out double distance, out int journeys);
+
+            // Display the data
+            tripView.Text = Convert.ToString(journeys);
+            distanceView.Text = Convert.ToString(Math.Round((distance / 1.61), 2));
+            timeView.Text = span.ToString(@"hh\:mm");
+
             
         }
 

@@ -16,4 +16,10 @@
   <!-- Add New Drivers Form-->
   <string name="add_driver_form_name_label">Drivers\' Name:</string>
   <string name="add_driver_button">Add this driver</string>
+
+  <!-- Add New Drivers Form-->
+  <string name="add_stopplace_label_string">Stopping At:</string>
+  <string name="add_stopplace_button_label">Add this place</string>
+  
+  
 </resources>

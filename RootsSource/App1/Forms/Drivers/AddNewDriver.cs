@@ -48,7 +48,6 @@ namespace roots.Forms
         {
             base.OnActivityCreated(savedInstanceState);
             Dialog.Window.Attributes.WindowAnimations = Resource.Style.dialog_animation;
-
         }
 
         /// <summary>

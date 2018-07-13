@@ -139,6 +139,8 @@ namespace roots.Functions
             {
                 distance = Math.Round(distance + HaversineCalculator.CalculateHaversineDistiance(e.Location, previousLocation), 5);
                 todayDistance = Math.Round(todayDistance + HaversineCalculator.CalculateHaversineDistiance(e.Location, previousLocation), 5);
+
+                JourneyRepository.UpdateJourneyDetails(NewJourneyId, distance);
             }
            
             previousLocation = e.Location;
@@ -156,6 +158,15 @@ namespace roots.Functions
 
             if (JourneyIsInProgress)
             {
+                if (TripId == int.MinValue)
+                {
+                    Toast.MakeText(this, "Set An Active Trip", ToastLength.Long).Show();
+                    return;
+                }
+
+                distance = 0;
+                JourneyRepository.CountMetricToday(TripId, out todayDistance, out timeToday);
+                
                 NewJourneyId = JourneyRepository.StartNewJourney(SelectedDriverId, TripId);
                 JourneyStarted = DateTime.Now;
                 journeyButton.Text = "End Journey";
@@ -165,13 +176,26 @@ namespace roots.Functions
             }
             else
             {
-                NewJourneyId = int.MinValue;
+ 
                 RootApp.StopLocationService();
                 JourneyEnded = DateTime.Now;
                 journeyButton.Text = "Start Journey";
                 spinner.Enabled = true;
                 timer.Enabled = false;
+
+                FragmentTransaction transaction = FragmentManager.BeginTransaction();
+                var dialog = new Forms.AddNewStopPoint();
+                dialog.JourneyId = NewJourneyId;
+                dialog.OnGetPlaceName += Dialog_OnGetPlaceName; 
+                dialog.Show(transaction, "dialog");
+                NewJourneyId = int.MinValue;
+                
             }
+        }
+
+        private void Dialog_OnGetPlaceName(object sender, SupportingSystems.CreateStopLocationEventArgs e)
+        {
+            JourneyRepository.UpdateWithEndPoint(e.TripId, e.PlaceName);
         }
 
         private void MListView_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
