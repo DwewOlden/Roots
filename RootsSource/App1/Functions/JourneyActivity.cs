@@ -135,6 +135,7 @@ namespace roots.Functions
 
         private void HandleLocationChanged(object sender, LocationChangedEventArgs e)
         {
+            System.Diagnostics.Debug.WriteLine(string.Format("Location Changed: {0}", e.Location));
             if (previousLocation != null)
             {
                 distance = Math.Round(distance + HaversineCalculator.CalculateHaversineDistiance(e.Location, previousLocation), 5);

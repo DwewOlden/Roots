@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="61dp"
+    android:background="#F1F1F1">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_weight="60">
+        <TextView
+            android:paddingTop="2dp"
+            android:paddingLeft="20dp"
+            android:id="@+id/txtJourneyTimes"
+            android:text="Trip Name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:textColor="#000"
+            android:textSize="21dp" />
+        <TextView
+            android:paddingLeft="20dp"
+            android:id="@+id/txtJourneyDriver"
+            android:text="When"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:textSize="12dp"
+            android:layout_marginTop="3dp"
+            android:textColor="#000" />
+    </LinearLayout>
+</LinearLayout>

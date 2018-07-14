@@ -29,6 +29,8 @@ namespace roots.Functions
         private TextView timeView;
         private TextView tripView;
 
+        private Button button_viewJourneyDetails;
+
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -39,6 +41,9 @@ namespace roots.Functions
             SelectedTripId = Intent.Extras.GetInt("tripId");
 
             SetContentView(Resource.Layout.TripDetails);
+
+            button_viewJourneyDetails = FindViewById<Button>(Resource.Id.buttonViewJourneys);
+            button_viewJourneyDetails.Click += Button_viewJourneyDetails_Click;
 
             var makeActiveButton = base.FindViewById<Button>(Resource.Id.buttonMakeTripActive);
             makeActiveButton.Click += MakeActiveButton_Click;
@@ -59,13 +64,19 @@ namespace roots.Functions
             tripView.Text = Convert.ToString(journeys);
             distanceView.Text = Convert.ToString(Math.Round((distance / 1.61), 2));
             timeView.Text = span.ToString(@"hh\:mm");
-
             
         }
 
         private void MakeActiveButton_Click(object sender, EventArgs e)
         {
             tripRepository_.SetActiveTrip(SelectedTripId);
+        }
+
+        private void Button_viewJourneyDetails_Click(object sender, EventArgs e)
+        {
+            var intent = new Intent(this, typeof(JourneyList));
+            intent.PutExtra("tripId", SelectedTripId);
+            StartActivity(intent);
         }
     }
 }

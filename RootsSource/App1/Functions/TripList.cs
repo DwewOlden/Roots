@@ -77,7 +77,6 @@ namespace roots.TabViews
 
             mAdapter = new TripListAdapter(this, Resource.Layout.TripListViewRow, mTrips, action);
             mListView.Adapter = mAdapter;
-
         }
 
         private void TripSelected(TextView textView)

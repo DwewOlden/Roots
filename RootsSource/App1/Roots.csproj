@@ -64,6 +64,7 @@
     <Compile Include="Forms\Drivers\AddNewDriver.cs" />
     <Compile Include="Functions\AddNewTrip.cs" />
     <Compile Include="Functions\JourneyActivity.cs" />
+    <Compile Include="Functions\JourneyList.cs" />
     <Compile Include="Functions\MainMenuActivity.cs" />
     <Compile Include="Functions\TripDetails.cs" />
     <Compile Include="Functions\TripList.cs" />
@@ -87,6 +88,8 @@
     <Compile Include="SupportingSystems\DriverSystem\Driver.cs" />
     <Compile Include="SupportingSystems\DriverSystem\DriverListAdapter.cs" />
     <Compile Include="SupportingSystems\DriverSystem\DriverSpinnerAdapter.cs" />
+    <Compile Include="SupportingSystems\Journey\Journey.cs" />
+    <Compile Include="SupportingSystems\Journey\JourneyListAdapter.cs" />
     <Compile Include="SupportingSystems\Trips\CreateTripEventArgs.cs" />
     <Compile Include="SupportingSystems\Trips\Trip.cs" />
     <Compile Include="SupportingSystems\Trips\TripListAdapter.cs" />
@@ -356,6 +359,16 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Add_New_Stopping_Point.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\JourneyListVewRowLayout.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\MainJourneyListScreen.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
