@@ -18,6 +18,53 @@ namespace roots.SupportingSystems.Data
     {
         string format = "yyyy-MM-dd HH:mm:ss";
 
+        public bool GetAllDriverStats(int Id,out Dictionary<string, int> Time,out Dictionary<string, double> Distance)
+        {
+            Time = new Dictionary<string, int>();
+            Distance = new Dictionary<string, double>();
+            
+            try
+            {
+                string SQLString = GetCompleteRecordsFromTrip(Id);
+
+                connection = new SqliteConnection("Data Source=" + GetPathToDatabase());
+                connection.Open();
+
+                using (var c = connection.CreateCommand())
+                {
+                    c.CommandText = SQLString;
+                    var reader = c.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        Journey.Journey j = new Journey.Journey()
+                        {
+                            Starting = DateTime.ParseExact(reader.GetString(3), "yyyy-M-d H:m:s.FFF", CultureInfo.InvariantCulture, DateTimeStyles.None),
+                            Ending = DateTime.ParseExact(reader.GetString(4), "yyyy-M-d H:m:s.FFF", CultureInfo.InvariantCulture, DateTimeStyles.None),
+                            DriverName = reader.GetString(8)
+                        };
+
+                        
+
+                    }
+
+                    reader.Close();
+                }
+
+                connection.Close();
+                connection.Dispose();
+                connection = null;
+
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+
         public List<Journey.Journey> GetAllTripJourneys(int Id)
         {
             List<Journey.Journey> journeysList = new List<Journey.Journey>();
