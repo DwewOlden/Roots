@@ -14,7 +14,7 @@ using roots.SupportingSystems.DriverSystem;
 
 namespace roots.Functions
 {
-    public class MainMenuActivity:Activity
+    public class AppCompatActivity:Activity
     {
         private DatabaseCreation databaseCreation;
         private Spinner mListView;
