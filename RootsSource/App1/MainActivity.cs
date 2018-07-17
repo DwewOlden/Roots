@@ -13,22 +13,36 @@ namespace roots
     [Activity(Label = "Roots", MainLauncher = true, Theme = "@style/AppTheme")]
     public class MainActivity : Activity
     {
-        private ImageView im;
-        private Bitmap bmp;
-        private Bitmap operation;
+        private ImageView titleImageView;
+        private Bitmap titleBitmap;
 
+        private Button button_next;
+       
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
             SetContentView(Resource.Layout.activity_main);
-            im = (ImageView)FindViewById(Resource.Id.myImageView);
-            Android.Graphics.Drawables.BitmapDrawable bd = (Android.Graphics.Drawables.BitmapDrawable)im.Drawable;
-            bmp = bd.Bitmap;
-            var vv11 = ApplyBitmapBrightness(23, bmp);
-            
-            im.SetImageBitmap(vv11);
+            DrawTopImageInPurple();
 
+            button_next = FindViewById<Button>(Resource.Id.titlePage_button_ok);
+            button_next.Click += Button_next_Click;
+
+        }
+
+        private void Button_next_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine("There will be only one...");
+        }
+
+        private void DrawTopImageInPurple()
+        {
+            titleImageView = (ImageView)FindViewById(Resource.Id.myImageView);
+            Android.Graphics.Drawables.BitmapDrawable bd = (Android.Graphics.Drawables.BitmapDrawable)titleImageView.Drawable;
+            titleBitmap = bd.Bitmap;
+            var vv11 = ApplyBitmapBrightness(23, titleBitmap);
+
+            titleImageView.SetImageBitmap(vv11);
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
