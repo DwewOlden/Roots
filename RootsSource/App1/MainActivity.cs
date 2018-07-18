@@ -32,7 +32,7 @@ namespace roots
 
         private void Button_next_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Debug.WriteLine("There will be only one...");
+            StartActivity(typeof(JourneyActivity));
         }
 
         private void DrawTopImageInPurple()
