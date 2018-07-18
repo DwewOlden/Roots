@@ -5,6 +5,7 @@ using System.Text;
 
 using Android.App;
 using Android.Content;
+using Android.Graphics;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
@@ -16,6 +17,9 @@ namespace roots.Functions
     [Activity(Label = "Trips", MainLauncher = false, Icon = "@mipmap/icon")]
     public class TripDetails : Activity
     {
+        private ImageView titleImageView;
+        private Bitmap titleBitmap;
+
         /// <summary>
         /// The trip id
         /// </summary>
@@ -41,6 +45,7 @@ namespace roots.Functions
             SelectedTripId = Intent.Extras.GetInt("tripId");
 
             SetContentView(Resource.Layout.TripDetails);
+            DrawTopImageInPurple();
 
             button_viewJourneyDetails = FindViewById<Button>(Resource.Id.buttonViewJourneys);
             button_viewJourneyDetails.Click += Button_viewJourneyDetails_Click;
@@ -77,6 +82,49 @@ namespace roots.Functions
             var intent = new Intent(this, typeof(JourneyList));
             intent.PutExtra("tripId", SelectedTripId);
             StartActivity(intent);
+        }
+
+        public static Bitmap ApplyBitmapBrightness(int brightnessLevel, Bitmap bitmap)
+        {
+            // Create a temporary bitmap to preserve the original image for the final draw
+            Bitmap brightnessAdjustedBitmap = Bitmap.CreateBitmap(bitmap.Width, bitmap.Height, Bitmap.Config.Argb8888);
+            Canvas c = new Canvas(brightnessAdjustedBitmap);
+            Paint paint = new Paint();
+            ColorMatrix colorMatrix = new ColorMatrix();
+
+            // Apply the brightness filter and draw the final bitmap using 
+            // the paint object and the origin bitmap
+            ColorMatrixColorFilter brightnessFilter = AdjustBrightness(brightnessLevel);
+            paint.SetColorFilter(brightnessFilter);
+            c.DrawBitmap(bitmap, 0, 0, paint);
+            return brightnessAdjustedBitmap;
+        }
+
+        private void DrawTopImageInPurple()
+        {
+            titleImageView = (ImageView)FindViewById(Resource.Id.myImageViewV3);
+            Android.Graphics.Drawables.BitmapDrawable bd = (Android.Graphics.Drawables.BitmapDrawable)titleImageView.Drawable;
+            titleBitmap = bd.Bitmap;
+            var vv11 = ApplyBitmapBrightness(23, titleBitmap);
+
+            titleImageView.SetImageBitmap(vv11);
+        }
+
+        public static ColorMatrixColorFilter AdjustBrightness(int BrightnessLevel)
+        {
+
+            ColorMatrix matrix = new ColorMatrix();
+
+            // This is essentially an identity matrix that adjusts colors based on the fourth 
+            // element of each row of the matrix
+            matrix.Set(new float[] {
+            1F, 0, 0, 0, 0.4F,
+            0, 0, 0, 0,0,
+            0, 0, 1F, 0, 0.4F,
+            0, 0, 0, 0.8F, 0 });
+
+            ColorMatrixColorFilter brightnessFilter = new ColorMatrixColorFilter(matrix);
+            return brightnessFilter;
         }
     }
 }

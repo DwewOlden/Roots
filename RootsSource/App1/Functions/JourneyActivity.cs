@@ -5,6 +5,7 @@ using System.Text;
 
 using Android.App;
 using Android.Content;
+using Android.Graphics;
 using Android.Locations;
 using Android.OS;
 using Android.Runtime;
@@ -20,6 +21,9 @@ namespace roots.Functions
     [Activity(Label = "Journey", MainLauncher = false, Icon = "@drawable/xs")]
     public class JourneyActivity : Activity
     {
+        private ImageView titleImageView;
+        private Bitmap titleBitmap;
+
         private int SleepPeriodInMilliSeconds = 5 * 1000;
         System.Timers.Timer timer;
 
@@ -59,14 +63,18 @@ namespace roots.Functions
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
+            
+
             timer = new System.Timers.Timer(SleepPeriodInMilliSeconds);
             timer.Elapsed += Timer_Elapsed;
 
             HaversineCalculator = new Haversine();
 
             SetContentView(Resource.Layout.JourneyLayout);
+
             var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
             SetActionBar(toolbar);
+            DrawTopImageInPurple();
 
             mListView = FindViewById<Spinner>(Resource.Id.driverSelectSpinner);
             mListView.ItemSelected += MListView_ItemSelected;
@@ -262,6 +270,49 @@ namespace roots.Functions
             }
 
             return base.OnOptionsItemSelected(item);
+        }
+
+        public static Bitmap ApplyBitmapBrightness(int brightnessLevel, Bitmap bitmap)
+        {
+            // Create a temporary bitmap to preserve the original image for the final draw
+            Bitmap brightnessAdjustedBitmap = Bitmap.CreateBitmap(bitmap.Width, bitmap.Height, Bitmap.Config.Argb8888);
+            Canvas c = new Canvas(brightnessAdjustedBitmap);
+            Paint paint = new Paint();
+            ColorMatrix colorMatrix = new ColorMatrix();
+
+            // Apply the brightness filter and draw the final bitmap using 
+            // the paint object and the origin bitmap
+            ColorMatrixColorFilter brightnessFilter = AdjustBrightness(brightnessLevel);
+            paint.SetColorFilter(brightnessFilter);
+            c.DrawBitmap(bitmap, 0, 0, paint);
+            return brightnessAdjustedBitmap;
+        }
+
+        private void DrawTopImageInPurple()
+        {
+            titleImageView = (ImageView)FindViewById(Resource.Id.myImageViewV2);
+            Android.Graphics.Drawables.BitmapDrawable bd = (Android.Graphics.Drawables.BitmapDrawable)titleImageView.Drawable;
+            titleBitmap = bd.Bitmap;
+            var vv11 = ApplyBitmapBrightness(23, titleBitmap);
+
+            titleImageView.SetImageBitmap(vv11);
+        }
+
+        public static ColorMatrixColorFilter AdjustBrightness(int BrightnessLevel)
+        {
+
+            ColorMatrix matrix = new ColorMatrix();
+
+            // This is essentially an identity matrix that adjusts colors based on the fourth 
+            // element of each row of the matrix
+            matrix.Set(new float[] {
+            1F, 0, 0, 0, 0.4F,
+            0, 0, 0, 0,0,
+            0, 0, 1F, 0, 0.4F,
+            0, 0, 0, 0.8F, 0 });
+
+            ColorMatrixColorFilter brightnessFilter = new ColorMatrixColorFilter(matrix);
+            return brightnessFilter;
         }
     }
 }
