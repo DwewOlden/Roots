@@ -159,15 +159,6 @@ namespace roots
 			// aapt resource value: 0x7f0a0017
 			public const int btnStar = 2131361815;
 			
-			// aapt resource value: 0x7f0a003f
-			public const int buttonFunFacts = 2131361855;
-			
-			// aapt resource value: 0x7f0a003d
-			public const int buttonMakeTripActive = 2131361853;
-			
-			// aapt resource value: 0x7f0a003e
-			public const int buttonViewJourneys = 2131361854;
-			
 			// aapt resource value: 0x7f0a0025
 			public const int dattimeHeaderRow = 2131361829;
 			
@@ -237,32 +228,35 @@ namespace roots
 			// aapt resource value: 0x7f0a001c
 			public const int lblTripLabel = 2131361820;
 			
-			// aapt resource value: 0x7f0a0043
-			public const int menu_add_driver = 2131361859;
-			
-			// aapt resource value: 0x7f0a004a
-			public const int menu_add_trip = 2131361866;
-			
-			// aapt resource value: 0x7f0a0042
-			public const int menu_driver_details = 2131361858;
-			
-			// aapt resource value: 0x7f0a0044
-			public const int menu_edit = 2131361860;
-			
-			// aapt resource value: 0x7f0a0046
-			public const int menu_preferences2 = 2131361862;
-			
-			// aapt resource value: 0x7f0a0047
-			public const int menu_preferences3 = 2131361863;
+			// aapt resource value: 0x7f0a0041
+			public const int menu_add_driver = 2131361857;
 			
 			// aapt resource value: 0x7f0a0048
-			public const int menu_preferences4 = 2131361864;
+			public const int menu_add_trip = 2131361864;
 			
-			// aapt resource value: 0x7f0a0045
-			public const int menu_save = 2131361861;
+			// aapt resource value: 0x7f0a0040
+			public const int menu_driver_details = 2131361856;
+			
+			// aapt resource value: 0x7f0a0042
+			public const int menu_edit = 2131361858;
 			
 			// aapt resource value: 0x7f0a0049
-			public const int menu_trip_details = 2131361865;
+			public const int menu_fun_facts = 2131361865;
+			
+			// aapt resource value: 0x7f0a0044
+			public const int menu_preferences2 = 2131361860;
+			
+			// aapt resource value: 0x7f0a0045
+			public const int menu_preferences3 = 2131361861;
+			
+			// aapt resource value: 0x7f0a0046
+			public const int menu_preferences4 = 2131361862;
+			
+			// aapt resource value: 0x7f0a0043
+			public const int menu_save = 2131361859;
+			
+			// aapt resource value: 0x7f0a0047
+			public const int menu_trip_details = 2131361863;
 			
 			// aapt resource value: 0x7f0a0036
 			public const int mileageRow = 2131361846;
@@ -312,6 +306,9 @@ namespace roots
 			// aapt resource value: 0x7f0a001b
 			public const int tripHeader = 2131361819;
 			
+			// aapt resource value: 0x7f0a003d
+			public const int tripInstanceMenu = 2131361853;
+			
 			// aapt resource value: 0x7f0a0034
 			public const int tripMenu = 2131361844;
 			
@@ -330,11 +327,11 @@ namespace roots
 			// aapt resource value: 0x7f0a002b
 			public const int txtJourneyTimes = 2131361835;
 			
-			// aapt resource value: 0x7f0a0040
-			public const int txtTripScreenTripName = 2131361856;
+			// aapt resource value: 0x7f0a003e
+			public const int txtTripScreenTripName = 2131361854;
 			
-			// aapt resource value: 0x7f0a0041
-			public const int txtTripScreenTripWhen = 2131361857;
+			// aapt resource value: 0x7f0a003f
+			public const int txtTripScreenTripWhen = 2131361855;
 			
 			static Id()
 			{
@@ -417,7 +414,10 @@ namespace roots
 			public const int MainMenuItems = 2131296257;
 			
 			// aapt resource value: 0x7f090002
-			public const int trip_menu = 2131296258;
+			public const int trip_instance_menu = 2131296258;
+			
+			// aapt resource value: 0x7f090003
+			public const int trip_menu = 2131296259;
 			
 			static Menu()
 			{

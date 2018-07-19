@@ -46,14 +46,38 @@ namespace roots.Functions
 
             SetContentView(Resource.Layout.TripDetails);
             DrawTopImageInPurple();
+            var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
+            SetActionBar(toolbar);
 
-            button_viewJourneyDetails = FindViewById<Button>(Resource.Id.buttonViewJourneys);
-            button_viewJourneyDetails.Click += Button_viewJourneyDetails_Click;
+            //button_viewJourneyDetails = FindViewById<Button>(Resource.Id.buttonViewJourneys);
+            //button_viewJourneyDetails.Click += Button_viewJourneyDetails_Click;
 
-            var makeActiveButton = base.FindViewById<Button>(Resource.Id.buttonMakeTripActive);
-            makeActiveButton.Click += MakeActiveButton_Click;
+            //var makeActiveButton = base.FindViewById<Button>(Resource.Id.buttonMakeTripActive);
+            //makeActiveButton.Click += MakeActiveButton_Click;
 
             PopulateOnScreenInformation();
+
+            var editToolbar = FindViewById<Toolbar>(Resource.Id.tripInstanceMenu);
+            editToolbar.InflateMenu(Resource.Menu.trip_instance_menu);
+            editToolbar.MenuItemClick += (sender, e) =>
+            {
+
+                string ContextMenuSelected = e.Item.TitleFormatted.ToString();
+
+                switch (ContextMenuSelected)
+                {
+                    case "View Journeys":
+                        var intent = new Intent(this, typeof(JourneyList));
+                        intent.PutExtra("tripId", SelectedTripId);
+                        StartActivity(intent);
+                        break;
+                    case "Make Active":
+                        tripRepository_.SetActiveTrip(SelectedTripId);
+                        break;
+                    
+
+                }
+            };
         }
 
         private void PopulateOnScreenInformation()
@@ -74,7 +98,7 @@ namespace roots.Functions
 
         private void MakeActiveButton_Click(object sender, EventArgs e)
         {
-            tripRepository_.SetActiveTrip(SelectedTripId);
+            
         }
 
         private void Button_viewJourneyDetails_Click(object sender, EventArgs e)

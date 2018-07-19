@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+  <item
+       android:id="@+id/menu_trip_details"
+       android:icon="@mipmap/ic_details_white_24dp"
+       android:showAsAction="ifRoom"
+       android:layout_width="0dp"
+       android:layout_weight="1"
+       android:title="View Journeys" />
+  <item
+       android:id="@+id/menu_add_trip"
+       android:icon="@mipmap/ic_plus_one_white_24dp"
+       android:showAsAction="never"
+       android:layout_width="0dp"
+       android:layout_weight="1"
+       android:title="Make Active" />
+  <item
+       android:id="@+id/menu_add_trip"
+       android:icon="@mipmap/ic_directions_car_white_24dp"
+       android:showAsAction="never"
+       android:layout_width="0dp"
+       android:layout_weight="1"
+       android:title="Add Manual Journey" />
+  <item
+       android:id="@+id/menu_fun_facts"
+       android:icon="@mipmap/ic_menu_copy_holo_dark"
+       android:showAsAction="never"
+       android:layout_width="0dp"
+       android:layout_weight="1"
+       android:title="Fun Facts" />
+</menu>
