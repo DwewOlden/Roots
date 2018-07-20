@@ -74,8 +74,11 @@ namespace roots.Functions
                     case "Make Active":
                         tripRepository_.SetActiveTrip(SelectedTripId);
                         break;
-                    
-
+                    case "Add Manual Journey":
+                        var NewJourneyIntent = new Intent(this, typeof(InsertNewManualJourney));
+                        StartActivity(NewJourneyIntent);
+                        break;
+                        
                 }
             };
         }

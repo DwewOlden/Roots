@@ -75,9 +75,11 @@
     <Compile Include="Forms\AddNewStopPoint.cs" />
     <Compile Include="Forms\Drivers\AddNewDriver.cs" />
     <Compile Include="Functions\AddNewTrip.cs" />
+    <Compile Include="Functions\InsertNewManualJourney.cs" />
     <Compile Include="Functions\JourneyActivity.cs" />
     <Compile Include="Functions\JourneyList.cs" />
     <Compile Include="Functions\MainMenuActivity.cs" />
+    <Compile Include="Functions\set_time_dialog.cs" />
     <Compile Include="Functions\TripDetails.cs" />
     <Compile Include="Functions\TripList.cs" />
     <Compile Include="MainActivity.cs" />
@@ -103,6 +105,7 @@
     <Compile Include="SupportingSystems\DriverSystem\DriverSpinnerAdapter.cs" />
     <Compile Include="SupportingSystems\Journey\Journey.cs" />
     <Compile Include="SupportingSystems\Journey\JourneyListAdapter.cs" />
+    <Compile Include="SupportingSystems\SelectedTimeEventArgs.cs" />
     <Compile Include="SupportingSystems\Trips\CreateTripEventArgs.cs" />
     <Compile Include="SupportingSystems\Trips\Trip.cs" />
     <Compile Include="SupportingSystems\Trips\TripListAdapter.cs" />
@@ -405,6 +408,16 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\menu\trip_instance_menu.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\AddManualJourney.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\set_time_dialog_fragment.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

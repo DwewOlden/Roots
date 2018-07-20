@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/MainMenuBackground" />
+<!-- The Text Saying This Is The Times  -->
+    <LinearLayout
+        android:id="@+id/timesHeader"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
+        android:layout_below="@id/toolbar"
+        android:layout_margin="2dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:text="JOURNEY TIMES"
+            android:layout_marginTop="16dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:id="@+id/lblAboutTimesLabel" />
+    </LinearLayout>
+<!-- This Is The Row That Sets Out The Times-->
+    <LinearLayout
+        android:id="@+id/timeInformationRow"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="4dp"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
+        android:layout_below="@id/timesHeader"
+        android:layout_margin="2dp">
+        <TextView
+            android:layout_width="0dp"
+            android:gravity="center"
+            android:text="00:00"
+            android:layout_marginTop="4dp"
+            android:textSize="16sp"
+            android:layout_weight="0.5"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:id="@+id/manual_insert_starting_label" />
+        <TextView
+            android:layout_width="0dp"
+            android:gravity="center"
+            android:text="00:00"
+            android:layout_marginTop="4dp"
+            android:layout_weight="0.5"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:id="@+id/manual_insert_ending_label" />
+    </LinearLayout>
+<!-- This is the row about the button -->
+    <LinearLayout
+        android:id="@+id/timeButtonRow"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="4dp"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
+        android:layout_below="@id/timeInformationRow"
+        android:layout_margin="2dp">
+        <Button
+            android:layout_width="0dp"
+            android:gravity="center"
+            android:text="Starts"
+            android:layout_marginTop="4dp"
+            android:layout_weight="0.5"
+            android:layout_height="wrap_content"
+            android:id="@+id/manual_insert_starting_button" />
+        <Button
+            android:layout_width="0dp"
+            android:gravity="center"
+            android:text="Ends"
+            android:layout_marginTop="4dp"
+            android:layout_weight="0.5"
+            android:layout_height="wrap_content"
+            android:id="@+id/manual_insert_ending_button" />
+    </LinearLayout>
+    <Button
+        android:layout_below="@id/timeButtonRow"
+        android:text="Add This Journey"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/add_journey_button" />
+</RelativeLayout>
