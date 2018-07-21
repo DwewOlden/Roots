@@ -18,7 +18,7 @@ namespace roots.Functions
     public class InsertNewManualJourney : Activity
     {
         private int SelectedDriverId;
-        private int SelectedTripId;
+        private int SelectedTripId = int.MinValue;
 
 
         private JourneyRepository journeyRepository;
@@ -49,9 +49,7 @@ namespace roots.Functions
 
         DateTime selectedStartTime = DateTime.MinValue;
         DateTime selectedEndTime = DateTime.MinValue;
-
-        private int TripId;
-
+        
         protected override void OnCreate(Bundle savedInstanceState)
         {
             tripRepository = new TripRepository();
@@ -95,7 +93,7 @@ namespace roots.Functions
         {
             if (hasFocus)
             {
-                TripId = tripRepository.GetActiveTrip();
+                SelectedTripId = tripRepository.GetActiveTrip();
             }
         }
 
@@ -126,6 +124,9 @@ namespace roots.Functions
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
+            double distanceValue = 0.0;
+
+
             if (!bothSet)
             {
                 Toast.MakeText(this, "Both times must be set, you silly billy!", ToastLength.Long).Show();
@@ -140,6 +141,8 @@ namespace roots.Functions
                 return;
             }
 
+            distanceValue = Convert.ToDouble(v);
+
             var k = endLocationText.Text;
             k = k.Trim();
             if (string.IsNullOrEmpty(k))
@@ -148,7 +151,14 @@ namespace roots.Functions
                 return;
             }
 
+            if (SelectedTripId == int.MinValue)
+            {
+                Toast.MakeText(this, "We do need an active trip we do!", ToastLength.Long).Show();
+                return;
+            }
+
             // Now we do the magic saving bit.
+            journeyRepository.ManuallyInsertNewJourney(SelectedDriverId, SelectedTripId, selectedStartTime, selectedEndTime, distanceValue, k);
 
 
 
