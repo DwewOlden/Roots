@@ -75,6 +75,7 @@
     <Compile Include="Forms\AddNewStopPoint.cs" />
     <Compile Include="Forms\Drivers\AddNewDriver.cs" />
     <Compile Include="Functions\AddNewTrip.cs" />
+    <Compile Include="Functions\DisplayJourneyDetails.cs" />
     <Compile Include="Functions\InsertNewManualJourney.cs" />
     <Compile Include="Functions\JourneyActivity.cs" />
     <Compile Include="Functions\JourneyList.cs" />
@@ -104,6 +105,7 @@
     <Compile Include="SupportingSystems\DriverSystem\DriverListAdapter.cs" />
     <Compile Include="SupportingSystems\DriverSystem\DriverSpinnerAdapter.cs" />
     <Compile Include="SupportingSystems\Journey\Journey.cs" />
+    <Compile Include="SupportingSystems\Journey\JourneyDetailsDTO.cs" />
     <Compile Include="SupportingSystems\Journey\JourneyListAdapter.cs" />
     <Compile Include="SupportingSystems\SelectedTimeEventArgs.cs" />
     <Compile Include="SupportingSystems\Trips\CreateTripEventArgs.cs" />
@@ -416,6 +418,11 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\set_time_dialog_fragment.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\DisplayJourneyDetails.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

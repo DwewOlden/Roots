@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/MainMenuBackground" />
+    <LinearLayout
+        android:id="@+id/tripDetailsStartTimeHeader"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="4dp"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
+        android:layout_below="@id/toolbar"
+        android:layout_margin="2dp">
+        <TextView
+            android:layout_width="0dp"
+            android:gravity="left"
+            android:text="Start Time:"
+            android:layout_marginTop="4dp"
+            android:textSize="14sp"
+            android:layout_weight="0.5"
+            android:layout_height="wrap_content"
+            android:id="@+id/journey_details_starttime_label" />
+        <TextView
+            android:layout_width="0dp"
+            android:gravity="center"
+            android:text="09:42"
+            android:layout_marginTop="4dp"
+            android:layout_weight="0.5"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:id="@+id/journey_details_starttime_value" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/tripDetailsDistanceHeader"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="4dp"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
+        android:layout_below="@id/tripDetailsStartTimeHeader"
+        android:layout_margin="2dp">
+        <TextView
+            android:layout_width="0dp"
+            android:gravity="left"
+            android:text="Distance Travelled:"
+            android:layout_marginTop="4dp"
+            android:textSize="14sp"
+            android:layout_weight="0.5"
+            android:layout_height="wrap_content"
+            android:id="@+id/journey_details_distance_label" />
+        <TextView
+            android:layout_width="0dp"
+            android:gravity="center"
+            android:text="42 Miles"
+            android:layout_marginTop="4dp"
+            android:layout_weight="0.5"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:id="@+id/journey_details_distance_value" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/tripDetailsTimeHeader"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="4dp"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
+        android:layout_below="@id/tripDetailsDistanceHeader"
+        android:layout_margin="2dp">
+        <TextView
+            android:layout_width="0dp"
+            android:gravity="left"
+            android:text="Journey Duration:"
+            android:layout_marginTop="4dp"
+            android:textSize="14sp"
+            android:layout_weight="0.5"
+            android:layout_height="wrap_content"
+            android:id="@+id/journey_details_duration_label" />
+        <TextView
+            android:layout_width="0dp"
+            android:gravity="center"
+            android:text="2 Hr 3 Min"
+            android:layout_marginTop="4dp"
+            android:layout_weight="0.5"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:id="@+id/journey_details_duration_value" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/tripDetailsDriverHeader"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="4dp"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
+        android:layout_below="@id/tripDetailsTimeHeader"
+        android:layout_margin="2dp">
+        <TextView
+            android:layout_width="0dp"
+            android:gravity="left"
+            android:text="Driven By:"
+            android:layout_marginTop="4dp"
+            android:textSize="14sp"
+            android:layout_weight="0.5"
+            android:layout_height="wrap_content"
+            android:id="@+id/journey_details_driver_label" />
+        <TextView
+            android:layout_width="0dp"
+            android:gravity="center"
+            android:text="Drew"
+            android:layout_marginTop="4dp"
+            android:layout_weight="0.5"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:id="@+id/journey_details_driver_value" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/tripDetailsEndPointHeader"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="4dp"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
+        android:layout_below="@id/tripDetailsDriverHeader"
+        android:layout_margin="2dp">
+        <TextView
+            android:layout_width="0dp"
+            android:gravity="left"
+            android:text="Ending At:"
+            android:layout_marginTop="4dp"
+            android:textSize="14sp"
+            android:layout_weight="0.5"
+            android:layout_height="wrap_content"
+            android:id="@+id/journey_details_endpoint_label" />
+        <TextView
+            android:layout_width="0dp"
+            android:gravity="center"
+            android:text="McDonalds WaWa"
+            android:layout_marginTop="4dp"
+            android:layout_weight="0.5"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:id="@+id/journey_details_endpoint_value" />
+    </LinearLayout>
+</RelativeLayout>

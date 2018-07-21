@@ -11,6 +11,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Mono.Data.Sqlite;
+using roots.SupportingSystems.Journey;
 
 namespace roots.SupportingSystems.Data
 {
@@ -18,11 +19,63 @@ namespace roots.SupportingSystems.Data
     {
         string format = "yyyy-MM-dd HH:mm:ss";
 
-        public bool GetAllDriverStats(int Id,out Dictionary<string, int> Time,out Dictionary<string, double> Distance)
+        public JourneyDetailsDTO GetSpecificJourneyStats(int Id)
+        {
+
+            JourneyDetailsDTO dto = new JourneyDetailsDTO();
+
+            try
+            {
+                string SQLString = GetSpecificJourney(Id);
+
+                connection = new SqliteConnection("Data Source=" + GetPathToDatabase());
+                connection.Open();
+
+                using (var c = connection.CreateCommand())
+                {
+                    c.CommandText = SQLString;
+                    var reader = c.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        Journey.JourneyDetailsDTO j = new Journey.JourneyDetailsDTO()
+                        {
+                            Id = reader.GetInt32(0),
+                           
+                            Starting = DateTime.ParseExact(reader.GetString(3), "yyyy-M-d H:m:s.FFF", CultureInfo.InvariantCulture, DateTimeStyles.None),
+                            Duration = DateTime.ParseExact(reader.GetString(4), "yyyy-M-d H:m:s.FFF", CultureInfo.InvariantCulture, DateTimeStyles.None)
+                                    .Subtract(DateTime.ParseExact(reader.GetString(3), "yyyy-M-d H:m:s.FFF", CultureInfo.InvariantCulture, DateTimeStyles.None)),
+                            Distance = reader.GetDouble(5),
+                            EndPoint = reader.GetString(6),
+                            DriverName = reader.GetString(8)
+                        };
+
+
+
+                    }
+
+                    reader.Close();
+                }
+
+                connection.Close();
+                connection.Dispose();
+                connection = null;
+
+                return dto;
+
+            }
+            catch (Exception ex)
+            {
+                return new JourneyDetailsDTO();
+            }
+        }
+
+
+        public bool GetAllDriverStats(int Id, out Dictionary<string, int> Time, out Dictionary<string, double> Distance)
         {
             Time = new Dictionary<string, int>();
             Distance = new Dictionary<string, double>();
-            
+
             try
             {
                 string SQLString = GetCompleteRecordsFromTrip(Id);
@@ -44,7 +97,7 @@ namespace roots.SupportingSystems.Data
                             DriverName = reader.GetString(8)
                         };
 
-                        
+
 
                     }
 
@@ -326,7 +379,7 @@ namespace roots.SupportingSystems.Data
 
             try
             {
-                string SQLString = GetInsertManualJourneyString(Driver, Trip,StartingTime,EndingTime,Distance,EndPoint);
+                string SQLString = GetInsertManualJourneyString(Driver, Trip, StartingTime, EndingTime, Distance, EndPoint);
 
                 connection = new SqliteConnection("Data Source=" + GetPathToDatabase());
                 connection.Open();
@@ -360,6 +413,12 @@ namespace roots.SupportingSystems.Data
         }
 
 
+        private string GetSpecificJourney(int Id)
+        {
+            string s = "SELECT J.*,D.Id,D.Name FROM JOURNEY J INNER JOIN DRIVERS D ON J.Driver = D.Id  WHERE J.Id = " + Id;
+            return s;
+        }
+
         private string GetCompleteRecordsFromTrip(int Id)
         {
             string s = "SELECT J.*,D.Id,D.Name FROM JOURNEY J INNER JOIN DRIVERS D ON J.Driver = D.Id  WHERE Trip = " + Id;
@@ -377,7 +436,7 @@ namespace roots.SupportingSystems.Data
             return s;
         }
 
-        private string GetInsertManualJourneyString(int Driver, int Trip,DateTime StartingTime,DateTime EndingTime,double Distance,string EndPoint)
+        private string GetInsertManualJourneyString(int Driver, int Trip, DateTime StartingTime, DateTime EndingTime, double Distance, string EndPoint)
         {
             DateTime Now = DateTime.Now;
             var v1 = Roots.Support.SQLLiteDateTimes.DateTimeSQLite(StartingTime);

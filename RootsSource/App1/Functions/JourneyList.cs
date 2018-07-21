@@ -87,8 +87,8 @@ namespace roots.Functions
             var journey = mJourneys[pos];
             var journeyId = journey.JourneyId;
 
-            var intent = new Intent(this, typeof(TripDetails));
-            intent.PutExtra("tripId", journeyId);
+            var intent = new Intent(this, typeof(DisplayJourneyDetails));
+            intent.PutExtra("journeyId", journeyId);
             StartActivity(intent);
         }
     }
