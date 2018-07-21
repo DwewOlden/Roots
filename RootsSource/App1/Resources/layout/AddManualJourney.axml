@@ -90,10 +90,88 @@
             android:layout_height="wrap_content"
             android:id="@+id/manual_insert_ending_button" />
     </LinearLayout>
-    <Button
+<!-- This is the row that gives the distance a header -->
+    <LinearLayout
         android:layout_below="@id/timeButtonRow"
+        android:id="@+id/distanceHeader"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="32dp"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
+        android:layout_margin="2dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:text="DISTANCE"
+            android:layout_marginTop="16dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:id="@+id/lblAboutDistanceLabel" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_below="@id/distanceHeader"
+        android:id="@+id/distanceValues"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="32dp"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
+        android:layout_margin="2dp"
+        android:gravity="center">
+        <EditText
+            android:inputType="numberDecimal"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/edit_distance_travelled" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_below="@id/distanceValues"
+        android:id="@+id/EndPointHeader"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="32dp"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
+        android:layout_margin="2dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:text="DISTANCE"
+            android:layout_marginTop="16dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:id="@+id/lblAboutDistanceLabel" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_below="@id/EndPointHeader"
+        android:id="@+id/EndPointValues"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="32dp"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
+        android:layout_margin="2dp"
+        android:gravity="center">
+        <EditText
+            android:inputType="text"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/edit_distance_travelled" />
+    </LinearLayout>
+    <Button
+        android:layout_alignParentBottom="true"
+        android:layout_below="@id/EndPointValues"
         android:text="Add This Journey"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:maxHeight="50dp"
         android:id="@+id/add_journey_button" />
 </RelativeLayout>
