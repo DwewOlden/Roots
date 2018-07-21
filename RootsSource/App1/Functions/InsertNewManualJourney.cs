@@ -9,45 +9,214 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using roots.SupportingSystems.Data;
+using roots.SupportingSystems.DriverSystem;
 
 namespace roots.Functions
 {
     [Activity(Label = "Insert A Journey")]
     public class InsertNewManualJourney : Activity
     {
-        private Button myButton;
+        private int SelectedDriverId;
+        private int SelectedTripId;
+
+
+        private JourneyRepository journeyRepository;
+        private DriverRepository driverRepository;
+        private TripRepository tripRepository;
+
+        private Spinner mListView;
+        private BaseAdapter<Driver> mAdapter;
+        private List<Driver> mDrivers;
+
+        private Action<Driver> mDriverSelected;
+
+
+        EditText distanceText;
+        EditText endLocationText;
+
+        Button StartTimeButton;
+        Button EndTimeButton;
+        Button saveButton;
+
+        TextView StartTimeText;
+        TextView EndTimeText;
+
+        bool startTimeSet = false;
+        bool endTimeSet = false;
         private bool bothSet = false;
         private int currentlySetting = int.MinValue;
 
-        DateTime x1 = DateTime.MinValue;
-        DateTime x2 = DateTime.MinValue;
+        DateTime selectedStartTime = DateTime.MinValue;
+        DateTime selectedEndTime = DateTime.MinValue;
+
+        private int TripId;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
+            tripRepository = new TripRepository();
+            driverRepository = new DriverRepository();
+            journeyRepository = new JourneyRepository();
+
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.AddManualJourney);
 
             var toolbar = base.FindViewById<Toolbar>(Resource.Id.toolbar);
             SetActionBar(toolbar);
 
-            myButton = FindViewById<Button>(Resource.Id.add_journey_button);
-            myButton.Click += MyButton_Click;
+            StartTimeButton = FindViewById<Button>(Resource.Id.manual_insert_starting_button);
+            StartTimeButton.Click += StartTime_Click;
+
+            EndTimeButton = FindViewById<Button>(Resource.Id.manual_insert_ending_button);
+            EndTimeButton.Click += EndTimeButton_Click;
+
+            StartTimeText = FindViewById<TextView>(Resource.Id.manual_insert_starting_label);
+            EndTimeText = FindViewById<TextView>(Resource.Id.manual_insert_ending_label);
+
+            distanceText = FindViewById<EditText>(Resource.Id.edit_distance_travelled);
+            endLocationText = FindViewById<EditText>(Resource.Id.edit_endpoint_location);
+
+            saveButton = FindViewById<Button>(Resource.Id.add_journey_button);
+            saveButton.Click += SaveButton_Click;
+
+            mListView = FindViewById<Spinner>(Resource.Id.driverSelectSpinner);
+            mListView.ItemSelected += MListView_ItemSelected;
+            mDrivers = new List<Driver>();
+            mDriverSelected = null;
+            mDriverSelected = DriverSelected;
+
+            mAdapter = new DriverSpinnerAdapter(this, Resource.Layout.DriverJourneyListViewRow, mDrivers, mDriverSelected);
+            mListView.Adapter = mAdapter;
+            PopulateDriverList();
+
+        }
+
+        public override void OnWindowFocusChanged(bool hasFocus)
+        {
+            if (hasFocus)
+            {
+                TripId = tripRepository.GetActiveTrip();
+            }
+        }
+
+        private void DriverSelected(Driver obj)
+        {
+            System.Diagnostics.Debug.WriteLine(string.Format("{0} has been selected", obj.Name));
+        }
+
+        private void MListView_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
+        {
+            SelectedDriverId = mDrivers[e.Position].DriverId;
+        }
+
+        private void PopulateDriverList()
+        {
+            mAdapter.Dispose();
+            mAdapter = null;
+
+            if (driverRepository == null)
+                driverRepository = new DriverRepository();
+
+            mDrivers = driverRepository.GetAllDrivers();
+
+            mAdapter = new DriverSpinnerAdapter(this, Resource.Layout.DriverJourneyListViewRow, mDrivers, mDriverSelected);
+            mListView.Adapter = mAdapter;
+
+        }
+
+        private void SaveButton_Click(object sender, EventArgs e)
+        {
+            if (!bothSet)
+            {
+                Toast.MakeText(this, "Both times must be set, you silly billy!", ToastLength.Long).Show();
+                return;
+            }
+
+            var v = distanceText.Text;
+            v = v.Trim();
+            if (string.IsNullOrEmpty(v))
+            {
+                Toast.MakeText(this, "How faarrr did ye go!", ToastLength.Long).Show();
+                return;
+            }
+
+            var k = endLocationText.Text;
+            k = k.Trim();
+            if (string.IsNullOrEmpty(k))
+            {
+                Toast.MakeText(this, "FFS, I place, I need a place!", ToastLength.Long).Show();
+                return;
+            }
+
+            // Now we do the magic saving bit.
+
+
+
+
+
 
 
         }
 
-        private void MyButton_Click(object sender, EventArgs e)
+        private void EndTimeButton_Click(object sender, EventArgs e)
+        {
+            currentlySetting = 2;
+            OpenDialogFragment();
+        }
+
+        private void OpenDialogFragment()
         {
             FragmentTransaction fragmentTransaction = FragmentManager.BeginTransaction();
             set_time_dialog dialog = new set_time_dialog();
             dialog.OnTimeSet += Dialog_OnTimeSet;
             dialog.Show(fragmentTransaction, "settime");
-            
+        }
+
+        private void StartTime_Click(object sender, EventArgs e)
+        {
+            currentlySetting = 1;
+            OpenDialogFragment();
         }
 
         private void Dialog_OnTimeSet(object sender, SupportingSystems.SelectedTimeEventArgs e)
         {
-            System.Diagnostics.Debug.WriteLine(e.ToString());
+            if (currentlySetting == 1)
+            {
+                selectedStartTime = e.SelectedTime;
+                StartTimeText.Text = GetTimeString(e.SelectedTime);
+                startTimeSet = true;
+
+                if (endTimeSet)
+                    bothSet = true;
+
+            }
+
+            if (currentlySetting == 2)
+            {
+                selectedEndTime = e.SelectedTime;
+                EndTimeText.Text = GetTimeString(e.SelectedTime);
+                endTimeSet = true;
+
+                if (startTimeSet)
+                    bothSet = true;
+            }
+
+            currentlySetting = int.MinValue;
+        }
+
+        private string GetTimeString(DateTime dateTime)
+        {
+            int Hour = dateTime.Hour;
+            int Minute = dateTime.Minute;
+
+            string HourString = Convert.ToString(Hour);
+            string MinuteString = Convert.ToString(Minute);
+
+            HourString = HourString.PadLeft(2, '0');
+            MinuteString = MinuteString.PadLeft(2, '0');
+
+            return string.Format("{0}:{1}", HourString, MinuteString);
+
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)

@@ -319,6 +319,46 @@ namespace roots.SupportingSystems.Data
             }
         }
 
+        public int ManuallyInsertNewJourney(int Driver, int Trip, DateTime StartingTime, DateTime EndingTime, double Distance, string EndPoint)
+        {
+            DateTime dateTime = DateTime.Now;
+            int Id = -1;
+
+            try
+            {
+                string SQLString = GetInsertManualJourneyString(Driver, Trip,StartingTime,EndingTime,Distance,EndPoint);
+
+                connection = new SqliteConnection("Data Source=" + GetPathToDatabase());
+                connection.Open();
+
+                using (var c = connection.CreateCommand())
+                {
+                    c.CommandText = SQLString;
+                    var k = c.ExecuteNonQuery();
+                }
+
+                using (var c = connection.CreateCommand())
+                {
+                    c.CommandText = GetLastTripString();
+                    var k = c.ExecuteReader();
+                    k.Read();
+                    Id = k.GetInt32(0);
+
+                }
+
+                connection.Close();
+                connection.Dispose();
+                connection = null;
+
+                return Id;
+
+            }
+            catch (Exception ex)
+            {
+                return Id;
+            }
+        }
+
 
         private string GetCompleteRecordsFromTrip(int Id)
         {
@@ -333,6 +373,19 @@ namespace roots.SupportingSystems.Data
 
             string s = string.Format("INSERT INTO [JOURNEY] (Driver,Trip,JourneyStarted,JourneyEnded,JourneyDistance,EndPoint) VALUES ({0},{1},'{2}','{3}',{4},{5})"
                 , Driver, Trip, v, v, 0, "'Not Set'");
+
+            return s;
+        }
+
+        private string GetInsertManualJourneyString(int Driver, int Trip,DateTime StartingTime,DateTime EndingTime,double Distance,string EndPoint)
+        {
+            DateTime Now = DateTime.Now;
+            var v = Roots.Support.SQLLiteDateTimes.DateTimeSQLite(Now);
+
+            string FormattedEndPoint = string.Format("'{0}'", EndPoint);
+
+            string s = string.Format("INSERT INTO [JOURNEY] (Driver,Trip,JourneyStarted,JourneyEnded,JourneyDistance,EndPoint) VALUES ({0},{1},'{2}','{3}',{4},{5})"
+                , Driver, Trip, StartingTime, EndingTime, Distance, FormattedEndPoint);
 
             return s;
         }

@@ -8,7 +8,7 @@
         layout="@layout/MainMenuBackground" />
 <!-- The Text Saying This Is The Times  -->
     <LinearLayout
-        android:id="@+id/timesHeader"
+        android:id="@+id/driverHeader"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -16,6 +16,45 @@
         android:layout_marginLeft="14dp"
         android:layout_marginRight="14dp"
         android:layout_below="@id/toolbar"
+        android:layout_margin="2dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:text="DRIVER"
+            android:layout_marginTop="16dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:id="@+id/lblAboutDriverLabel" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/driverSelector"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
+        android:layout_below="@id/driverHeader"
+        android:layout_margin="2dp">
+        <Spinner
+            android:id="@+id/driverSelectSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="14dp"
+            android:layout_marginRight="14dp"
+            android:layout_marginTop="8dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/timesHeader"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
+        android:layout_below="@id/driverSelector"
         android:layout_margin="2dp">
         <TextView
             android:layout_width="match_parent"
@@ -28,7 +67,6 @@
             android:textColor="@android:color/black"
             android:id="@+id/lblAboutTimesLabel" />
     </LinearLayout>
-<!-- This Is The Row That Sets Out The Times-->
     <LinearLayout
         android:id="@+id/timeInformationRow"
         android:layout_width="fill_parent"
@@ -62,7 +100,6 @@
             android:textStyle="bold"
             android:id="@+id/manual_insert_ending_label" />
     </LinearLayout>
-<!-- This is the row about the button -->
     <LinearLayout
         android:id="@+id/timeButtonRow"
         android:layout_width="fill_parent"
@@ -90,7 +127,6 @@
             android:layout_height="wrap_content"
             android:id="@+id/manual_insert_ending_button" />
     </LinearLayout>
-<!-- This is the row that gives the distance a header -->
     <LinearLayout
         android:layout_below="@id/timeButtonRow"
         android:id="@+id/distanceHeader"
@@ -142,7 +178,7 @@
         <TextView
             android:layout_width="match_parent"
             android:gravity="center"
-            android:text="DISTANCE"
+            android:text="ENDING AT"
             android:layout_marginTop="16dp"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -165,13 +201,13 @@
             android:inputType="text"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:id="@+id/edit_distance_travelled" />
+            android:id="@+id/edit_endpoint_location" />
     </LinearLayout>
     <Button
         android:layout_alignParentBottom="true"
         android:layout_below="@id/EndPointValues"
         android:text="Add This Journey"
         android:layout_width="match_parent"
-        android:maxHeight="50dp"
+        android:layout_height="match_parent"
         android:id="@+id/add_journey_button" />
 </RelativeLayout>
