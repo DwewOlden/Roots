@@ -23,7 +23,7 @@ namespace roots.SupportingSystems.Data
         /// <summary>
         /// This is used in debug only, if set to true it will empty the database
         /// </summary>
-        private const bool APPLY_KILL = false;
+        private const bool APPLY_KILL = true;
 
         /// <summary>
         /// A boolean flag indicating if the database already existed.

@@ -380,12 +380,14 @@ namespace roots.SupportingSystems.Data
         private string GetInsertManualJourneyString(int Driver, int Trip,DateTime StartingTime,DateTime EndingTime,double Distance,string EndPoint)
         {
             DateTime Now = DateTime.Now;
-            var v = Roots.Support.SQLLiteDateTimes.DateTimeSQLite(Now);
+            var v1 = Roots.Support.SQLLiteDateTimes.DateTimeSQLite(StartingTime);
+            var v2 = Roots.Support.SQLLiteDateTimes.DateTimeSQLite(EndingTime);
+            Distance = Distance * 1.61;
 
             string FormattedEndPoint = string.Format("'{0}'", EndPoint);
 
             string s = string.Format("INSERT INTO [JOURNEY] (Driver,Trip,JourneyStarted,JourneyEnded,JourneyDistance,EndPoint) VALUES ({0},{1},'{2}','{3}',{4},{5})"
-                , Driver, Trip, StartingTime, EndingTime, Distance, FormattedEndPoint);
+                , Driver, Trip, v1, v2, Distance, FormattedEndPoint);
 
             return s;
         }

@@ -13,6 +13,9 @@ namespace roots
     [Activity(Label = "Roots", MainLauncher = true, Theme = "@style/AppTheme")]
     public class MainActivity : Activity
     {
+        private DatabaseCreation databaseCreation;
+
+
         private ImageView titleImageView;
         private Bitmap titleBitmap;
 
@@ -20,6 +23,9 @@ namespace roots
        
         protected override void OnCreate(Bundle savedInstanceState)
         {
+            databaseCreation = new DatabaseCreation();
+            //databaseCreation.InitaliseDatabase();
+
             base.OnCreate(savedInstanceState);
 
             SetContentView(Resource.Layout.activity_main);

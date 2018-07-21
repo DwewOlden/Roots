@@ -63,7 +63,7 @@ namespace roots.Functions
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            
+            JourneyRepository = new JourneyRepository();
 
             timer = new System.Timers.Timer(SleepPeriodInMilliSeconds);
             timer.Elapsed += Timer_Elapsed;
