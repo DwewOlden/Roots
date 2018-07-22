@@ -38,7 +38,7 @@ namespace roots.SupportingSystems.Data
 
                     while (reader.Read())
                     {
-                        Journey.JourneyDetailsDTO j = new Journey.JourneyDetailsDTO()
+                        dto = new Journey.JourneyDetailsDTO()
                         {
                             Id = reader.GetInt32(0),
                            
@@ -415,7 +415,7 @@ namespace roots.SupportingSystems.Data
 
         private string GetSpecificJourney(int Id)
         {
-            string s = "SELECT J.*,D.Id,D.Name FROM JOURNEY J INNER JOIN DRIVERS D ON J.Driver = D.Id  WHERE J.Id = " + Id;
+            string s = "SELECT J.*,D.Id As DriverId,D.Name FROM JOURNEY J INNER JOIN DRIVERS D ON J.Driver = DriverId  WHERE J.Id = " + Id;
             return s;
         }
 

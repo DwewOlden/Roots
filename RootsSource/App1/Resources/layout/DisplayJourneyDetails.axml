@@ -17,6 +17,7 @@
         android:layout_below="@id/toolbar"
         android:layout_margin="2dp">
         <TextView
+            android:layout_marginLeft="16dp"
             android:layout_width="0dp"
             android:gravity="left"
             android:text="Start Time:"
@@ -46,6 +47,7 @@
         android:layout_below="@id/tripDetailsStartTimeHeader"
         android:layout_margin="2dp">
         <TextView
+            android:layout_marginLeft="16dp"
             android:layout_width="0dp"
             android:gravity="left"
             android:text="Distance Travelled:"
@@ -75,6 +77,7 @@
         android:layout_below="@id/tripDetailsDistanceHeader"
         android:layout_margin="2dp">
         <TextView
+            android:layout_marginLeft="16dp"
             android:layout_width="0dp"
             android:gravity="left"
             android:text="Journey Duration:"
@@ -104,6 +107,7 @@
         android:layout_below="@id/tripDetailsTimeHeader"
         android:layout_margin="2dp">
         <TextView
+            android:layout_marginLeft="16dp"
             android:layout_width="0dp"
             android:gravity="left"
             android:text="Driven By:"
@@ -133,6 +137,7 @@
         android:layout_below="@id/tripDetailsDriverHeader"
         android:layout_margin="2dp">
         <TextView
+            android:layout_marginLeft="16dp"
             android:layout_width="0dp"
             android:gravity="left"
             android:text="Ending At:"
@@ -150,5 +155,26 @@
             android:layout_height="wrap_content"
             android:textSize="14sp"
             android:id="@+id/journey_details_endpoint_value" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/trackDetailsLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="4dp"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
+        android:layout_below="@id/tripDetailsEndPointHeader"
+        android:layout_margin="2dp">
+        <Button
+            android:layout_marginLeft="44dp"
+            android:layout_marginRight="44dp"
+            android:gravity="center"
+            android:text="View Track"
+            android:layout_marginTop="18dp"
+            android:layout_marginBottom="18dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/trackDetailsButton" />
     </LinearLayout>
 </RelativeLayout>
