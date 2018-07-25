@@ -15,6 +15,34 @@ namespace roots.SupportingSystems.Data
 {
     public class TripRepository : BaseDataAccessingClass
     {
+        public bool UpdateWithStartPlace(int Id, string PlaceName)
+        {
+            try
+            {
+                string sql = GetStartPointSQLString(Id, PlaceName);
+
+                connection = new SqliteConnection("Data Source=" + GetPathToDatabase());
+                connection.Open();
+
+                using (var c = connection.CreateCommand())
+                {
+                    c.CommandText = sql;
+                    var k = c.ExecuteNonQuery();
+                }
+
+                connection.Close();
+                connection.Dispose();
+                connection = null;
+
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
 
         public bool SetActiveTrip(int id)
         {
@@ -180,7 +208,7 @@ namespace roots.SupportingSystems.Data
 
         private string GetInsertTripString(string name, string description, string when)
         {
-            string s = "INSERT INTO [TRIPS] (Name,Description,WhenFor,Active) VALUES ('" + name + "','" + description + "','" + when + "',0);";
+            string s = "INSERT INTO [TRIPS] (Name,Description,WhenFor,Active,StartPoint) VALUES ('" + name + "','" + description + "','" + when + "',0,'');";
             return s;
         }
 
@@ -199,6 +227,12 @@ namespace roots.SupportingSystems.Data
         public string GetActiveTripString()
         {
             string s = "SELECT Id FROM TRIPS WHERE ACTIVE = 1 ORDER BY Id LIMIT 1";
+            return s;
+        }
+
+        private string GetStartPointSQLString(int id, string StartPoint)
+        {
+            string s = string.Format("UPDATE [TRIPS] SET StartPoint = '{0}' WHERE Id={1}", StartPoint, id);
             return s;
         }
     }

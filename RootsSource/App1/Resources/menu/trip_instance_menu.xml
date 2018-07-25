@@ -28,4 +28,11 @@
        android:layout_width="0dp"
        android:layout_weight="1"
        android:title="Fun Facts" />
+  <item
+     android:id="@+id/menu_start_point"
+     android:icon="@mipmap/ic_menu_copy_holo_dark"
+     android:showAsAction="never"
+     android:layout_width="0dp"
+     android:layout_weight="1"
+     android:title="Set Start Point" />
 </menu>

@@ -183,9 +183,9 @@
         android:layout_height="match_parent"
         android:orientation="horizontal"
         android:layout_marginTop="4dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
         android:layout_below="@id/trackDetailsLayout">
         <fragment
             android:id="@+id/map"
@@ -193,4 +193,12 @@
             android:layout_height="match_parent"
             class="com.google.android.gms.maps.MapFragment" />
     </LinearLayout>
+    <Toolbar
+        android:layout_alignParentBottom="true"
+        android:id="@+id/notemenutoolbar"
+        android:minHeight="?android:attr/actionBarSize"
+        android:background="?android:attr/colorAccent"
+        android:theme="@android:style/ThemeOverlay.Material.Dark.ActionBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 </RelativeLayout>

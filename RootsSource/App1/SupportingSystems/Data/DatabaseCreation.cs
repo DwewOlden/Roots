@@ -97,9 +97,10 @@ namespace roots.SupportingSystems.Data
         private string[] GetCommands()
         {
             var commands = new[] {
-                "CREATE TABLE [TRIPS] (Id INTEGER PRIMARY KEY,Name nText, Description nText, WhenFor nText,Active INTEGER);",
-                "CREATE TABLE [JOURNEY] (Id INTEGER PRIMARY KEY,Driver INTEGER,Trip INTEGER,JourneyStarted datetime,JourneyEnded datetime,JourneyDistance real,EndPoint nText);",
-                "CREATE TABLE [DRIVERS] (Id INTEGER PRIMARY KEY, Name nText,ImageName nText,Registered nText,Active INTEGER);"
+                "CREATE TABLE [TRIPS] (Id INTEGER PRIMARY KEY,Name nText, Description nText, WhenFor nText,Active INTEGER,StartPoint nText);",
+                "CREATE TABLE [JOURNEY] (Id INTEGER PRIMARY KEY,Driver INTEGER,Trip INTEGER,JourneyStarted datetime,JourneyEnded datetime,JourneyDistance real,EndPoint nText,Notes nText,Amount nText,CostPerUnit nText,TotalCost nText);",
+                "CREATE TABLE [DRIVERS] (Id INTEGER PRIMARY KEY, Name nText,ImageName nText,Registered nText,Active INTEGER);",
+                "CREATE TABLE [JOURNEYPOINTS] (PointIndex INTEGER,JourneyId INTEGER, Lat real,Long real,PRIMARY KEY (PointIndex,JourneyId));"
             };
 
             return commands;

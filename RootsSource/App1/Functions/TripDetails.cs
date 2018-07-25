@@ -63,6 +63,7 @@ namespace roots.Functions
             {
 
                 string ContextMenuSelected = e.Item.TitleFormatted.ToString();
+                FragmentTransaction transaction = FragmentManager.BeginTransaction();
 
                 switch (ContextMenuSelected)
                 {
@@ -78,9 +79,28 @@ namespace roots.Functions
                         var NewJourneyIntent = new Intent(this, typeof(InsertNewManualJourney));
                         StartActivity(NewJourneyIntent);
                         break;
-                        
+                    case "Set Start Point":
+                        var startpointdialog = new Forms.set_start_point_fragment();
+                        startpointdialog.NoteAdded += Startpointdialog_NoteAdded;
+                        startpointdialog.Show(transaction, "dialog");
+                        break;
+
                 }
             };
+        }
+
+        private void Startpointdialog_NoteAdded(object sender, SupportingSystems.GenericNoteEventArgs e)
+        {
+            bool Outcome = tripRepository_.UpdateWithStartPlace(SelectedTripId, e.Notes);
+            DisplayToast(Outcome);
+        }
+
+        private void DisplayToast(bool outcome)
+        {
+            if (outcome)
+                Toast.MakeText(this, "Note Was Added", ToastLength.Long).Show();
+            else
+                Toast.MakeText(this, "Acchh, wee gremlins have been at us!", ToastLength.Long).Show();
         }
 
         private void PopulateOnScreenInformation()

@@ -19,6 +19,62 @@ namespace roots.SupportingSystems.Data
     {
         string format = "yyyy-MM-dd HH:mm:ss";
 
+        public bool UpdateWithNote(int Id, string totalcost,string costperunit,string units)
+        {
+            try
+            {
+                string sql = GetPetrolNoteString(Id,totalcost,costperunit,units);
+
+                connection = new SqliteConnection("Data Source=" + GetPathToDatabase());
+                connection.Open();
+
+                using (var c = connection.CreateCommand())
+                {
+                    c.CommandText = sql;
+                    var k = c.ExecuteNonQuery();
+                }
+
+                connection.Close();
+                connection.Dispose();
+                connection = null;
+
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        public bool UpdateWithNote(int Id, string PlaceName)
+        {
+            try
+            {
+                string sql = GetNoteSQLString(Id, PlaceName);
+
+                connection = new SqliteConnection("Data Source=" + GetPathToDatabase());
+                connection.Open();
+
+                using (var c = connection.CreateCommand())
+                {
+                    c.CommandText = sql;
+                    var k = c.ExecuteNonQuery();
+                }
+
+                connection.Close();
+                connection.Dispose();
+                connection = null;
+
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
         public JourneyDetailsDTO GetSpecificJourneyStats(int Id)
         {
 
@@ -47,7 +103,7 @@ namespace roots.SupportingSystems.Data
                                     .Subtract(DateTime.ParseExact(reader.GetString(3), "yyyy-M-d H:m:s.FFF", CultureInfo.InvariantCulture, DateTimeStyles.None)),
                             Distance = reader.GetDouble(5),
                             EndPoint = reader.GetString(6),
-                            DriverName = reader.GetString(8)
+                            DriverName = reader.GetString(12)
                         };
 
 
@@ -146,7 +202,7 @@ namespace roots.SupportingSystems.Data
 
                             Distance = reader.GetDouble(5),
                             EndPoint = reader.GetString(6),
-                            DriverName = reader.GetString(8)
+                            DriverName = reader.GetString(12)
                         };
 
                         journeysList.Add(j);
@@ -463,6 +519,18 @@ namespace roots.SupportingSystems.Data
         private string GetEndPointSQLString(int id, string placeName)
         {
             string s = string.Format("UPDATE [JOURNEY] SET EndPoint = '{0}' WHERE Id={1}", placeName, id);
+            return s;
+        }
+
+        private string GetNoteSQLString(int id, string noteText)
+        {
+            string s = string.Format("UPDATE [JOURNEY] SET Notes = '{0}' WHERE Id={1}", noteText, id);
+            return s;
+        }
+
+        private string GetPetrolNoteString(int id,string totalcost,string costperunit,string units)
+        {
+            string s = string.Format("UPDATE [JOURNEY] SET Amount = '{0}', TotalCost = {1},CostPerUnit={2} WHERE Id={3}", units,totalcost,costperunit, id);
             return s;
         }
 

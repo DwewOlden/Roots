@@ -12,6 +12,7 @@ using Android.Runtime;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
+using roots.Functions;
 using roots.SupportingSystems.Data;
 using roots.SupportingSystems.DriverSystem;
 
@@ -174,7 +175,9 @@ namespace roots.TabViews
             switch (titleFormatted)
             {
                 case "Edit":
-                    StartActivity(typeof(roots.Functions.JourneyActivity));
+                    Intent intent = new Intent(this.ApplicationContext, typeof(JourneyActivity));
+                    intent.SetFlags(ActivityFlags.SingleTop);
+                    StartActivity(intent);
                     break;
 
                 case "Drivers":

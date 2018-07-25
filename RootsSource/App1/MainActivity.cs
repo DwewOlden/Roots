@@ -38,7 +38,9 @@ namespace roots
 
         private void Button_next_Click(object sender, EventArgs e)
         {
-            StartActivity(typeof(JourneyActivity));
+            Intent intent = new Intent(this.ApplicationContext, typeof(JourneyActivity));
+            intent.SetFlags(ActivityFlags.SingleTop);
+            StartActivity(intent);
         }
 
         private void DrawTopImageInPurple()

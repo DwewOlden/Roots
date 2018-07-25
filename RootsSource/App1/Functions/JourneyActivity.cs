@@ -18,7 +18,7 @@ using Roots.Support;
 
 namespace roots.Functions
 {
-    [Activity(Label = "Journey", MainLauncher = false, Icon = "@drawable/xs")]
+    [Activity(Name ="App1.App1.JourneyActivity", Label = "Journey", MainLauncher = false, Icon = "@drawable/xs")]
     public class JourneyActivity : Activity
     {
         private ImageView titleImageView;
@@ -29,7 +29,7 @@ namespace roots.Functions
 
         // Journey related information
         private int SelectedDriverId = int.MinValue;
-        private int NewJourneyId = int.MinValue;
+        private int NewJourneyId;
         private DateTime JourneyStarted;
         private DateTime JourneyEnded;
         private TimeSpan timeToday = new TimeSpan();
@@ -38,6 +38,7 @@ namespace roots.Functions
         private Haversine HaversineCalculator;
         private double distance = 0.0;
         private double todayDistance = 0.0;
+        private int JourneyPointIndex = 1;
 
         private Spinner mListView;
         private BaseAdapter<Driver> mAdapter;
@@ -47,6 +48,7 @@ namespace roots.Functions
 
 
         private JourneyRepository JourneyRepository;
+        private JourneyPointRespository journeyPointRespository;
 
         /// <summary>
         /// An instance of the trip repository
@@ -64,7 +66,9 @@ namespace roots.Functions
         {
             base.OnCreate(savedInstanceState);
             JourneyRepository = new JourneyRepository();
+            journeyPointRespository = new JourneyPointRespository();
 
+            NewJourneyId = int.MinValue;
             timer = new System.Timers.Timer(SleepPeriodInMilliSeconds);
             timer.Elapsed += Timer_Elapsed;
 
@@ -143,21 +147,28 @@ namespace roots.Functions
 
         private void HandleLocationChanged(object sender, LocationChangedEventArgs e)
         {
-            System.Diagnostics.Debug.WriteLine(string.Format("Location Changed: {0}", e.Location));
+            System.Diagnostics.Debug.WriteLine(string.Format("New Journey Id: {0} ",NewJourneyId));
             if (previousLocation != null)
             {
                 distance = Math.Round(distance + HaversineCalculator.CalculateHaversineDistiance(e.Location, previousLocation), 5);
                 todayDistance = Math.Round(todayDistance + HaversineCalculator.CalculateHaversineDistiance(e.Location, previousLocation), 5);
 
-                JourneyRepository.UpdateJourneyDetails(NewJourneyId, distance);
+                if (NewJourneyId != int.MinValue)
+                {
+                    JourneyRepository.UpdateJourneyDetails(NewJourneyId, distance);
+                    journeyPointRespository.InsertPointIntoTrack(NewJourneyId, JourneyPointIndex, e.Location.Latitude, e.Location.Longitude);
+                }
             }
            
             previousLocation = e.Location;
+            JourneyPointIndex = JourneyPointIndex + 1;
             
         }
 
         private void JourneyButton_Click(object sender, EventArgs e)
         {
+            JourneyPointIndex = 1;
+
             if (JourneyRepository == null)
                 JourneyRepository = new JourneyRepository();
             
@@ -182,6 +193,7 @@ namespace roots.Functions
                 spinner.Enabled = false;
                 timer.Enabled = true;
                 RootApp.StartLocationService();
+                
             }
             else
             {
@@ -198,7 +210,7 @@ namespace roots.Functions
                 dialog.OnGetPlaceName += Dialog_OnGetPlaceName; 
                 dialog.Show(transaction, "dialog");
                 NewJourneyId = int.MinValue;
-                
+                previousLocation = null;       
             }
         }
 
@@ -257,7 +269,9 @@ namespace roots.Functions
             switch (titleFormatted)
             {
                 case "Edit":
-                    StartActivity(typeof(JourneyActivity));
+                    Intent intent = new Intent(this.ApplicationContext, typeof(JourneyActivity));
+                    intent.SetFlags(ActivityFlags.SingleTop);
+                    StartActivity(intent);
                     break;
 
                 case "Drivers":

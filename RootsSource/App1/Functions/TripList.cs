@@ -113,7 +113,9 @@ namespace roots.TabViews
             switch (titleFormatted)
             {
                 case "Edit":
-                    StartActivity(typeof(JourneyActivity));
+                    Intent intent = new Intent(this.ApplicationContext, typeof(JourneyActivity));
+                    intent.SetFlags(ActivityFlags.SingleTop);
+                    StartActivity(intent);
                     break;
 
                 case "Drivers":
