@@ -6,6 +6,11 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+        <ImageView
+            android:src="@android:drawable/ic_menu_gallery"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:id="@+id/finalbackgroundimage" />
         <microcharts.droid.ChartView
             android:id="@+id/distanceChartView"
             android:layout_width="match_parent"
