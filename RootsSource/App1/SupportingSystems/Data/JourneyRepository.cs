@@ -19,11 +19,78 @@ namespace roots.SupportingSystems.Data
     {
         string format = "yyyy-MM-dd HH:mm:ss";
 
-        public bool UpdateWithNote(int Id, string totalcost,string costperunit,string units)
+        public IEnumerable<ExportingTripRecord> GetExportDataSet(int Id)
+        {
+            List<ExportingTripRecord> list = new List<ExportingTripRecord>();
+
+            try
+            {
+                string SQLString = GetCompleteRecordsFromTrip(Id);
+
+                connection = new SqliteConnection("Data Source=" + GetPathToDatabase());
+                connection.Open();
+
+                using (var c = connection.CreateCommand())
+                {
+                    c.CommandText = SQLString;
+                    var reader = c.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        DateTime x;
+                        DateTime y;
+
+                        if (reader.IsDBNull((3)))
+                            x = DateTime.MinValue;
+                        else
+                            x = DateTime.ParseExact(reader.GetString(3), "yyyy-M-d H:m:s.FFF", CultureInfo.InvariantCulture, DateTimeStyles.None);
+
+
+                        if (reader.IsDBNull((4)))
+                            y = DateTime.MinValue;
+                        else
+                            y = DateTime.ParseExact(reader.GetString(4), "yyyy-M-d H:m:s.FFF", CultureInfo.InvariantCulture, DateTimeStyles.None);
+
+
+
+                        ExportingTripRecord record = new ExportingTripRecord()
+                        {
+                            JourneyStarted = x,
+                            JourneyEnded = y,
+                            Distance = !reader.IsDBNull(5) ? reader.GetDouble(5) : 0.0,
+                            EndPoint = !reader.IsDBNull(6) ? reader.GetString(6) : string.Empty,
+                            Notes = !reader.IsDBNull(7) ? reader.GetString(7): string.Empty,
+                            Amount = !reader.IsDBNull(8) ? reader.GetString(8) : string.Empty,
+                            CostPerUnit = !reader.IsDBNull(9) ? reader.GetString(9) : string.Empty,
+                            TotalCost = !reader.IsDBNull(10) ? reader.GetString(10) : string.Empty,
+                            DriverName = !reader.IsDBNull(12) ? reader.GetString(12) : string.Empty
+                        };
+
+                        list.Add(record);
+                    }
+
+                    reader.Close();
+                }
+
+                connection.Close();
+                connection.Dispose();
+                connection = null;
+
+                return list.AsEnumerable(); 
+
+            }
+            catch (Exception ex)
+            {
+                return new List<ExportingTripRecord>().AsEnumerable();
+            }
+        }
+
+
+        public bool UpdateWithNote(int Id, string totalcost, string costperunit, string units)
         {
             try
             {
-                string sql = GetPetrolNoteString(Id,totalcost,costperunit,units);
+                string sql = GetPetrolNoteString(Id, totalcost, costperunit, units);
 
                 connection = new SqliteConnection("Data Source=" + GetPathToDatabase());
                 connection.Open();
@@ -97,7 +164,7 @@ namespace roots.SupportingSystems.Data
                         dto = new Journey.JourneyDetailsDTO()
                         {
                             Id = reader.GetInt32(0),
-                           
+
                             Starting = DateTime.ParseExact(reader.GetString(3), "yyyy-M-d H:m:s.FFF", CultureInfo.InvariantCulture, DateTimeStyles.None),
                             Duration = DateTime.ParseExact(reader.GetString(4), "yyyy-M-d H:m:s.FFF", CultureInfo.InvariantCulture, DateTimeStyles.None)
                                     .Subtract(DateTime.ParseExact(reader.GetString(3), "yyyy-M-d H:m:s.FFF", CultureInfo.InvariantCulture, DateTimeStyles.None)),
@@ -105,9 +172,6 @@ namespace roots.SupportingSystems.Data
                             EndPoint = reader.GetString(6),
                             DriverName = reader.GetString(12)
                         };
-
-
-
                     }
 
                     reader.Close();
@@ -528,9 +592,9 @@ namespace roots.SupportingSystems.Data
             return s;
         }
 
-        private string GetPetrolNoteString(int id,string totalcost,string costperunit,string units)
+        private string GetPetrolNoteString(int id, string totalcost, string costperunit, string units)
         {
-            string s = string.Format("UPDATE [JOURNEY] SET Amount = '{0}', TotalCost = {1},CostPerUnit={2} WHERE Id={3}", units,totalcost,costperunit, id);
+            string s = string.Format("UPDATE [JOURNEY] SET Amount = '{0}', TotalCost = {1},CostPerUnit={2} WHERE Id={3}", units, totalcost, costperunit, id);
             return s;
         }
 

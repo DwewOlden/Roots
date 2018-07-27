@@ -791,6 +791,9 @@ namespace roots
 			// aapt resource value: 0x7f0c00a3
 			public const int menu_save = 2131493027;
 			
+			// aapt resource value: 0x7f0c00ad
+			public const int menu_start_export = 2131493037;
+			
 			// aapt resource value: 0x7f0c00ac
 			public const int menu_start_point = 2131493036;
 			

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using System.Threading;
 using Android.App;
 using Android.Content;
 using Android.Graphics;
@@ -10,6 +10,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using roots.SupportingSystems;
 using roots.SupportingSystems.Data;
 
 namespace roots.Functions
@@ -19,6 +20,10 @@ namespace roots.Functions
     {
         private ImageView titleImageView;
         private Bitmap titleBitmap;
+
+        private ProgressDialog _progressDialog;
+
+        private Thread _exportThread;
 
         /// <summary>
         /// The trip id
@@ -34,6 +39,8 @@ namespace roots.Functions
         private TextView tripView;
 
         private Button button_viewJourneyDetails;
+
+        private MyFileWriter _fileWriter;
 
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -84,9 +91,85 @@ namespace roots.Functions
                         startpointdialog.NoteAdded += Startpointdialog_NoteAdded;
                         startpointdialog.Show(transaction, "dialog");
                         break;
+                    case "Export Data To SD":
+                        PerformExport();
+                        break;
+                        
 
                 }
             };
+        }
+
+        private void PerformExport()
+        {
+            _exportThread = new Thread(PerformExportWork);
+            _exportThread.Start();
+
+            _progressDialog = new Android.App.ProgressDialog(this);
+            _progressDialog.Indeterminate = true;
+            _progressDialog.SetProgressStyle(Android.App.ProgressDialogStyle.Spinner);
+            _progressDialog.SetMessage("Exporting Is In Progress");
+            _progressDialog.SetCancelable(false);
+            _progressDialog.Show();
+        }
+
+        private void PerformExportWork()
+        {
+            _fileWriter = new MyFileWriter();
+
+            try
+            {
+                System.Diagnostics.Debug.WriteLine("Getting Start Information");
+
+                string startPoint = tripRepository_.GetStartPointFromTrip(SelectedTripId);
+                System.Threading.Thread.Sleep(300);
+
+                var recordList = JourneyRepository_.GetExportDataSet(SelectedTripId);
+                System.Diagnostics.Debug.WriteLine(String.Format("There are {0} records in the list", recordList.Count()));
+
+                _fileWriter.WriteLine(ExportingTripRecord.GetHeader());
+
+                foreach (var record in recordList)
+                {
+                    record.StartPoint = startPoint;
+                    _fileWriter.WriteLine(record.GetAsString());
+                    startPoint = record.EndPoint;
+                    System.Threading.Thread.Sleep(50);
+                }
+
+                System.Threading.Thread.Sleep(1 * 1000);
+
+                RunOnUiThread(() =>
+                {
+                    Toast.MakeText(this, "Export Completed", ToastLength.Long).Show();
+                });
+                
+            }
+            catch (Exception)
+            {
+                RunOnUiThread(() =>
+                {
+                    Toast.MakeText(this, "Export Completed", ToastLength.Long).Show();
+                });
+            }
+            finally
+            {
+                _progressDialog.Dismiss();
+                
+            }
+
+            
+           
+
+
+            
+
+
+
+
+
+           
+
         }
 
         private void Startpointdialog_NoteAdded(object sender, SupportingSystems.GenericNoteEventArgs e)
@@ -121,6 +204,7 @@ namespace roots.Functions
 
         private void MakeActiveButton_Click(object sender, EventArgs e)
         {
+            
             
         }
 

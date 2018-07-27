@@ -114,6 +114,7 @@ namespace roots.Functions
             var points = journeyPointRespository.GetTrackPointsForJourney(SelectedJourneyId);
             LatLngBounds.Builder builder = new LatLngBounds.Builder();
             PolylineOptions line = new PolylineOptions();
+            
 
             if (points.Count() > 0)
             {

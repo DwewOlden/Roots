@@ -147,6 +147,8 @@
     <Compile Include="SupportingSystems\DriverSystem\Driver.cs" />
     <Compile Include="SupportingSystems\DriverSystem\DriverListAdapter.cs" />
     <Compile Include="SupportingSystems\DriverSystem\DriverSpinnerAdapter.cs" />
+    <Compile Include="SupportingSystems\ExportingTripRecord.cs" />
+    <Compile Include="SupportingSystems\FileWriter.cs" />
     <Compile Include="SupportingSystems\GenericNoteEventArgs.cs" />
     <Compile Include="SupportingSystems\Journey\Journey.cs" />
     <Compile Include="SupportingSystems\Journey\JourneyDetailsDTO.cs" />

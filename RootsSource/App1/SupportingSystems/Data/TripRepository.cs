@@ -19,7 +19,7 @@ namespace roots.SupportingSystems.Data
         {
             try
             {
-                string sql = GetStartPointSQLString(Id, PlaceName);
+                string sql = GetSettingStartPointSQLString(Id, PlaceName);
 
                 connection = new SqliteConnection("Data Source=" + GetPathToDatabase());
                 connection.Open();
@@ -76,6 +76,42 @@ namespace roots.SupportingSystems.Data
         }
 
 
+        public string GetStartPointFromTrip(int Id)
+        {
+            try
+            {
+                string SQLString = GetStartPointSQLString(Id);
+
+                connection = new SqliteConnection("Data Source=" + GetPathToDatabase());
+                connection.Open();
+
+                string StartPoint = string.Empty;
+
+                using (var c = connection.CreateCommand())
+                {
+                    c.CommandText = SQLString;
+                    var reader = c.ExecuteReader();
+                    if (reader.Read())
+                        if (reader.IsDBNull(0))
+                            StartPoint = string.Empty;
+                        else
+                            StartPoint = reader.GetString(0);
+                }
+
+                connection.Close();
+                connection.Dispose();
+                connection = null;
+
+                return StartPoint;
+
+            }
+            catch (Exception ex)
+            {
+                return string.Empty;
+            }
+        }
+
+
         public int GetActiveTrip()
         {
             try
@@ -108,7 +144,7 @@ namespace roots.SupportingSystems.Data
                 return Int32.MinValue;
             }
         }
-        
+
         public List<Trip> GetAllTrips()
         {
             try
@@ -230,9 +266,15 @@ namespace roots.SupportingSystems.Data
             return s;
         }
 
-        private string GetStartPointSQLString(int id, string StartPoint)
+        private string GetSettingStartPointSQLString(int id, string StartPoint)
         {
             string s = string.Format("UPDATE [TRIPS] SET StartPoint = '{0}' WHERE Id={1}", StartPoint, id);
+            return s;
+        }
+
+        private string GetStartPointSQLString(int id)
+        {
+            string s = string.Format("SELECT StartPoint FROM [TRIPS] WHERE Id={0}", id);
             return s;
         }
     }

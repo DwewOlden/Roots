@@ -35,4 +35,11 @@
      android:layout_width="0dp"
      android:layout_weight="1"
      android:title="Set Start Point" />
+  <item
+     android:id="@+id/menu_start_export"
+     android:icon="@mipmap/ic_menu_copy_holo_dark"
+     android:showAsAction="never"
+     android:layout_width="0dp"
+     android:layout_weight="1"
+     android:title="Export Data To SD" />
 </menu>
