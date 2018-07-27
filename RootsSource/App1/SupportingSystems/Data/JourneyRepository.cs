@@ -19,6 +19,71 @@ namespace roots.SupportingSystems.Data
     {
         string format = "yyyy-MM-dd HH:mm:ss";
 
+        public bool GetChartingDataSet(int Id,out Dictionary<string,int> time,out Dictionary<string,int> distance)
+        {
+            time = new Dictionary<string, int>();
+            distance = new Dictionary<string, int>();
+
+            try
+            {
+                string SQLString = GetCompleteRecordsFromTrip(Id);
+
+                connection = new SqliteConnection("Data Source=" + GetPathToDatabase());
+                connection.Open();
+
+                using (var c = connection.CreateCommand())
+                {
+                    c.CommandText = SQLString;
+                    var reader = c.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        DateTime x;
+                        DateTime y;
+
+                        if (reader.IsDBNull((3)))
+                            x = DateTime.MinValue;
+                        else
+                            x = DateTime.ParseExact(reader.GetString(3), "yyyy-M-d H:m:s.FFF", CultureInfo.InvariantCulture, DateTimeStyles.None);
+
+
+                        if (reader.IsDBNull((4)))
+                            y = DateTime.MinValue;
+                        else
+                            y = DateTime.ParseExact(reader.GetString(4), "yyyy-M-d H:m:s.FFF", CultureInfo.InvariantCulture, DateTimeStyles.None);
+
+
+                        string DriverName = !reader.IsDBNull(12) ? reader.GetString(12) : string.Empty;
+                        if (!string.IsNullOrEmpty(DriverName))
+                        {
+                            if (!time.ContainsKey(DriverName))
+                            {
+                                time.Add(DriverName, 0);
+                                distance.Add(DriverName, 0);
+                            }
+                        }
+
+                        TimeSpan s = y.Subtract(x);
+                        time[DriverName] = time[DriverName] + (int)s.TotalMinutes;
+                        distance[DriverName] = distance[DriverName] + (int)((int)(reader.IsDBNull(5) ? reader.GetDouble(5) : 0.0) / 1.61);
+                    }
+
+                    reader.Close();
+                }
+
+                connection.Close();
+                connection.Dispose();
+                connection = null;
+
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
         public IEnumerable<ExportingTripRecord> GetExportDataSet(int Id)
         {
             List<ExportingTripRecord> list = new List<ExportingTripRecord>();
