@@ -19,10 +19,10 @@ namespace roots.SupportingSystems.Data
     {
         string format = "yyyy-MM-dd HH:mm:ss";
 
-        public bool GetChartingDataSet(int Id,out Dictionary<string,int> time,out Dictionary<string,int> distance)
+        public bool GetChartingDataSet(int Id,out Dictionary<string,int> time,out Dictionary<string,double> distance)
         {
             time = new Dictionary<string, int>();
-            distance = new Dictionary<string, int>();
+            distance = new Dictionary<string, double>();
 
             try
             {
@@ -64,8 +64,9 @@ namespace roots.SupportingSystems.Data
                         }
 
                         TimeSpan s = y.Subtract(x);
-                        time[DriverName] = time[DriverName] + (int)s.TotalMinutes;
-                        distance[DriverName] = distance[DriverName] + (int)((int)(reader.IsDBNull(5) ? reader.GetDouble(5) : 0.0) / 1.61);
+                        time[DriverName] = time[DriverName] + (int)Math.Ceiling(s.TotalMinutes);
+                        double ki = !reader.IsDBNull(5) ? Math.Round((reader.GetDouble(5) / 1.61),2) : 0;
+                        distance[DriverName] = distance[DriverName] + ki;
                     }
 
                     reader.Close();

@@ -118,6 +118,10 @@ namespace roots.TabViews
                     StartActivity(intent);
                     break;
 
+                case "Save":
+                    StartActivity(typeof(reporting_section));
+                    break;
+
                 case "Drivers":
                     StartActivity(typeof(TabViews.DriversMenu));
                     break;

@@ -122,6 +122,7 @@
     <Compile Include="Functions\JourneyActivity.cs" />
     <Compile Include="Functions\JourneyList.cs" />
     <Compile Include="Functions\MainMenuActivity.cs" />
+    <Compile Include="Functions\reporting_section.cs" />
     <Compile Include="Functions\set_time_dialog.cs" />
     <Compile Include="Functions\TripDetails.cs" />
     <Compile Include="Functions\TripList.cs" />
