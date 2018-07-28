@@ -31,9 +31,13 @@ namespace roots.Functions
 
         private List<Entry> _timeEntries;
         private List<Entry> _distanceEntries;
+        private List<Entry> _timeByDayEntries;
+        private List<Entry> _distanceByDayEntries;
 
         ChartView timeChart;
+        ChartView timeByDayChart;
         ChartView distanceChart;
+        ChartView distanceByDayChart;
 
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -50,10 +54,14 @@ namespace roots.Functions
             GetData();
 
             timeChart = FindViewById<ChartView>(Resource.Id.timeChartView);
+            timeByDayChart = FindViewById<ChartView>(Resource.Id.timeByDayChartView);
             distanceChart = FindViewById<ChartView>(Resource.Id.distanceChartView);
+            distanceByDayChart = FindViewById<ChartView>(Resource.Id.distanceByDayChartView);
 
+            distanceByDayChart.Chart = new BarChart() { Entries = _distanceByDayEntries };
             distanceChart.Chart = new DonutChart() { Entries = _distanceEntries };
             timeChart.Chart = new DonutChart() { Entries = _timeEntries };
+            timeByDayChart.Chart = new BarChart() { Entries = _timeByDayEntries };
 
         }
 
@@ -61,16 +69,61 @@ namespace roots.Functions
         {
 
             _timeEntries = new List<Entry>();
+            _timeByDayEntries = new List<Entry>();
             _distanceEntries = new List<Entry>();
+            _distanceByDayEntries = new List<Entry>();
+
 
             Dictionary<string, int> time = new Dictionary<string, int>();
             Dictionary<string, double> distance = new Dictionary<string, double>();
+            Dictionary<DateTime, int> timeByDay = new Dictionary<DateTime, int>();
+            Dictionary<DateTime, double> distanceByDay = new Dictionary<DateTime, double>();
 
             int CurrentIndex = 0;
 
 
-            if (journeyRepository.GetChartingDataSet(SelectedTripId, out time, out distance))
+            if (journeyRepository.GetChartingDataSet(SelectedTripId, out time, out distance,out timeByDay,out distanceByDay))
             {
+                DateTime lowestTimeDay = timeByDay.Keys.Min();
+                DateTime highestTimeDay = timeByDay.Keys.Max();
+
+
+                DateTime tempDate = lowestTimeDay;
+                while (tempDate <highestTimeDay)
+                {
+                    if (!timeByDay.ContainsKey(tempDate.Date))
+                        timeByDay.Add(tempDate.Date, 0);
+
+                    tempDate = tempDate.AddDays(1);
+                }
+
+
+                var sortedList = timeByDay.OrderBy(f => f.Key).ToList();
+                timeByDay = new Dictionary<DateTime, int>();
+                foreach (var k in sortedList)
+                    timeByDay.Add(k.Key, k.Value);
+
+
+                lowestTimeDay = distanceByDay.Keys.Min();
+                highestTimeDay = distanceByDay.Keys.Max();
+
+
+                tempDate = lowestTimeDay;
+                while (tempDate < highestTimeDay)
+                {
+                    if (!distanceByDay.ContainsKey(tempDate.Date))
+                       distanceByDay.Add(tempDate.Date, 0);
+
+                    tempDate = tempDate.AddDays(1);
+                }
+
+                var sortedList2 = distanceByDay.OrderBy(f => f.Key).ToList();
+                distanceByDay = new Dictionary<DateTime, double>();
+                foreach (var k in sortedList2)
+                    distanceByDay.Add(k.Key, k.Value);
+
+
+
 
                 foreach (KeyValuePair<string, double> distancePairs in distance)
                 {
@@ -112,6 +165,40 @@ namespace roots.Functions
                 CurrentIndex++;
             
             }
+
+            
+            foreach (KeyValuePair<DateTime, int> timeByDayPairs in timeByDay )
+            {
+
+                TimeSpan timeLabelSpan = new TimeSpan(0, timeByDayPairs.Value, 0);
+                string timeLabel = timeLabelSpan.ToString(@"hh\:mm");
+
+
+                Entry entry = new Entry(timeByDayPairs.Value)
+                {
+                    Color = SKColor.Parse(GetAColor(0)),
+                    Label = timeByDayPairs.Key.ToShortDateString(),
+                    ValueLabel = timeLabel
+                };
+
+                _timeByDayEntries.Add(entry);
+               
+            }
+            
+
+            foreach (KeyValuePair<DateTime, double> distancePairs in distanceByDay)
+            {
+
+                Entry entry = new Entry((float)distancePairs.Value)
+                {
+                    Color = SKColor.Parse(GetAColor(0)),
+                    Label = distancePairs.Key.ToShortDateString(),
+                    ValueLabel = distancePairs.Value + " miles"
+                };
+
+                _distanceByDayEntries.Add(entry);
+            }
+
         }
 
 

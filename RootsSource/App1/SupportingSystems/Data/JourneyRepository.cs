@@ -19,10 +19,12 @@ namespace roots.SupportingSystems.Data
     {
         string format = "yyyy-MM-dd HH:mm:ss";
 
-        public bool GetChartingDataSet(int Id,out Dictionary<string,int> time,out Dictionary<string,double> distance)
+        public bool GetChartingDataSet(int Id,out Dictionary<string,int> time,out Dictionary<string,double> distance,out Dictionary<DateTime,int> timeByDay,out Dictionary<DateTime,double> distanceByDay)
         {
             time = new Dictionary<string, int>();
+            timeByDay = new Dictionary<DateTime, int>();
             distance = new Dictionary<string, double>();
+            distanceByDay = new Dictionary<DateTime, double>();
 
             try
             {
@@ -63,10 +65,19 @@ namespace roots.SupportingSystems.Data
                             }
                         }
 
+                        if (!timeByDay.ContainsKey(x.Date))
+                        {
+                            timeByDay.Add(x.Date, 0);
+                            distanceByDay.Add(x.Date, 0);
+                        }
+
+
                         TimeSpan s = y.Subtract(x);
                         time[DriverName] = time[DriverName] + (int)Math.Ceiling(s.TotalMinutes);
+                        timeByDay[x.Date] = timeByDay[x.Date] + (int)Math.Ceiling(s.TotalMinutes);
                         double ki = !reader.IsDBNull(5) ? Math.Round((reader.GetDouble(5) / 1.61),2) : 0;
                         distance[DriverName] = distance[DriverName] + ki;
+                        distanceByDay[x.Date] = distanceByDay[x.Date] + ki;
                     }
 
                     reader.Close();
@@ -636,7 +647,7 @@ namespace roots.SupportingSystems.Data
 
             return s;
         }
-
+        
         private string GetDistanceAndLastTimeString(int Id, double distance)
         {
             DateTime Now = DateTime.Now;

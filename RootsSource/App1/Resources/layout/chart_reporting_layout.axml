@@ -46,5 +46,37 @@
             android:id="@+id/timeChartView"
             android:layout_width="match_parent"
             android:layout_height="240dp" />
+        <TextView
+            android:background="@android:color/white"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:text="TIME BY DAY"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:padding="16dp"
+            android:textSize="22sp"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView3" />
+        <microcharts.droid.ChartView
+            android:id="@+id/timeByDayChartView"
+            android:layout_width="match_parent"
+            android:layout_height="240dp" />
+        <TextView
+            android:background="@android:color/white"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:text="DISTANCE BY DAY"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:padding="16dp"
+            android:textSize="22sp"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView4" />
+        <microcharts.droid.ChartView
+            android:id="@+id/distanceByDayChartView"
+            android:layout_width="match_parent"
+            android:layout_height="240dp" />
     </LinearLayout>
 </ScrollView>
