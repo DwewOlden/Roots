@@ -41,8 +41,8 @@ namespace roots.Functions
         private void Selected_button_Click(object sender, EventArgs e)
         {
             var now = DateTime.Now;
-            var hour = picker.Hour;
-            var minute = picker.Minute;
+            var hour = (int)picker.CurrentHour;
+            var minute = (int)picker.CurrentMinute;
 
             DateTime selected = new DateTime(now.Year, now.Month, now.Day, hour, minute, 0);
             SelectedTimeEventArgs selectedTimeEventArgs = new SelectedTimeEventArgs(selected);

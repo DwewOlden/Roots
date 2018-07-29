@@ -18,7 +18,7 @@ using Roots.Support;
 
 namespace roots.Functions
 {
-    [Activity(Name ="App1.App1.JourneyActivity", Label = "Journey", MainLauncher = false, Icon = "@drawable/xs")]
+    [Activity(Label = "Journey", MainLauncher = false, Icon = "@drawable/xs")]
     public class JourneyActivity : Activity
     {
         private ImageView titleImageView;
