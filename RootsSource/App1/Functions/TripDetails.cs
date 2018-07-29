@@ -33,6 +33,7 @@ namespace roots.Functions
         private TripRepository tripRepository_;
 
         private JourneyRepository JourneyRepository_;
+        private JourneyPointRespository journeyPointRespository_;
 
         private TextView distanceView;
         private TextView timeView;
@@ -47,6 +48,7 @@ namespace roots.Functions
         {
             tripRepository_ = new TripRepository();
             JourneyRepository_ = new JourneyRepository();
+            journeyPointRespository_ = new JourneyPointRespository();
 
             base.OnCreate(savedInstanceState);
             SelectedTripId = Intent.Extras.GetInt("tripId");
@@ -94,10 +96,20 @@ namespace roots.Functions
                     case "Export Data To SD":
                         PerformExport();
                         break;
+                    case "Delete All Tracks":
+                        PerformTrackDelete();
+                        break;
                         
 
                 }
             };
+        }
+
+        private void PerformTrackDelete()
+        {
+            var ids = JourneyRepository_.GetJourneyIdsForTrip(SelectedTripId);
+            foreach (int id in ids)
+                journeyPointRespository_.DeleteJourneyPoints(id);
         }
 
         private void PerformExport()

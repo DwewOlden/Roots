@@ -782,6 +782,9 @@ namespace roots
 			// aapt resource value: 0x7f0c00b3
 			public const int menu_add_trip = 2131493043;
 			
+			// aapt resource value: 0x7f0c00b7
+			public const int menu_delete_tracks = 2131493047;
+			
 			// aapt resource value: 0x7f0c00a9
 			public const int menu_driver_details = 2131493033;
 			

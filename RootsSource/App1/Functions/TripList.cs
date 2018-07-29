@@ -55,10 +55,12 @@ namespace roots.TabViews
                     case "Add New Trip":
                         StartActivity(typeof(AddNewTrip));
                         break;
+                    
                 }
             };
         }
 
+       
         public override void OnWindowFocusChanged(bool hasFocus)
         {
             base.OnWindowFocusChanged(hasFocus);

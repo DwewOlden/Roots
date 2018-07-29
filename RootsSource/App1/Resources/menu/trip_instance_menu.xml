@@ -42,4 +42,12 @@
      android:layout_width="0dp"
      android:layout_weight="1"
      android:title="Export Data To SD" />
+
+  <item
+       android:id="@+id/menu_delete_tracks"
+       android:icon="@mipmap/ic_menu_cut_holo_dark"
+       android:showAsAction="ifRoom"
+       android:layout_width="0dp"
+       android:layout_weight="1"
+       android:title="Delete All Tracks" />
 </menu>

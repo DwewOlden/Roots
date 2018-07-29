@@ -16,6 +16,30 @@ namespace roots.SupportingSystems.Data
 {
     public class JourneyPointRespository : BaseDataAccessingClass
     {
+        public bool DeleteJourneyPoints(int JourneyId)
+        {
+            try
+            {
+                string SQL = string.Format("DELETE FROM JOURNEYPOINTS WHERE JourneyId={0};", JourneyId);
+
+                connection = new SqliteConnection("Data Source=" + GetPathToDatabase());
+                connection.Open();
+
+                using (var c = connection.CreateCommand())
+                {
+                    c.CommandText = SQL;
+                    var reader = c.ExecuteNonQuery();
+                }
+
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
         public IEnumerable<TrackPointDTO> GetTrackPointsForJourney(int JourneyId)
         {
             List<TrackPointDTO> trackPointDTOs = new List<TrackPointDTO>();

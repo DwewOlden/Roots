@@ -267,6 +267,42 @@ namespace roots.SupportingSystems.Data
             }
         }
 
+        public IEnumerable<int> GetJourneyIdsForTrip(int Id)
+        {
+
+            List<int> journeyIds = new List<int>();
+
+            try
+            {
+                string SQLString = GetAllJourneyIdsForTripsString(Id);
+
+                connection = new SqliteConnection("Data Source=" + GetPathToDatabase());
+                connection.Open();
+
+                using (var c = connection.CreateCommand())
+                {
+                    c.CommandText = SQLString;
+                    var reader = c.ExecuteReader();
+
+                    while (reader.Read())
+                        journeyIds.Add(reader.GetInt32(0));     
+                    
+
+                    reader.Close();
+                }
+
+                connection.Close();
+                connection.Dispose();
+                connection = null;
+
+                return journeyIds.AsEnumerable();
+            }
+            catch (Exception ex)
+            {
+                return new List<int>().AsEnumerable();
+            }
+        }
+
 
         public bool GetAllDriverStats(int Id, out Dictionary<string, int> Time, out Dictionary<string, double> Distance)
         {
@@ -691,6 +727,12 @@ namespace roots.SupportingSystems.Data
         private string GetLastTripString()
         {
             string s = "SELECT MAX(Id) FROM JOURNEY;";
+            return s;
+        }
+
+        private string GetAllJourneyIdsForTripsString(int Id)
+        {
+            string s = "SELECT Id FROM JOURNEY WHERE Trip =" + Id;
             return s;
         }
     }
