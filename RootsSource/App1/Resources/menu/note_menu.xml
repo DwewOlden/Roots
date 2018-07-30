@@ -13,6 +13,12 @@
         android:layout_width="0dp"
        android:layout_weight="1"
         android:title="Add Petrol Details"/>
+
+  <item android:id="@+id/delete_instance"
+         android:showAsAction="never"
+        android:layout_width="0dp"
+       android:layout_weight="1"
+        android:title="Delete This Journey"/>
   
 </menu>
 

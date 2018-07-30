@@ -24,7 +24,7 @@ namespace roots
         protected override void OnCreate(Bundle savedInstanceState)
         {
             databaseCreation = new DatabaseCreation();
-            databaseCreation.InitaliseDatabase();
+            //databaseCreation.InitaliseDatabase();
 
             base.OnCreate(savedInstanceState);
 

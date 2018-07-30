@@ -7,6 +7,7 @@ using Android.App;
 using Android.Content;
 using Android.Gms.Maps;
 using Android.Gms.Maps.Model;
+using Android.Graphics;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
@@ -113,11 +114,16 @@ namespace roots.Functions
         {
             var points = journeyPointRespository.GetTrackPointsForJourney(SelectedJourneyId);
             LatLngBounds.Builder builder = new LatLngBounds.Builder();
-            PolylineOptions line = new PolylineOptions();
+            PolylineOptions line = new PolylineOptions().InvokeColor(Color.Purple);
             
 
             if (points.Count() > 0)
             {
+
+                MarkerOptions moStart = new MarkerOptions();
+                moStart.SetPosition(new LatLng(points.ElementAt(0).Lat, points.ElementAt(0).Lon));
+                moStart.SetIcon((BitmapDescriptorFactory.DefaultMarker(BitmapDescriptorFactory.HueGreen)));
+
                 foreach (var v in points)
                 {
                     LatLng l = new LatLng(v.Lat, v.Lon);
@@ -126,8 +132,14 @@ namespace roots.Functions
 
                 }
 
+                MarkerOptions moEnd = new MarkerOptions();
+                moEnd.SetPosition(new LatLng(points.ElementAt(points.Count() - 1).Lat, points.ElementAt(points.Count() - 1).Lon));
+                moEnd.SetIcon((BitmapDescriptorFactory.DefaultMarker(BitmapDescriptorFactory.HueRed)));
+
                 _map.AddPolyline(line);
-                _map.MoveCamera(CameraUpdateFactory.NewLatLngBounds(builder.Build(), 50));
+                _map.AddMarker(moStart);
+                _map.AddMarker(moEnd);
+                _map.MoveCamera(CameraUpdateFactory.NewLatLngBounds(builder.Build(), 80));
 
             }
         }
@@ -150,7 +162,7 @@ namespace roots.Functions
             if (_mapFragment == null)
             {
                 GoogleMapOptions mapOptions = new GoogleMapOptions()
-                    .InvokeMapType(GoogleMap.MapTypeSatellite)
+                    .InvokeMapType(GoogleMap.MapTypeNormal)
                     .InvokeZoomControlsEnabled(true)
                     .InvokeCompassEnabled(true);
 

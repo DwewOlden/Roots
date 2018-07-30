@@ -38,6 +38,7 @@ namespace roots.Functions
 
             mListView = FindViewById<ListView>(Resource.Id.JourneyListView);
             mListView.ItemClick += MListView_ItemClick;
+            mListView.LongClick += MListView_LongClick;
             mJourneys = new List<Journey>();
 
             action = JourneySelected;
@@ -58,6 +59,11 @@ namespace roots.Functions
             };
 
 
+        }
+
+        private void MListView_LongClick(object sender, View.LongClickEventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine("The long click tonight");
         }
 
         public override void OnWindowFocusChanged(bool hasFocus)

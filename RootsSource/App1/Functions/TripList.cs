@@ -37,6 +37,7 @@ namespace roots.TabViews
 
             mListView = FindViewById<ListView>(Resource.Id.TripListView);
             mListView.ItemClick += MListView_ItemClick;
+            mListView.LongClick += MListView_LongClick;
             mTrips = new List<Trip>();
 
            
@@ -60,7 +61,11 @@ namespace roots.TabViews
             };
         }
 
-       
+        private void MListView_LongClick(object sender, View.LongClickEventArgs e)
+        {
+            
+        }
+
         public override void OnWindowFocusChanged(bool hasFocus)
         {
             base.OnWindowFocusChanged(hasFocus);

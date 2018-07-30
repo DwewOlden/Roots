@@ -203,8 +203,8 @@ namespace roots
 			// aapt resource value: 0x7f080010
 			public const int colorPrimaryDark = 2131230736;
 			
-			// aapt resource value: 0x7f080012
-			public const int common_google_signin_btn_text_dark = 2131230738;
+			// aapt resource value: 0x7f080013
+			public const int common_google_signin_btn_text_dark = 2131230739;
 			
 			// aapt resource value: 0x7f080000
 			public const int common_google_signin_btn_text_dark_default = 2131230720;
@@ -218,8 +218,8 @@ namespace roots
 			// aapt resource value: 0x7f080003
 			public const int common_google_signin_btn_text_dark_pressed = 2131230723;
 			
-			// aapt resource value: 0x7f080013
-			public const int common_google_signin_btn_text_light = 2131230739;
+			// aapt resource value: 0x7f080014
+			public const int common_google_signin_btn_text_light = 2131230740;
 			
 			// aapt resource value: 0x7f080004
 			public const int common_google_signin_btn_text_light_default = 2131230724;
@@ -233,8 +233,8 @@ namespace roots
 			// aapt resource value: 0x7f080007
 			public const int common_google_signin_btn_text_light_pressed = 2131230727;
 			
-			// aapt resource value: 0x7f080014
-			public const int common_google_signin_btn_tint = 2131230740;
+			// aapt resource value: 0x7f080015
+			public const int common_google_signin_btn_tint = 2131230741;
 			
 			// aapt resource value: 0x7f08000b
 			public const int notification_action_color_filter = 2131230731;
@@ -244,6 +244,9 @@ namespace roots
 			
 			// aapt resource value: 0x7f080008
 			public const int notification_material_background_media_default_color = 2131230728;
+			
+			// aapt resource value: 0x7f080012
+			public const int polylinecolor = 2131230738;
 			
 			// aapt resource value: 0x7f080009
 			public const int primary_text_default_material_dark = 2131230729;
@@ -476,8 +479,8 @@ namespace roots
 			// aapt resource value: 0x7f0c0037
 			public const int DescriptionLabel = 2131492919;
 			
-			// aapt resource value: 0x7f0c007b
-			public const int DriversListView = 2131492987;
+			// aapt resource value: 0x7f0c007d
+			public const int DriversListView = 2131492989;
 			
 			// aapt resource value: 0x7f0c0031
 			public const int EndPointHeader = 2131492913;
@@ -485,38 +488,38 @@ namespace roots
 			// aapt resource value: 0x7f0c0032
 			public const int EndPointValues = 2131492914;
 			
-			// aapt resource value: 0x7f0c007d
-			public const int JourneyListView = 2131492989;
+			// aapt resource value: 0x7f0c007f
+			public const int JourneyListView = 2131492991;
 			
-			// aapt resource value: 0x7f0c0079
-			public const int MyButton = 2131492985;
+			// aapt resource value: 0x7f0c007b
+			public const int MyButton = 2131492987;
 			
 			// aapt resource value: 0x7f0c0035
 			public const int NameLabel = 2131492917;
 			
-			// aapt resource value: 0x7f0c007f
-			public const int TripListView = 2131492991;
+			// aapt resource value: 0x7f0c0081
+			public const int TripListView = 2131492993;
 			
 			// aapt resource value: 0x7f0c0039
 			public const int WhenLabel = 2131492921;
 			
-			// aapt resource value: 0x7f0c0084
-			public const int action0 = 2131492996;
-			
-			// aapt resource value: 0x7f0c0081
-			public const int action_container = 2131492993;
-			
-			// aapt resource value: 0x7f0c0088
-			public const int action_divider = 2131493000;
-			
-			// aapt resource value: 0x7f0c0082
-			public const int action_image = 2131492994;
+			// aapt resource value: 0x7f0c0086
+			public const int action0 = 2131492998;
 			
 			// aapt resource value: 0x7f0c0083
-			public const int action_text = 2131492995;
+			public const int action_container = 2131492995;
 			
-			// aapt resource value: 0x7f0c0092
-			public const int actions = 2131493010;
+			// aapt resource value: 0x7f0c008a
+			public const int action_divider = 2131493002;
+			
+			// aapt resource value: 0x7f0c0084
+			public const int action_image = 2131492996;
+			
+			// aapt resource value: 0x7f0c0085
+			public const int action_text = 2131492997;
+			
+			// aapt resource value: 0x7f0c0094
+			public const int actions = 2131493012;
 			
 			// aapt resource value: 0x7f0c001a
 			public const int add_driver_name_label = 2131492890;
@@ -530,23 +533,29 @@ namespace roots
 			// aapt resource value: 0x7f0c001b
 			public const int add_new_drivers_name = 2131492891;
 			
-			// aapt resource value: 0x7f0c0061
-			public const int add_new_note_button = 2131492961;
+			// aapt resource value: 0x7f0c0048
+			public const int add_new_note_button = 2131492936;
+			
+			// aapt resource value: 0x7f0c0047
+			public const int add_new_note_button1 = 2131492935;
+			
+			// aapt resource value: 0x7f0c0046
+			public const int add_new_note_button2 = 2131492934;
+			
+			// aapt resource value: 0x7f0c009d
+			public const int add_new_petrol_note_button = 2131493021;
+			
+			// aapt resource value: 0x7f0c0045
+			public const int add_note_details_label = 2131492933;
 			
 			// aapt resource value: 0x7f0c009b
-			public const int add_new_petrol_note_button = 2131493019;
-			
-			// aapt resource value: 0x7f0c005f
-			public const int add_note_details_label = 2131492959;
-			
-			// aapt resource value: 0x7f0c0099
-			public const int add_petroltotalcost_label = 2131493017;
-			
-			// aapt resource value: 0x7f0c0095
-			public const int add_petrolunitcost_label = 2131493013;
+			public const int add_petroltotalcost_label = 2131493019;
 			
 			// aapt resource value: 0x7f0c0097
-			public const int add_petrolunits_label = 2131493015;
+			public const int add_petrolunitcost_label = 2131493015;
+			
+			// aapt resource value: 0x7f0c0099
+			public const int add_petrolunits_label = 2131493017;
 			
 			// aapt resource value: 0x7f0c001d
 			public const int add_stopPlace_label = 2131492893;
@@ -572,32 +581,35 @@ namespace roots
 			// aapt resource value: 0x7f0c0013
 			public const int blocking = 2131492883;
 			
-			// aapt resource value: 0x7f0c0066
-			public const int btnMainJourneyButton = 2131492966;
+			// aapt resource value: 0x7f0c0068
+			public const int btnMainJourneyButton = 2131492968;
 			
-			// aapt resource value: 0x7f0c005e
-			public const int btnStar = 2131492958;
+			// aapt resource value: 0x7f0c0062
+			public const int btnStar = 2131492962;
 			
-			// aapt resource value: 0x7f0c009d
-			public const int button_set_time = 2131493021;
+			// aapt resource value: 0x7f0c009f
+			public const int button_set_time = 2131493023;
 			
-			// aapt resource value: 0x7f0c0085
-			public const int cancel_action = 2131492997;
+			// aapt resource value: 0x7f0c0087
+			public const int cancel_action = 2131492999;
 			
-			// aapt resource value: 0x7f0c008d
-			public const int chronometer = 2131493005;
+			// aapt resource value: 0x7f0c008f
+			public const int chronometer = 2131493007;
 			
 			// aapt resource value: 0x7f0c0010
 			public const int dark = 2131492880;
 			
+			// aapt resource value: 0x7f0c0073
+			public const int dattimeHeaderRow = 2131492979;
+			
 			// aapt resource value: 0x7f0c0071
-			public const int dattimeHeaderRow = 2131492977;
+			public const int dayHeader = 2131492977;
 			
-			// aapt resource value: 0x7f0c006f
-			public const int dayHeader = 2131492975;
+			// aapt resource value: 0x7f0c0076
+			public const int daytimeDetailsRow = 2131492982;
 			
-			// aapt resource value: 0x7f0c0074
-			public const int daytimeDetailsRow = 2131492980;
+			// aapt resource value: 0x7f0c00b4
+			public const int delete_instance = 2131493044;
 			
 			// aapt resource value: 0x7f0c0044
 			public const int distanceByDayChartView = 2131492932;
@@ -614,8 +626,8 @@ namespace roots
 			// aapt resource value: 0x7f0c0021
 			public const int driverHeader = 2131492897;
 			
-			// aapt resource value: 0x7f0c007c
-			public const int driverMenu = 2131492988;
+			// aapt resource value: 0x7f0c007e
+			public const int driverMenu = 2131492990;
 			
 			// aapt resource value: 0x7f0c0024
 			public const int driverSelectSpinner = 2131492900;
@@ -623,11 +635,11 @@ namespace roots
 			// aapt resource value: 0x7f0c0023
 			public const int driverSelector = 2131492899;
 			
-			// aapt resource value: 0x7f0c0059
-			public const int driver_spinner_image = 2131492953;
+			// aapt resource value: 0x7f0c005d
+			public const int driver_spinner_image = 2131492957;
 			
-			// aapt resource value: 0x7f0c005a
-			public const int driver_spinner_name = 2131492954;
+			// aapt resource value: 0x7f0c005e
+			public const int driver_spinner_name = 2131492958;
 			
 			// aapt resource value: 0x7f0c0038
 			public const int editTripDescription = 2131492920;
@@ -644,8 +656,8 @@ namespace roots
 			// aapt resource value: 0x7f0c0033
 			public const int edit_endpoint_location = 2131492915;
 			
-			// aapt resource value: 0x7f0c0094
-			public const int end_padder = 2131493012;
+			// aapt resource value: 0x7f0c0096
+			public const int end_padder = 2131493014;
 			
 			// aapt resource value: 0x7f0c003c
 			public const int finalbackgroundimage = 2131492924;
@@ -656,56 +668,56 @@ namespace roots
 			// aapt resource value: 0x7f0c0005
 			public const int hybrid = 2131492869;
 			
-			// aapt resource value: 0x7f0c008f
-			public const int icon = 2131493007;
+			// aapt resource value: 0x7f0c0091
+			public const int icon = 2131493009;
 			
-			// aapt resource value: 0x7f0c0093
-			public const int icon_group = 2131493011;
+			// aapt resource value: 0x7f0c0095
+			public const int icon_group = 2131493013;
 			
 			// aapt resource value: 0x7f0c000c
 			public const int icon_only = 2131492876;
 			
-			// aapt resource value: 0x7f0c005c
-			public const int imgDriverScreenDriverAvater = 2131492956;
+			// aapt resource value: 0x7f0c0060
+			public const int imgDriverScreenDriverAvater = 2131492960;
 			
-			// aapt resource value: 0x7f0c008e
-			public const int info = 2131493006;
+			// aapt resource value: 0x7f0c0090
+			public const int info = 2131493008;
 			
 			// aapt resource value: 0x7f0c0015
 			public const int italic = 2131492885;
 			
-			// aapt resource value: 0x7f0c007e
-			public const int journeyMenu = 2131492990;
-			
-			// aapt resource value: 0x7f0c0049
-			public const int journey_details_distance_label = 2131492937;
-			
-			// aapt resource value: 0x7f0c004a
-			public const int journey_details_distance_value = 2131492938;
-			
-			// aapt resource value: 0x7f0c004f
-			public const int journey_details_driver_label = 2131492943;
-			
-			// aapt resource value: 0x7f0c0050
-			public const int journey_details_driver_value = 2131492944;
-			
-			// aapt resource value: 0x7f0c004c
-			public const int journey_details_duration_label = 2131492940;
+			// aapt resource value: 0x7f0c0080
+			public const int journeyMenu = 2131492992;
 			
 			// aapt resource value: 0x7f0c004d
-			public const int journey_details_duration_value = 2131492941;
+			public const int journey_details_distance_label = 2131492941;
 			
-			// aapt resource value: 0x7f0c0052
-			public const int journey_details_endpoint_label = 2131492946;
+			// aapt resource value: 0x7f0c004e
+			public const int journey_details_distance_value = 2131492942;
 			
 			// aapt resource value: 0x7f0c0053
-			public const int journey_details_endpoint_value = 2131492947;
+			public const int journey_details_driver_label = 2131492947;
 			
-			// aapt resource value: 0x7f0c0046
-			public const int journey_details_starttime_label = 2131492934;
+			// aapt resource value: 0x7f0c0054
+			public const int journey_details_driver_value = 2131492948;
 			
-			// aapt resource value: 0x7f0c0047
-			public const int journey_details_starttime_value = 2131492935;
+			// aapt resource value: 0x7f0c0050
+			public const int journey_details_duration_label = 2131492944;
+			
+			// aapt resource value: 0x7f0c0051
+			public const int journey_details_duration_value = 2131492945;
+			
+			// aapt resource value: 0x7f0c0056
+			public const int journey_details_endpoint_label = 2131492950;
+			
+			// aapt resource value: 0x7f0c0057
+			public const int journey_details_endpoint_value = 2131492951;
+			
+			// aapt resource value: 0x7f0c004a
+			public const int journey_details_starttime_label = 2131492938;
+			
+			// aapt resource value: 0x7f0c004b
+			public const int journey_details_starttime_value = 2131492939;
 			
 			// aapt resource value: 0x7f0c002e
 			public const int lblAboutDistanceLabel = 2131492910;
@@ -716,38 +728,38 @@ namespace roots
 			// aapt resource value: 0x7f0c0026
 			public const int lblAboutTimesLabel = 2131492902;
 			
-			// aapt resource value: 0x7f0c0070
-			public const int lblDailyLabel = 2131492976;
+			// aapt resource value: 0x7f0c0072
+			public const int lblDailyLabel = 2131492978;
+			
+			// aapt resource value: 0x7f0c0077
+			public const int lblDayDistanceData = 2131492983;
+			
+			// aapt resource value: 0x7f0c0074
+			public const int lblDayDistanceLabel = 2131492980;
+			
+			// aapt resource value: 0x7f0c0078
+			public const int lblDayTimeData = 2131492984;
 			
 			// aapt resource value: 0x7f0c0075
-			public const int lblDayDistanceData = 2131492981;
+			public const int lblDayTimeLabel = 2131492981;
 			
-			// aapt resource value: 0x7f0c0072
-			public const int lblDayDistanceLabel = 2131492978;
+			// aapt resource value: 0x7f0c006f
+			public const int lblDistanceData = 2131492975;
 			
-			// aapt resource value: 0x7f0c0076
-			public const int lblDayTimeData = 2131492982;
+			// aapt resource value: 0x7f0c006c
+			public const int lblDistanceLabel = 2131492972;
 			
-			// aapt resource value: 0x7f0c0073
-			public const int lblDayTimeLabel = 2131492979;
+			// aapt resource value: 0x7f0c00a2
+			public const int lblMileLabel = 2131493026;
+			
+			// aapt resource value: 0x7f0c0070
+			public const int lblTimeData = 2131492976;
 			
 			// aapt resource value: 0x7f0c006d
-			public const int lblDistanceData = 2131492973;
+			public const int lblTimeLabel = 2131492973;
 			
 			// aapt resource value: 0x7f0c006a
-			public const int lblDistanceLabel = 2131492970;
-			
-			// aapt resource value: 0x7f0c00a0
-			public const int lblMileLabel = 2131493024;
-			
-			// aapt resource value: 0x7f0c006e
-			public const int lblTimeData = 2131492974;
-			
-			// aapt resource value: 0x7f0c006b
-			public const int lblTimeLabel = 2131492971;
-			
-			// aapt resource value: 0x7f0c0068
-			public const int lblTripLabel = 2131492968;
+			public const int lblTripLabel = 2131492970;
 			
 			// aapt resource value: 0x7f0c0011
 			public const int light = 2131492881;
@@ -770,62 +782,62 @@ namespace roots
 			// aapt resource value: 0x7f0c0028
 			public const int manual_insert_starting_label = 2131492904;
 			
-			// aapt resource value: 0x7f0c0057
-			public const int map = 2131492951;
+			// aapt resource value: 0x7f0c005b
+			public const int map = 2131492955;
 			
-			// aapt resource value: 0x7f0c0087
-			public const int media_actions = 2131492999;
-			
-			// aapt resource value: 0x7f0c00aa
-			public const int menu_add_driver = 2131493034;
-			
-			// aapt resource value: 0x7f0c00b3
-			public const int menu_add_trip = 2131493043;
-			
-			// aapt resource value: 0x7f0c00b7
-			public const int menu_delete_tracks = 2131493047;
-			
-			// aapt resource value: 0x7f0c00a9
-			public const int menu_driver_details = 2131493033;
-			
-			// aapt resource value: 0x7f0c00ab
-			public const int menu_edit = 2131493035;
-			
-			// aapt resource value: 0x7f0c00b4
-			public const int menu_fun_facts = 2131493044;
-			
-			// aapt resource value: 0x7f0c00ad
-			public const int menu_preferences2 = 2131493037;
-			
-			// aapt resource value: 0x7f0c00ae
-			public const int menu_preferences3 = 2131493038;
-			
-			// aapt resource value: 0x7f0c00af
-			public const int menu_preferences4 = 2131493039;
+			// aapt resource value: 0x7f0c0089
+			public const int media_actions = 2131493001;
 			
 			// aapt resource value: 0x7f0c00ac
-			public const int menu_save = 2131493036;
+			public const int menu_add_driver = 2131493036;
 			
 			// aapt resource value: 0x7f0c00b6
-			public const int menu_start_export = 2131493046;
+			public const int menu_add_trip = 2131493046;
+			
+			// aapt resource value: 0x7f0c00ba
+			public const int menu_delete_tracks = 2131493050;
+			
+			// aapt resource value: 0x7f0c00ab
+			public const int menu_driver_details = 2131493035;
+			
+			// aapt resource value: 0x7f0c00ad
+			public const int menu_edit = 2131493037;
+			
+			// aapt resource value: 0x7f0c00b7
+			public const int menu_fun_facts = 2131493047;
+			
+			// aapt resource value: 0x7f0c00af
+			public const int menu_preferences2 = 2131493039;
+			
+			// aapt resource value: 0x7f0c00b0
+			public const int menu_preferences3 = 2131493040;
+			
+			// aapt resource value: 0x7f0c00b1
+			public const int menu_preferences4 = 2131493041;
+			
+			// aapt resource value: 0x7f0c00ae
+			public const int menu_save = 2131493038;
+			
+			// aapt resource value: 0x7f0c00b9
+			public const int menu_start_export = 2131493049;
+			
+			// aapt resource value: 0x7f0c00b8
+			public const int menu_start_point = 2131493048;
 			
 			// aapt resource value: 0x7f0c00b5
-			public const int menu_start_point = 2131493045;
+			public const int menu_trip_details = 2131493045;
 			
-			// aapt resource value: 0x7f0c00b2
-			public const int menu_trip_details = 2131493042;
-			
-			// aapt resource value: 0x7f0c009f
-			public const int mileageRow = 2131493023;
+			// aapt resource value: 0x7f0c00a1
+			public const int mileageRow = 2131493025;
 			
 			// aapt resource value: 0x7f0c0016
 			public const int myImageView = 2131492886;
 			
-			// aapt resource value: 0x7f0c0065
-			public const int myImageViewV2 = 2131492965;
+			// aapt resource value: 0x7f0c0067
+			public const int myImageViewV2 = 2131492967;
 			
-			// aapt resource value: 0x7f0c009e
-			public const int myImageViewV3 = 2131493022;
+			// aapt resource value: 0x7f0c00a0
+			public const int myImageViewV3 = 2131493024;
 			
 			// aapt resource value: 0x7f0c0006
 			public const int none = 2131492870;
@@ -833,62 +845,62 @@ namespace roots
 			// aapt resource value: 0x7f0c0007
 			public const int normal = 2131492871;
 			
-			// aapt resource value: 0x7f0c0060
-			public const int note_details = 2131492960;
+			// aapt resource value: 0x7f0c0063
+			public const int note_details = 2131492963;
 			
-			// aapt resource value: 0x7f0c00b0
-			public const int note_generic = 2131493040;
+			// aapt resource value: 0x7f0c00b2
+			public const int note_generic = 2131493042;
 			
-			// aapt resource value: 0x7f0c00b1
-			public const int note_petrol = 2131493041;
+			// aapt resource value: 0x7f0c00b3
+			public const int note_petrol = 2131493043;
 			
-			// aapt resource value: 0x7f0c0058
-			public const int notemenutoolbar = 2131492952;
+			// aapt resource value: 0x7f0c005c
+			public const int notemenutoolbar = 2131492956;
 			
-			// aapt resource value: 0x7f0c0091
-			public const int notification_background = 2131493009;
+			// aapt resource value: 0x7f0c0093
+			public const int notification_background = 2131493011;
 			
-			// aapt resource value: 0x7f0c008a
-			public const int notification_main_column = 2131493002;
-			
-			// aapt resource value: 0x7f0c0089
-			public const int notification_main_column_container = 2131493001;
-			
-			// aapt resource value: 0x7f0c0096
-			public const int petrol_unit_cost = 2131493014;
-			
-			// aapt resource value: 0x7f0c0098
-			public const int petrol_unit_purchased = 2131493016;
-			
-			// aapt resource value: 0x7f0c009a
-			public const int petrol_unit_totalcost = 2131493018;
-			
-			// aapt resource value: 0x7f0c0090
-			public const int right_icon = 2131493008;
+			// aapt resource value: 0x7f0c008c
+			public const int notification_main_column = 2131493004;
 			
 			// aapt resource value: 0x7f0c008b
-			public const int right_side = 2131493003;
+			public const int notification_main_column_container = 2131493003;
+			
+			// aapt resource value: 0x7f0c0098
+			public const int petrol_unit_cost = 2131493016;
+			
+			// aapt resource value: 0x7f0c009a
+			public const int petrol_unit_purchased = 2131493018;
+			
+			// aapt resource value: 0x7f0c009c
+			public const int petrol_unit_totalcost = 2131493020;
+			
+			// aapt resource value: 0x7f0c0092
+			public const int right_icon = 2131493010;
+			
+			// aapt resource value: 0x7f0c008d
+			public const int right_side = 2131493005;
 			
 			// aapt resource value: 0x7f0c0008
 			public const int satellite = 2131492872;
 			
-			// aapt resource value: 0x7f0c0064
-			public const int setstartpoint_button = 2131492964;
+			// aapt resource value: 0x7f0c0066
+			public const int setstartpoint_button = 2131492966;
 			
-			// aapt resource value: 0x7f0c007a
-			public const int spinner = 2131492986;
+			// aapt resource value: 0x7f0c007c
+			public const int spinner = 2131492988;
 			
 			// aapt resource value: 0x7f0c000d
 			public const int standard = 2131492877;
 			
-			// aapt resource value: 0x7f0c0063
-			public const int startpoint_details = 2131492963;
+			// aapt resource value: 0x7f0c0065
+			public const int startpoint_details = 2131492965;
 			
-			// aapt resource value: 0x7f0c0062
-			public const int startpoint_label = 2131492962;
+			// aapt resource value: 0x7f0c0064
+			public const int startpoint_label = 2131492964;
 			
-			// aapt resource value: 0x7f0c0086
-			public const int status_bar_latest_event_content = 2131492998;
+			// aapt resource value: 0x7f0c0088
+			public const int status_bar_latest_event_content = 2131493000;
 			
 			// aapt resource value: 0x7f0c0009
 			public const int terrain = 2131492873;
@@ -911,11 +923,11 @@ namespace roots
 			// aapt resource value: 0x7f0c0043
 			public const int textView4 = 2131492931;
 			
-			// aapt resource value: 0x7f0c009c
-			public const int the_time_picker = 2131493020;
+			// aapt resource value: 0x7f0c009e
+			public const int the_time_picker = 2131493022;
 			
-			// aapt resource value: 0x7f0c008c
-			public const int time = 2131493004;
+			// aapt resource value: 0x7f0c008e
+			public const int time = 2131493006;
 			
 			// aapt resource value: 0x7f0c002a
 			public const int timeButtonRow = 2131492906;
@@ -926,17 +938,17 @@ namespace roots
 			// aapt resource value: 0x7f0c0040
 			public const int timeChartView = 2131492928;
 			
-			// aapt resource value: 0x7f0c006c
-			public const int timeDetailsRow = 2131492972;
+			// aapt resource value: 0x7f0c006e
+			public const int timeDetailsRow = 2131492974;
 			
-			// aapt resource value: 0x7f0c0069
-			public const int timeHeaderRow = 2131492969;
+			// aapt resource value: 0x7f0c006b
+			public const int timeHeaderRow = 2131492971;
 			
 			// aapt resource value: 0x7f0c0027
 			public const int timeInformationRow = 2131492903;
 			
-			// aapt resource value: 0x7f0c00a2
-			public const int timeRow = 2131493026;
+			// aapt resource value: 0x7f0c00a4
+			public const int timeRow = 2131493028;
 			
 			// aapt resource value: 0x7f0c0025
 			public const int timesHeader = 2131492901;
@@ -956,68 +968,68 @@ namespace roots
 			// aapt resource value: 0x7f0c0020
 			public const int toolbar = 2131492896;
 			
+			// aapt resource value: 0x7f0c0059
+			public const int trackDetailsButton = 2131492953;
+			
+			// aapt resource value: 0x7f0c0058
+			public const int trackDetailsLayout = 2131492952;
+			
+			// aapt resource value: 0x7f0c005a
+			public const int trackFragmentLayout = 2131492954;
+			
+			// aapt resource value: 0x7f0c004c
+			public const int tripDetailsDistanceHeader = 2131492940;
+			
+			// aapt resource value: 0x7f0c0052
+			public const int tripDetailsDriverHeader = 2131492946;
+			
 			// aapt resource value: 0x7f0c0055
-			public const int trackDetailsButton = 2131492949;
-			
-			// aapt resource value: 0x7f0c0054
-			public const int trackDetailsLayout = 2131492948;
-			
-			// aapt resource value: 0x7f0c0056
-			public const int trackFragmentLayout = 2131492950;
-			
-			// aapt resource value: 0x7f0c0048
-			public const int tripDetailsDistanceHeader = 2131492936;
-			
-			// aapt resource value: 0x7f0c004e
-			public const int tripDetailsDriverHeader = 2131492942;
-			
-			// aapt resource value: 0x7f0c0051
-			public const int tripDetailsEndPointHeader = 2131492945;
-			
-			// aapt resource value: 0x7f0c00a1
-			public const int tripDetailsMilesTraveledDetails = 2131493025;
-			
-			// aapt resource value: 0x7f0c0045
-			public const int tripDetailsStartTimeHeader = 2131492933;
-			
-			// aapt resource value: 0x7f0c004b
-			public const int tripDetailsTimeHeader = 2131492939;
+			public const int tripDetailsEndPointHeader = 2131492949;
 			
 			// aapt resource value: 0x7f0c00a3
-			public const int tripDetailsTimesTraveledDetails = 2131493027;
+			public const int tripDetailsMilesTraveledDetails = 2131493027;
+			
+			// aapt resource value: 0x7f0c0049
+			public const int tripDetailsStartTimeHeader = 2131492937;
+			
+			// aapt resource value: 0x7f0c004f
+			public const int tripDetailsTimeHeader = 2131492943;
 			
 			// aapt resource value: 0x7f0c00a5
-			public const int tripDetailsTripsTraveledDetails = 2131493029;
-			
-			// aapt resource value: 0x7f0c0067
-			public const int tripHeader = 2131492967;
-			
-			// aapt resource value: 0x7f0c00a6
-			public const int tripInstanceMenu = 2131493030;
-			
-			// aapt resource value: 0x7f0c0080
-			public const int tripMenu = 2131492992;
-			
-			// aapt resource value: 0x7f0c00a4
-			public const int tripRow = 2131493028;
-			
-			// aapt resource value: 0x7f0c005d
-			public const int txtDriverScreenDriverName = 2131492957;
-			
-			// aapt resource value: 0x7f0c0078
-			public const int txtJourneyDriver = 2131492984;
-			
-			// aapt resource value: 0x7f0c005b
-			public const int txtJourneyScreenDriverName = 2131492955;
-			
-			// aapt resource value: 0x7f0c0077
-			public const int txtJourneyTimes = 2131492983;
+			public const int tripDetailsTimesTraveledDetails = 2131493029;
 			
 			// aapt resource value: 0x7f0c00a7
-			public const int txtTripScreenTripName = 2131493031;
+			public const int tripDetailsTripsTraveledDetails = 2131493031;
+			
+			// aapt resource value: 0x7f0c0069
+			public const int tripHeader = 2131492969;
 			
 			// aapt resource value: 0x7f0c00a8
-			public const int txtTripScreenTripWhen = 2131493032;
+			public const int tripInstanceMenu = 2131493032;
+			
+			// aapt resource value: 0x7f0c0082
+			public const int tripMenu = 2131492994;
+			
+			// aapt resource value: 0x7f0c00a6
+			public const int tripRow = 2131493030;
+			
+			// aapt resource value: 0x7f0c0061
+			public const int txtDriverScreenDriverName = 2131492961;
+			
+			// aapt resource value: 0x7f0c007a
+			public const int txtJourneyDriver = 2131492986;
+			
+			// aapt resource value: 0x7f0c005f
+			public const int txtJourneyScreenDriverName = 2131492959;
+			
+			// aapt resource value: 0x7f0c0079
+			public const int txtJourneyTimes = 2131492985;
+			
+			// aapt resource value: 0x7f0c00a9
+			public const int txtTripScreenTripName = 2131493033;
+			
+			// aapt resource value: 0x7f0c00aa
+			public const int txtTripScreenTripWhen = 2131493034;
 			
 			// aapt resource value: 0x7f0c000e
 			public const int wide = 2131492878;
@@ -1076,100 +1088,103 @@ namespace roots
 			public const int chart_reporting_layout = 2130968581;
 			
 			// aapt resource value: 0x7f040006
-			public const int DisplayJourneyDetails = 2130968582;
+			public const int delete_journey_confirm = 2130968582;
 			
 			// aapt resource value: 0x7f040007
-			public const int Driver_Spinner_Row = 2130968583;
+			public const int DisplayJourneyDetails = 2130968583;
 			
 			// aapt resource value: 0x7f040008
-			public const int DriverJourneyListViewRow = 2130968584;
+			public const int Driver_Spinner_Row = 2130968584;
 			
 			// aapt resource value: 0x7f040009
-			public const int DriverListViewRow = 2130968585;
+			public const int DriverJourneyListViewRow = 2130968585;
 			
 			// aapt resource value: 0x7f04000a
-			public const int generic_note_layout = 2130968586;
+			public const int DriverListViewRow = 2130968586;
 			
 			// aapt resource value: 0x7f04000b
-			public const int journey_startpoint_layout = 2130968587;
+			public const int generic_note_layout = 2130968587;
 			
 			// aapt resource value: 0x7f04000c
-			public const int JourneyLayout = 2130968588;
+			public const int journey_startpoint_layout = 2130968588;
 			
 			// aapt resource value: 0x7f04000d
-			public const int JourneyListVewRowLayout = 2130968589;
+			public const int JourneyLayout = 2130968589;
 			
 			// aapt resource value: 0x7f04000e
-			public const int Main = 2130968590;
+			public const int JourneyListVewRowLayout = 2130968590;
 			
 			// aapt resource value: 0x7f04000f
-			public const int MainDriverScreen = 2130968591;
+			public const int Main = 2130968591;
 			
 			// aapt resource value: 0x7f040010
-			public const int MainJourneyListScreen = 2130968592;
+			public const int MainDriverScreen = 2130968592;
 			
 			// aapt resource value: 0x7f040011
-			public const int MainMenuBackground = 2130968593;
+			public const int MainJourneyListScreen = 2130968593;
 			
 			// aapt resource value: 0x7f040012
-			public const int MainTripScreen = 2130968594;
+			public const int MainMenuBackground = 2130968594;
 			
 			// aapt resource value: 0x7f040013
-			public const int notification_action = 2130968595;
+			public const int MainTripScreen = 2130968595;
 			
 			// aapt resource value: 0x7f040014
-			public const int notification_action_tombstone = 2130968596;
+			public const int notification_action = 2130968596;
 			
 			// aapt resource value: 0x7f040015
-			public const int notification_media_action = 2130968597;
+			public const int notification_action_tombstone = 2130968597;
 			
 			// aapt resource value: 0x7f040016
-			public const int notification_media_cancel_action = 2130968598;
+			public const int notification_media_action = 2130968598;
 			
 			// aapt resource value: 0x7f040017
-			public const int notification_template_big_media = 2130968599;
+			public const int notification_media_cancel_action = 2130968599;
 			
 			// aapt resource value: 0x7f040018
-			public const int notification_template_big_media_custom = 2130968600;
+			public const int notification_template_big_media = 2130968600;
 			
 			// aapt resource value: 0x7f040019
-			public const int notification_template_big_media_narrow = 2130968601;
+			public const int notification_template_big_media_custom = 2130968601;
 			
 			// aapt resource value: 0x7f04001a
-			public const int notification_template_big_media_narrow_custom = 2130968602;
+			public const int notification_template_big_media_narrow = 2130968602;
 			
 			// aapt resource value: 0x7f04001b
-			public const int notification_template_custom_big = 2130968603;
+			public const int notification_template_big_media_narrow_custom = 2130968603;
 			
 			// aapt resource value: 0x7f04001c
-			public const int notification_template_icon_group = 2130968604;
+			public const int notification_template_custom_big = 2130968604;
 			
 			// aapt resource value: 0x7f04001d
-			public const int notification_template_lines_media = 2130968605;
+			public const int notification_template_icon_group = 2130968605;
 			
 			// aapt resource value: 0x7f04001e
-			public const int notification_template_media = 2130968606;
+			public const int notification_template_lines_media = 2130968606;
 			
 			// aapt resource value: 0x7f04001f
-			public const int notification_template_media_custom = 2130968607;
+			public const int notification_template_media = 2130968607;
 			
 			// aapt resource value: 0x7f040020
-			public const int notification_template_part_chronometer = 2130968608;
+			public const int notification_template_media_custom = 2130968608;
 			
 			// aapt resource value: 0x7f040021
-			public const int notification_template_part_time = 2130968609;
+			public const int notification_template_part_chronometer = 2130968609;
 			
 			// aapt resource value: 0x7f040022
-			public const int petrol_note_layout = 2130968610;
+			public const int notification_template_part_time = 2130968610;
 			
 			// aapt resource value: 0x7f040023
-			public const int set_time_dialog_fragment = 2130968611;
+			public const int petrol_note_layout = 2130968611;
 			
 			// aapt resource value: 0x7f040024
-			public const int TripDetails = 2130968612;
+			public const int set_time_dialog_fragment = 2130968612;
 			
 			// aapt resource value: 0x7f040025
-			public const int TripListViewRow = 2130968613;
+			public const int TripDetails = 2130968613;
+			
+			// aapt resource value: 0x7f040026
+			public const int TripListViewRow = 2130968614;
 			
 			static Layout()
 			{
